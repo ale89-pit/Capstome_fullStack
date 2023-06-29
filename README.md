@@ -1,1 +1,1 @@
-# Capstome_fullStack
+# Capstone_fullStack
