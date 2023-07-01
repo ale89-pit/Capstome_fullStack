@@ -7,7 +7,7 @@ const API_URL_USER = "http://localhost:8080/app/users/search?userName=";
 export const GET_USER = "GET_USER";
 export const GET_PASSWORD = "GET_PASSWORD";
 
-export const GET_PROFILES = "GET_PROFILES";
+export const GET_PROFILE = "GET_PROFILE";
 
 export const handleUser = (paylo) => {
   return {
@@ -22,8 +22,22 @@ export const handlePassword = (paylo) => {
   };
 };
 
-const myHeaders = new Headers();
-myHeaders.append("Content-Type", "application/json");
+export const handleProfile = (paylo) => {
+  return {
+    type: GET_PROFILE,
+    payload: paylo,
+  };
+};
+
+export const myHeaders = {
+  "Content-Type": "application/json",
+};
+export const token = window.localStorage.getItem("token");
+
+export const myHeadersToken = {
+  "Content-Type": "application/json",
+  Authorization: `Bearer ${token}`,
+};
 
 export const logInThunk = (userLogin) => {
   return async (dispatch, getState) => {
@@ -41,6 +55,29 @@ export const logInThunk = (userLogin) => {
         dispatch(handleLogin());
       } else if (response.status === 400 || response.status === 500) {
         alert("credenziali non valide");
+      }
+    } catch (error) {
+      console.log(error + " sono l'errore");
+    }
+  };
+};
+
+export const userProfile = (userName) => {
+  return async (dispatch, getState) => {
+    console.log(userName);
+    console.log(token);
+    console.log(myHeadersToken);
+    try {
+      const response = await fetch(API_URL_USER + userName, {
+        method: "GET",
+        headers: myHeadersToken,
+        redirect: "follow",
+      });
+      if (response.ok) {
+        const profile = await response.json();
+        dispatch(handleProfile(profile));
+      } else if (response.status === 500) {
+        alert("errore nella chiamata");
       }
     } catch (error) {
       console.log(error);

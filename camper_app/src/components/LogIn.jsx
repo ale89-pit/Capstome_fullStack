@@ -14,9 +14,7 @@ function LogIn() {
     const isLogged = useSelector((state)=>state.login.isLogged)
     const navigate = useNavigate();
    useEffect(()=>{
-    if(isLogged){
-        navigate("/Home")
-    }
+    
    },[isLogged])
     return (
         
@@ -25,7 +23,9 @@ function LogIn() {
             e.preventDefault()
             console.log(login)
             dispatch(logInThunk(login))
-            
+            if(isLogged){
+                navigate("/Home")
+            }
 
         }} >
             <Form.Group className="mb-3" controlId="exampleForm.ControlInputUsername">

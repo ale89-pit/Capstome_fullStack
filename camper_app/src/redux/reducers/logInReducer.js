@@ -1,7 +1,8 @@
 import { LOGIN } from "../actions/loginAction";
-
+import { GET_PROFILE } from "../actions/userAction";
 const initailState = {
   isLogged: false,
+  profile: null,
 };
 
 export const loginReducer = (state = initailState, action) => {
@@ -12,6 +13,11 @@ export const loginReducer = (state = initailState, action) => {
         ...state,
 
         isLogged: action.payload,
+      };
+    case GET_PROFILE:
+      return {
+        ...state,
+        profile: [action.payload],
       };
     default:
       return state;
