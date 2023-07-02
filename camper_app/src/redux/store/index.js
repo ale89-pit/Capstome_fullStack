@@ -17,6 +17,7 @@ import {
 import userReducer from "../reducers/userReducer";
 import { loginReducer } from "../reducers/logInReducer";
 import { facilityReducer } from "../reducers/facilityReducer";
+import { formFacilityReducer } from "../reducers/formFacilityReducer";
 
 const persistConfig = {
   key: "root",
@@ -28,6 +29,7 @@ const bigReducer = combineReducers({
   user: userReducer,
   login: loginReducer,
   facility: facilityReducer,
+  formFacility: formFacilityReducer,
 });
 const persistedReducer = persistReducer(persistConfig, bigReducer);
 

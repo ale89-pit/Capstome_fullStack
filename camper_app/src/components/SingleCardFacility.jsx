@@ -9,7 +9,7 @@ import {FaTruckDroplet} from "react-icons/fa6"
 import { propTypes } from "react-bootstrap/esm/Image";
 import { MdSignalCellularNull } from "react-icons/md";
 function SingleCardFacility ({facProp}) {
-console.log(facProp.cover)
+//https://cdn.pixabay.com/photo/2015/06/24/19/50/motorhome-820593_1280.jpg
 
     return (
        <> 
@@ -17,7 +17,10 @@ console.log(facProp.cover)
         <Container fluid className="d-flex ">    
         <Card.Img className="w-25" variant="top" src={facProp.cover} />
         <Card.Body className="d-flex flex-column justify-content-start">
+          
         <h1>{facProp.name}</h1>
+        <div className="d-flex">
+        <h4>{facProp.address.comune.name}</h4><Badge>{facProp.address.comune.provincename.sign}</Badge></div>
           <Card.Text>
             {facProp.description}
           </Card.Text>
@@ -28,11 +31,11 @@ console.log(facProp.cover)
        {facProp.facilityType}
       </Badge>
       <div className="d-flex flex-row align-items-stretch jusify-content-center">
-      {facProp.serviceFacility!== null? facProp.serviceFacility.map((s)=> {
+      {facProp.serviceFacility!== null? facProp.serviceFacility.map((s)=>  {
         
 switch(s.id){
     case 1: return <FaHouseFloodWaterCircleArrowRight /> 
-    case 2: return <FaPlugCircleBolt/>;
+    case 2: return<FaPlugCircleBolt/> ;
     case 3: return <FaShower />
     case 4: return <div className="position-relative"><FaShower  /> <Badge bg="danger" text="dark" className="position-absolute top-100 start-50  translate-middle badge rounded-pill bg-danger z-n0">hot</Badge></div>
     case 5: return<FaRestroom/>

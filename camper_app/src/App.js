@@ -9,6 +9,7 @@ import NavBar from "./components/NavBar";
 import Footer from "./components/Footer";
 import LogIn from "./components/LogIn";
 import Home from "./components/Home";
+import FacilityForm from "./components/FacilityForm";
 function App() {
   return (
     <div className="App">
@@ -22,9 +23,10 @@ function App() {
           <Row>
             <Col>
               <Routes>
-                <Route path="/" element={<RegisterPage />} />
+                <Route path="/register" element={<RegisterPage />} />
                 <Route path="/logIn" element={<LogIn />} />
-                <Route path="/Home" element={<Home />} />
+                <Route path="/" element={<Home />} />
+                <Route path="/add" element={<FacilityForm />} />
               </Routes>
             </Col>
           </Row>

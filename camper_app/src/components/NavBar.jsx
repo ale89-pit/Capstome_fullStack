@@ -9,6 +9,7 @@ import { userProfile } from "../redux/actions/userAction";
 
 
 function NavBar() {
+    // const isLogged = useSelector((state)=>state.login.isLogged)
     const isLogged = useSelector((state)=>state.login.isLogged)
     const navigate = useNavigate();
     const visibilityRegister = isLogged? "d-none":"d-block";
@@ -33,8 +34,8 @@ function NavBar() {
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="me-auto bg-lg-none ">
 
-                        <Nav.Link onClick={()=>navigate("/Home")} className="color-link">Home</Nav.Link>
-                        <Nav.Link onClick={()=>navigate("/")} className={`${visibilityRegister} color-link`}  >Register</Nav.Link>
+                        <Nav.Link onClick={()=>navigate("/")} className="color-link">Home</Nav.Link>
+                        <Nav.Link onClick={()=>navigate("/register")} className={`${visibilityRegister} color-link`}  >Register</Nav.Link>
                         <Nav.Link onClick={()=>navigate("/LogIn")} 
                         className="color-link" >
                             <TbLogin className="color-link" />LogIn</Nav.Link>
