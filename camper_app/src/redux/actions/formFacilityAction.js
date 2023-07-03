@@ -3,13 +3,12 @@ export const GET_COVER = "GET_COVER";
 export const GET_DESCRIPTION = "GET_DESCRIPTION";
 export const GET_PHONE = "GET_PHONE";
 export const GET_SITE = "GET_SITE";
-export const GET_SERVICE = "GET_SERVICE";
+export const TOGGLE_SERVICE = "TOGGLE_SERVICE";
 export const GET_TYPE = "GET_TYPE";
 export const GET_STREET = "GET_STREET";
 export const GET_STREET_NUMBER = "GET_STREET_NUMBER";
 export const GET_COMUNE_ID = "GET_COMUNE_ID";
 export const RESET_FORM = "RESET_FORM";
-export const REMOVE_SERVICE = "REMOVE_FORM";
 
 export const handlerName = (paylo) => {
   console.log(paylo);
@@ -42,16 +41,10 @@ export const handlerSite = (paylo) => {
     payload: paylo,
   };
 };
-export const handlerService = (paylo) => {
+export const toggleService = (paylo) => {
   return {
-    type: GET_SERVICE,
+    type: TOGGLE_SERVICE,
     payload: paylo,
-  };
-};
-export const removeService = (paylo) => {
-  return {
-    type: REMOVE_SERVICE,
-    paylaod: paylo,
   };
 };
 export const handlerType = (paylo) => {

@@ -1,7 +1,11 @@
-import { GET_ALL_FACILTY } from "../actions/facilityAction";
+import {
+  GET_ALL_FACILTY,
+  GET_SINGLE_FACILITY,
+} from "../actions/facilityAction";
 
 const initailState = {
   facility: [],
+  singleFacility: [],
 };
 
 export const facilityReducer = (state = initailState, action) => {
@@ -10,6 +14,11 @@ export const facilityReducer = (state = initailState, action) => {
       return {
         ...state,
         facility: action.payload,
+      };
+    case GET_SINGLE_FACILITY:
+      return {
+        ...state,
+        singleFacility: action.payload,
       };
     default:
       return state;

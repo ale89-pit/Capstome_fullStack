@@ -1,4 +1,4 @@
-import { LOGIN } from "../actions/loginAction";
+import { LOGIN, LOGOUT } from "../actions/loginAction";
 import { GET_PROFILE } from "../actions/userAction";
 const initailState = {
   isLogged: false,
@@ -19,6 +19,8 @@ export const loginReducer = (state = initailState, action) => {
         ...state,
         profile: [action.payload],
       };
+    case LOGOUT:
+      return initailState;
     default:
       return state;
   }

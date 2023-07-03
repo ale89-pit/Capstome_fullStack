@@ -7,9 +7,11 @@ const Checkbox = ({ label, checked, onClick}) => {
     };
   
     return (
-      <div className='mx-1 ' >
-        <label className='btn btn-primary "'>
-          <input class="btn-check" id="btn-check"  type="checkbox"  checked={checked} onClick={handleChange} />
+      <div className='m-1' >
+        
+        <label className={`checkbox-label ${checked ? 'selected' : ''}`}>
+          <input className="checkbox-input"   type="checkbox"  checked={checked} onClick={handleChange} />
+          
           {label}
         </label>
       </div>

@@ -10,6 +10,7 @@ import Footer from "./components/Footer";
 import LogIn from "./components/LogIn";
 import Home from "./components/Home";
 import FacilityForm from "./components/FacilityForm";
+import DetailsFacility from "./components/DetailsFacility";
 function App() {
   return (
     <div className="App">
@@ -21,12 +22,13 @@ function App() {
             </Col>
           </Row>
           <Row>
-            <Col>
+            <Col className="mx-auto col-8">
               <Routes>
                 <Route path="/register" element={<RegisterPage />} />
                 <Route path="/logIn" element={<LogIn />} />
                 <Route path="/" element={<Home />} />
                 <Route path="/add" element={<FacilityForm />} />
+                <Route path="/details/:id" element={<DetailsFacility />} />
               </Routes>
             </Col>
           </Row>

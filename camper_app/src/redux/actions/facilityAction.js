@@ -3,10 +3,17 @@ import { myHeaders, token, myHeadersToken } from "./userAction";
 const API_URL_FACILITY = "http://localhost:8080/app";
 
 export const GET_ALL_FACILTY = "GET_ALL_FACILITY";
+export const GET_SINGLE_FACILITY = "GET_SINGLE_FACILITY";
 
 export const handlerFacility = (paylo) => {
   return {
     type: GET_ALL_FACILTY,
+    payload: paylo,
+  };
+};
+export const handlerSingleFacility = (paylo) => {
+  return {
+    type: GET_SINGLE_FACILITY,
     payload: paylo,
   };
 };
@@ -25,6 +32,26 @@ export const getAllFacility = () => {
         const allFacility = await response.json();
         console.log(allFacility);
         dispatch(handlerFacility(allFacility));
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
+export const getSingleFacility = (id) => {
+  console.log("inizio fetch");
+  console.log(myHeaders);
+  return async (dispatch, getState) => {
+    try {
+      const response = await fetch(API_URL_FACILITY + `/${id}`, {
+        method: "GET",
+        headers: myHeaders,
+        redirect: "follow",
+      });
+      if (response.ok) {
+        const Facility = await response.json();
+        console.log(Facility);
+        dispatch(handlerSingleFacility(Facility));
       }
     } catch (error) {
       console.log(error);

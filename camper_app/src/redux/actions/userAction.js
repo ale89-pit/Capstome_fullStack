@@ -9,6 +9,8 @@ export const GET_PASSWORD = "GET_PASSWORD";
 
 export const GET_PROFILE = "GET_PROFILE";
 
+export const RESET_USER = "RESET_USER";
+
 export const handleUser = (paylo) => {
   return {
     type: GET_USER,
@@ -29,9 +31,16 @@ export const handleProfile = (paylo) => {
   };
 };
 
+export const resetUser = () => {
+  return {
+    type: RESET_USER,
+  };
+};
+
 export const myHeaders = {
   "Content-Type": "application/json",
 };
+
 export const token = window.localStorage.getItem("token");
 
 export const myHeadersToken = {

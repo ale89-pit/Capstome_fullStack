@@ -1,4 +1,6 @@
 body {
+  height: 100%;
+  width: 100%;
   max-width: 100vw;
   max-height: 100vh;
   background-image: url("../public/bgTrip .png");
@@ -107,4 +109,30 @@ body {
 svg {
   margin: 0.2em;
   font-size: 2em;
+}
+
+
+.checkbox-label {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  background-color: #0061bd;
+}
+
+.checkbox-input {
+  position: absolute;
+  opacity: 0;
+}
+
+
+.checkbox-label.selected ::after {
+  display: block;
+
+}
+
+.selected {
+  border: 2px;
+  border-color: #0061bd;
+  background-color: rgb(56, 140, 161);
+  /* Altri stili desiderati per la checkbox selezionata */
 }

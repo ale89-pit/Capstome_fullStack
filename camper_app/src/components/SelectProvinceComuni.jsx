@@ -62,7 +62,7 @@ const dispatch =useDispatch();
 
 
        {province!== null?province.map((p)=>  
-       <option  value={p.sign}>{p.name}</option>)
+       <option key={p.sign}  value={p.sign}>{p.name}</option>)
 
        :(<Form.Select aria-label="Default select example">
             <option>Provincia</option>
@@ -74,7 +74,7 @@ const dispatch =useDispatch();
 
 
        {comuni!== null?comuni.map((c)=>  
-       <option  value={c.id}>{c.name}</option>)
+       <option key={c.id}   value={c.id}>{c.name}</option>)
 
        :(<Form.Select aria-label="Default select example">
             <option>Provincia</option>

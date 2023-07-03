@@ -1,16 +1,16 @@
+import { startTransition } from "react";
 import {
   GET_NAME,
   GET_COVER,
   GET_DESCRIPTION,
   GET_PHONE,
   GET_SITE,
-  GET_SERVICE,
+  TOGGLE_SERVICE,
   GET_TYPE,
   GET_STREET,
   GET_STREET_NUMBER,
   GET_COMUNE_ID,
   RESET_FORM,
-  REMOVE_SERVICE,
 } from "../actions/formFacilityAction";
 
 const initailState = {
@@ -55,15 +55,11 @@ export const formFacilityReducer = (state = initailState, action) => {
         ...state,
         officialSite: action.payload,
       };
-    case GET_SERVICE:
+    case TOGGLE_SERVICE:
+      console.log(action.payload);
       return {
         ...state,
-        service: [...state.service, action.payload],
-      };
-    case REMOVE_SERVICE:
-      return {
-        ...state,
-        service: [state.service.splice(action.paylod, 1)],
+        service: action.payload,
       };
     case GET_TYPE:
       return {

@@ -1,4 +1,4 @@
-import { GET_PASSWORD, GET_USER } from "../actions/userAction";
+import { GET_PASSWORD, GET_USER, RESET_USER } from "../actions/userAction";
 
 const initailState = {
   userName: [],
@@ -19,6 +19,8 @@ const userReducer = (state = initailState, action) => {
 
         password: action.payload,
       };
+    case RESET_USER:
+      return initailState;
 
     default:
       return state;
