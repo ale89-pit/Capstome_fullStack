@@ -5,24 +5,31 @@ import "./index.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import RegisterPage from "./components/RegisterPage";
 import { Col, Container, Row } from "react-bootstrap";
-import NavBar from "./components/NavBar";
+
 import Footer from "./components/Footer";
 import LogIn from "./components/LogIn";
 import Home from "./components/Home";
 import FacilityForm from "./components/FacilityForm";
 import DetailsFacility from "./components/DetailsFacility";
+
+import NavBar from "./components/NavBar";
+import Jumbotron from "./components/Jumbotron";
 function App() {
   return (
     <div className="App">
       <BrowserRouter>
-        <Container fluid className="w-100">
-          <Row>
-            <Col>
+        <Container fluid className="w-100 m-0 p-0">
+          <Row className="backGround size mb-5">
+            <Col fluid className=" m-0">
               <NavBar />
+              <Routes>
+              <Route path="/" element={<Jumbotron />} />
+              </Routes>
             </Col>
           </Row>
+
           <Row>
-            <Col className="mx-auto col-8">
+            <Col >
               <Routes>
                 <Route path="/register" element={<RegisterPage />} />
                 <Route path="/logIn" element={<LogIn />} />

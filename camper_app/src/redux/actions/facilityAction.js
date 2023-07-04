@@ -4,6 +4,8 @@ const API_URL_FACILITY = "http://localhost:8080/app";
 
 export const GET_ALL_FACILTY = "GET_ALL_FACILITY";
 export const GET_SINGLE_FACILITY = "GET_SINGLE_FACILITY";
+export const RESET_FACILITY = "RESET_FACILITY"
+
 
 export const handlerFacility = (paylo) => {
   return {
@@ -17,6 +19,11 @@ export const handlerSingleFacility = (paylo) => {
     payload: paylo,
   };
 };
+export const resetFacility = ()=>{
+  return {
+    type: RESET_FACILITY
+  }
+}
 
 export const getAllFacility = () => {
   console.log("inizio fetch");

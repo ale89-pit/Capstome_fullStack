@@ -1,4 +1,4 @@
-import { resetUser } from "./userAction";
+
 
 export const LOGIN = "LOGIN";
 export const LOGOUT = "LOGOUT";
@@ -11,7 +11,7 @@ export const handleLogin = () => {
 };
 
 export const logOut = () => {
-  resetUser();
+  
   return {
     type: LOGOUT,
   };

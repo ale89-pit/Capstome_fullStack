@@ -1,22 +1,126 @@
+
+
+  @import url('https://fonts.googleapis.com/css2?family=Bitter:ital,wght@0,600;1,200;1,400&display=swap');
+
 body {
+  font-family: 'Bitter', serif;
   height: 100%;
   width: 100%;
   max-width: 100vw;
   max-height: 100vh;
-  background-image: url("../public/bgTrip .png");
+  background-image: url("../public/viesa.jpg");
   background-repeat: no-repeat;
-
-  background-size: cover;
+  background-size:  cover;
   background-attachment: fixed;
-
+  background-position: center; 
+  /* background-color: #282c34 !important; */
+  margin: 0;
+  padding: 0; 
+  
 }
 
+.backGround {
+ 
+  height: 100%;
+}
+.size{
+  height: 100%;
+}
+/* inizio testo animato */
+
+.card-jumboTitle{
+  width: 100%;
+  padding: 30px;
+  
+  margin: auto;
+  transition: .3s ease;
+  box-shadow: 0 1px 1px rgba(91, 91, 91, 0.3);
+}
+.card-jumboTitle:hover {
+    box-shadow: 0 5px 20px rgba(122, 122, 122, 0.8);
+    transform: translateY(-10px) scale(1.02);
+  	
+  }
+
+  .entry-title:hover{
+    background-position: -100% 0;
+  } 
+.entry-title{
+  
+background: linear-gradient(90deg, rgba(255, 254, 254, 0.074) 50%, rgba(77,77,77,0.11537114845938379) 100%);
+  background-size: 200%;
+  background-position: 0 0;
+  display: inline;
+  transition: .5s ease-in-out;
+  text-transform: uppercase;
+  
+ 
+}
+ a{
+  color: white;
+  text-decoration: none !important;
+}
+a:hover{
+  cursor: pointer;
+}
+small{
+  margin-top: 20px;
+  display: block;
+  font-family: raleway, arial, sans-serif;
+  color: white;
+  text-transform: uppercase;
+  
+  a{
+    font-weight: 700;
+    color: white;
+    text-decoration: none;
+  }
+}
+
+span{
+  display: block;
+  margin-top: 10px;
+  font-family: raleway, arial, sans-serif;
+  font-weight: 700;
+  color: #2b3a37;
+	
+	a{color: white}
+}
+
+.iklan{
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  background: white;
+  width: 200px;
+  padding: 20px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+  
+  p{
+    margin: 0 0 15px;
+    line-height: 1.4;
+    color: #333;
+  }
+  
+  a{
+    background-color: #ff4757;
+    color: white;
+    display: inline-block;
+    padding: 10px 20px;
+    border-radius: 3px;
+    text-decoration: none;
+    font-size: 14px;
+  }
+} 
+
+/* fine testo animato */
+
 .color-placeholder::placeholder {
-  color: rgb(250, 250, 250) !important;
+  color: rgb(249, 247, 247) !important;
 }
 
 .color-link {
-  color: white !important;
+  color: rgb(245, 240, 240) !important;
 }
 
 .color-link:hover {
@@ -24,17 +128,17 @@ body {
 }
 
 .custom-dropdown-title {
-  color: white !important;
+  color: rgb(218, 217, 217) !important;
 
 }
 
 .dropdown-toggle::after {
-  color: white !important;
+  color: rgb(217, 215, 215) !important;
 
 }
 
 .dropdown-menu {
-  color: white !important;
+  color: rgb(255, 255, 255) !important;
   background-color: transparent !important;
 }
 
@@ -44,7 +148,7 @@ body {
 }
 
 .navSpace {
-  margin-bottom: 10%;
+  margin-bottom: 1em;
 }
 
 .imgUser {

@@ -9,14 +9,14 @@ import { FaTruckDroplet } from "react-icons/fa6"
 import { MdSignalCellularNull } from "react-icons/md";
 function SingleCardFacility({ facProp }) {
   //gli passo le propieta di ogni struttura per mostrarle nalla home
-
+  // "C:/Users/Aless/Desktop/Camper_App/Camper_App_Server/src/main/resources/imageFacility/foto.jpg
 
 
   return (
     <>
       <Card className="my-4">
         <Container fluid className="d-flex ">
-          <Card.Img className="w-25" variant="top" src="C:/Users/Aless/Desktop/Camper_App/Camper_App_Server/src/main/resources/imageFacility/foto.jpg" />
+          <Card.Img className="w-25" variant="top" src="http://localhost:8080/app/facilities/image/IMG_20220806_141337.jpg" />
           <Card.Body className="d-flex flex-column justify-content-start">
 
             <Link to={"/details/" + facProp.id}> <h1>{facProp.name}</h1> </Link>

@@ -47,6 +47,9 @@ export const myHeadersToken = {
   "Content-Type": "application/json",
   Authorization: `Bearer ${token}`,
 };
+export const myHeadersTokenPhoto = {
+  Authorization: `Bearer ${token}`,
+};
 
 export const logInThunk = (userLogin) => {
   return async (dispatch, getState) => {

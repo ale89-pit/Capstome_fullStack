@@ -5,8 +5,9 @@ import { PiGlobeStand } from "react-icons/pi"
 import { TbLogout2, TbLogin } from "react-icons/tb"
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { userProfile } from "../redux/actions/userAction";
+import { resetUser, userProfile } from "../redux/actions/userAction";
 import { logOut } from "../redux/actions/loginAction";
+import { resetFacility } from "../redux/actions/facilityAction";
 
 
 function NavBar() {
@@ -18,7 +19,12 @@ function NavBar() {
     const profile = useSelector((state) => state.login.profile)
     const dispatch = useDispatch()
 
+    const puliziaStato = () => {
 
+        dispatch(logOut());
+        dispatch(resetFacility())
+        dispatch(resetUser())
+    }
 
 
     useEffect(() => {
@@ -30,7 +36,7 @@ function NavBar() {
     }, [!isLogged])
 
     return (
-        <Navbar expand="lg" className="navSpace navbar-dark ">
+        <Navbar expand="lg" className="navSpace navbar-dark">
             <Container fluid>
                 <Navbar.Brand href="#home"><img src="./giramondo.png" className="logo" /></Navbar.Brand>
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
@@ -55,7 +61,7 @@ function NavBar() {
 
                             <NavDropdown.Divider />
                             <NavDropdown.Item href="#action/3.4">
-                                <Nav.Link className="color-link" onClick={() => dispatch(logOut())}>  <TbLogout2 /> LogOut</Nav.Link>
+                                <Nav.Link className="color-link" onClick={puliziaStato}>  <TbLogout2 /> LogOut</Nav.Link>
                             </NavDropdown.Item>
                         </NavDropdown>
                     </Nav>

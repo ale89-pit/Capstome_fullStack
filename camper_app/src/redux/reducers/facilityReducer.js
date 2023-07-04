@@ -5,7 +5,10 @@ import {
 
 const initailState = {
   facility: [],
+  isLoadingAll:true,
   singleFacility: [],
+  isLoading:true,
+
 };
 
 export const facilityReducer = (state = initailState, action) => {
@@ -14,11 +17,13 @@ export const facilityReducer = (state = initailState, action) => {
       return {
         ...state,
         facility: action.payload,
+        isLoadingAll:false
       };
     case GET_SINGLE_FACILITY:
       return {
         ...state,
         singleFacility: action.payload,
+        isLoading:false
       };
     default:
       return state;
