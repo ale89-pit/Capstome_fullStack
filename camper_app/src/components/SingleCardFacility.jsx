@@ -16,7 +16,7 @@ function SingleCardFacility({ facProp }) {
     <>
       <Card className="my-4">
         <Container fluid className="d-flex ">
-          <Card.Img className="w-25" variant="top" src="http://localhost:8080/app/facilities/image/IMG_20220806_141337.jpg" />
+          <Card.Img className="w-25" variant="top" src={facProp.cover} />
           <Card.Body className="d-flex flex-column justify-content-start">
 
             <Link to={"/details/" + facProp.id}> <h1>{facProp.name}</h1> </Link>

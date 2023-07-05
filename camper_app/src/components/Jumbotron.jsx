@@ -9,7 +9,7 @@ function Jumbotron() {
 
                 <div className="w-75 mx-auto  text-center">
                     <div className="card-jumboTitle">
-                        <Link to={"/register"}>  <h1 className="display-4 text-light entry-title">Benvenuti nella nostra famiglia di camperisti e viaggiatori. Rendi ogni strada una tua personale scoperta
+                        <Link to={"/register"}>  <h1 className="display-4  entry-title">Benvenuti nella nostra famiglia di camperisti e viaggiatori. Rendi ogni strada una tua personale scoperta
                         </h1></Link>
                     </div>
                     <p className="lead text-light"></p>

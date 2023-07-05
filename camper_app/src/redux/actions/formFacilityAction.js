@@ -18,6 +18,7 @@ export const handlerName = (paylo) => {
   };
 };
 export const handlercover = (paylo) => {
+  console.log(paylo);
   return {
     type: GET_COVER,
     payload: paylo,
