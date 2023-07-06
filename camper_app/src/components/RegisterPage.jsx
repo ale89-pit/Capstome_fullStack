@@ -73,42 +73,42 @@ function RegisterPage() {
         <Container className="w-100">
             <Form onSubmit={handleSubmit} className="w-75 w-xl-50 mx-auto">
                 <Form.Group className="mb-3  " controlId="exampleForm.ControlInputNome">
-                    <Form.Label className="fw-bolder text-light">Nome</Form.Label>
-                    <Form.Control type="text" placeholder="Mario" required plaintext className="border rounded text-light color-placeholder px-3"
+                    <Form.Label className="fw-bolder ">Nome</Form.Label>
+                    <Form.Control type="text" placeholder="Mario" required plaintext className="border rounded  color-placeholder px-3"
                         autoFocus
                         name="nome"
                         value={registerForm.nome}
                         onChange={handleChange} />
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="exampleForm.ControlInputCognome">
-                    <Form.Label className="fw-bolder text-light">Cognome</Form.Label>
-                    <Form.Control type="text" placeholder="Rossi" plaintext required className="border rounded text-light color-placeholder px-3"
+                    <Form.Label className="fw-bolder ">Cognome</Form.Label>
+                    <Form.Control type="text" placeholder="Rossi" plaintext required className="border rounded color-placeholder px-3"
                         name="cognome"
                         value={registerForm.cognome}
                         onChange={handleChange} />
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="exampleForm.ControlInputEmail">
-                    <Form.Label className="fw-bolder text-light">Email address</Form.Label>
-                    <Form.Control type="email" placeholder="name@example.com" required plaintext className="border rounded text-light color-placeholder px-3"
+                    <Form.Label className="fw-bolder ">Email address</Form.Label>
+                    <Form.Control type="email" placeholder="name@example.com" required plaintext className="border rounded  color-placeholder px-3"
                         name="email"
                         value={registerForm.email}
                         onChange={handleChange} />
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="exampleForm.ControlInputUsername">
-                    <Form.Label className="fw-bolder text-light">Username</Form.Label>
-                    <Form.Control type="text" placeholder="mario.r" required plaintext className="border text-light color-placeholder px-3"
+                    <Form.Label className="fw-bolder ">Username</Form.Label>
+                    <Form.Control type="text" placeholder="mario.r" required plaintext className="border color-placeholder px-3"
                         name="userName"
                         value={registerForm.userName}
                         onChange={handleChange} />
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="exampleForm.ControlInputPassword">
-                    <Form.Label className="fw-bolder text-light">Password</Form.Label>
-                    <Form.Control type="password" placeholder="password" required plaintext className="border rounded text-light color-placeholder px-3"
+                    <Form.Label className="fw-bolder ">Password</Form.Label>
+                    <Form.Control type="password" placeholder="password" required plaintext className="border rounded  color-placeholder px-3"
                         name="password"
                         value={registerForm.password}
                         onChange={handleChange} />
                 </Form.Group>
-                <button  type="submit" className="m-2 button">Register</button>
+                <button type="submit" className="m-2 button">Register</button>
                 <button type="reset" value="Reset Form" className="m-2 button" onClick={() => resetForm()}>Reset</button>
             </Form>
 

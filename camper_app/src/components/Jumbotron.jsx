@@ -6,14 +6,22 @@ function Jumbotron() {
     return (
         <Row className="size">
             <Col className="jumbotron jumbotron-fluid mx-0 ">
-
+                <div className="title">
+                    Benvenuti  <br />
+                    nella nostra famiglia <br />
+                    di camperisti e viaggiatori<br />
+                    Rendi <br />
+                    ogni strada una tua <br />
+                    personale <br />
+                    scoperta<br />
+                </div>
                 <div className="w-75 mx-auto  text-center">
-                    <div className="card-jumboTitle">
+                    {/* <div className="card-jumboTitle">
                         <Link to={"/register"}>  <h1 className="display-4  entry-title">Benvenuti nella nostra famiglia di camperisti e viaggiatori. Rendi ogni strada una tua personale scoperta
                         </h1></Link>
-                    </div>
+                    </div> */}
                     <p className="lead text-light"></p>
-                    <h4>Trova l'avventura perfetta</h4>
+                    <h4 className="searchTitle">Trova l'avventura perfetta</h4>
                     <Form className="d-flex mb-5 justify-content-center align-items-center">
 
                         <Form.Control type="text" placeholder="Normal text" /><Button>Search</Button>

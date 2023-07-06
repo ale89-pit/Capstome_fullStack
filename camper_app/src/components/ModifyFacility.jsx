@@ -31,7 +31,7 @@ function ModifyFacility() {
         try {
             const response = await fetch("http://localhost:8080/app/" + id, requestOptions);
             const data = await response.json();
-
+            console.log(data)
             dispatch(handlerName(data.name));
             dispatch(handlercover(data.cover));
             dispatch(handlerDescr(data.description));
@@ -40,8 +40,9 @@ function ModifyFacility() {
 
             const newDataService = data.serviceFacility.map(element => element.id);
             setDataService(newDataService);
-
+            console.log(newDataService)
             dispatch(toggleService(newDataService));
+
             dispatch(handlerType(data.type));
 
             dispatch(handlerStreet(data.address.street));
@@ -53,7 +54,8 @@ function ModifyFacility() {
     };
     useEffect(() => {
         getFacilityToModify()
-    }, []);
+    }, [id]);
+
     return (
         <FacilityForm />
     )

@@ -30,8 +30,8 @@ function LogIn() {
 
             }} >
             <Form.Group className="mb-3" controlId="exampleForm.ControlInputUsername">
-                <Form.Label className="fw-bolder text-light">Username</Form.Label>
-                <Form.Control type="text" placeholder="mario.r" required plaintext className="border text-light color-placeholder px-3 w-50 mx-auto"
+                <Form.Label className="fw-bolder">Username</Form.Label>
+                <Form.Control type="text" placeholder="mario.r" required plaintext className="border  color-placeholder px-3 w-50 mx-auto"
                     name="userName"
                     // value={registerForm.userName}
                     onChange={(e) => dispatch(handleUser(e.target.value))}
@@ -39,8 +39,8 @@ function LogIn() {
             </Form.Group>
 
             <Form.Group className="mb-3" controlId="exampleForm.ControlInputPassword">
-                <Form.Label className="fw-bolder text-light">Password</Form.Label>
-                <Form.Control type="password" placeholder="password" required plaintext className="border rounded text-light color-placeholder px-3 w-50 mx-auto"
+                <Form.Label className="fw-bolder ">Password</Form.Label>
+                <Form.Control type="password" placeholder="password" required plaintext className="border rounded  color-placeholder px-3 w-50 mx-auto"
                     name="password"
                     // value={registerForm.password}
                     onChange={(e) => dispatch(handlePassword(e.target.value))}

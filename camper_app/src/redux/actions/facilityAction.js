@@ -4,8 +4,7 @@ const API_URL_FACILITY = "http://localhost:8080/app";
 
 export const GET_ALL_FACILTY = "GET_ALL_FACILITY";
 export const GET_SINGLE_FACILITY = "GET_SINGLE_FACILITY";
-export const RESET_FACILITY = "RESET_FACILITY"
-
+export const RESET_FACILITY = "RESET_FACILITY";
 
 export const handlerFacility = (paylo) => {
   return {
@@ -19,14 +18,13 @@ export const handlerSingleFacility = (paylo) => {
     payload: paylo,
   };
 };
-export const resetFacility = ()=>{
+export const resetFacility = () => {
   return {
-    type: RESET_FACILITY
-  }
-}
+    type: RESET_FACILITY,
+  };
+};
 
 export const getAllFacility = () => {
-  
   return async (dispatch, getState) => {
     try {
       const response = await fetch(API_URL_FACILITY, {
@@ -36,7 +34,7 @@ export const getAllFacility = () => {
       });
       if (response.ok) {
         const allFacility = await response.json();
-        console.log(allFacility);
+
         dispatch(handlerFacility(allFacility));
       }
     } catch (error) {
@@ -45,7 +43,6 @@ export const getAllFacility = () => {
   };
 };
 export const getSingleFacility = (id) => {
-  
   return async (dispatch, getState) => {
     try {
       const response = await fetch(API_URL_FACILITY + `/${id}`, {
@@ -55,7 +52,7 @@ export const getSingleFacility = (id) => {
       });
       if (response.ok) {
         const Facility = await response.json();
-        
+
         dispatch(handlerSingleFacility(Facility));
       }
     } catch (error) {

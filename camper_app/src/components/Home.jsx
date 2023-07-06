@@ -16,9 +16,9 @@ function Home() {
     const allFacility = useSelector((state) => state.facility.facility)
     const isLoadingAll = useSelector((state) => state.facility.isLoadingAll)
     useEffect(() => {
-        console.log("sto nello use effetc")
+
         dispatch(getAllFacility())
-        console.log(allFacility)
+
     }, [])
     return (
         <>

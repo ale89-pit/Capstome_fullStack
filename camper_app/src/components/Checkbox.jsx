@@ -10,7 +10,7 @@ const Checkbox = ({ label, checked, onClick }) => {
     <div className='m-1' >
 
       <label className={`checkbox-label ${checked ? 'selected' : ''}`}>
-        <input className="checkbox-input" type="checkbox" checked={checked} onClick={handleChange} onChange={handleChange} />
+        <input className="checkbox-input" type="checkbox" checked={checked} onClick={handleChange} />
 
         {label}
       </label>

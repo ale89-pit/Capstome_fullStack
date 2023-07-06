@@ -69,17 +69,20 @@ function FacilityForm() {
 
 
   const updateCheckBox = (() => {
-
+    console.log("sto aggiornando lo stato delle checkbox")
+    console.log(formFacility.service)
     if (formFacility.service.length !== 0) {
       formFacility.service.forEach((element) => {
         if (element >= 1 && element <= 10) {
           setIdService((prevIdService) => [...prevIdService, element]);
-          console.log(idService + " useEffect")
+
           updateChechboxValues[element - 1] = true;
         }
       });
     }
+    console.log("qui dovrei aggiornare lo stato delle checkbox")
     setCheckboxValues(updateChechboxValues);
+    console.log(checkboxValues)
   });
 
   //invio dei dati appena inseriti
@@ -171,15 +174,28 @@ function FacilityForm() {
 
 
 
+  // useEffect(() => {
+
+  //   updateCheckBox
+
+  // }, [])
 
 
   useEffect(() => {
     dispatch(toggleService(idService))
+    if (location.pathname !== "/add") {
+      updateCheckBox()
 
+    }
+  }, [])
+  useEffect(() => {
+    if (location.pathname !== "/add") {
 
+      dispatch(toggleService(idService))
 
+      console.log(checkboxValues)
+    }
   }, [checkboxValues])
-
 
 
 
@@ -193,7 +209,7 @@ function FacilityForm() {
               <Form.Control type="text" placeholder="Mario" required plaintext className="border rounded  color-placeholder px-3"
                 autoFocus
                 name="nome"
-                value={formFacility.name}
+                value={location.pathname !== "/add" ? formFacility.name : formFacility.name}
                 onChange={(e) => dispatch(handlerName(e.target.value))}
               />
             </Form.Group>
@@ -205,9 +221,9 @@ function FacilityForm() {
 
             <Form.Group className="mb-3 text-center" controlId="exampleForm.ControlInputEmail">
               <Form.Label className="fw-bolder form-label">Descrizione</Form.Label>
-              <Form.Control as="textarea" placeholder="Inserisci  descrizione della struttura" maxLength={255} required plaintext className="border rounded color-placeholder px-3"
+              <Form.Control as="textarea" placeholder="Inserisci  descrizione della struttura" required plaintext className="border rounded color-placeholder px-3"
                 name="descr"
-                value={formFacility.description}
+                value={location.pathname !== "/add" ? formFacility.description : formFacility.description}
                 onChange={(e) => dispatch(handlerDescr(e.target.value))}
               />
             </Form.Group>
@@ -215,7 +231,7 @@ function FacilityForm() {
               <Form.Label className="fw-bolder form-label">Official site</Form.Label>
               <Form.Control type="text" placeholder="Https://www.example.com" maxLength={255} required plaintext className="border rounded color-placeholder px-3"
                 name="descr"
-                value={formFacility.officialSite}
+                value={location.pathname !== "/add" ? formFacility.officialSite : ""}
                 onChange={(e) => dispatch(handlerSite(e.target.value))}
               />
             </Form.Group>
@@ -223,7 +239,7 @@ function FacilityForm() {
               <Form.Label className="fw-bolder form-label">telefono</Form.Label>
               <Form.Control type="text" placeholder="007123654" required plaintext className="border  color-placeholder px-3"
                 name="phone"
-                value={formFacility.phoneNumber}
+                value={location.pathname !== "/add" ? formFacility.phoneNumber : ""}
                 onChange={(e) => dispatch(handlerPhone(e.target.value))}
               />
             </Form.Group>
@@ -250,8 +266,8 @@ function FacilityForm() {
                                       : (index + 1) === 9 ? (<FaTruckDroplet title="scarico acque grige" />)
                                         : (<BsShop title="MArket" />)}
                     id={index}
-                    // checked={value}
-                    // onChanged={() => updateCheckBox()}
+                    checked={value}
+                    // onChanged={location.pathname !== "/add" ? () => updateCheckBox() : null}
                     value={index}
                     onClick={(newValue) => handleCheckboxChange(index, newValue, value)}
 
@@ -264,6 +280,7 @@ function FacilityForm() {
             </Container>
 
             <Form.Select onChange={(e) => dispatch(handlerType(e.target.value))} className="my-2" aria-label="Default select example">
+
               <option>Open this select menu</option>
               <option value="CAMPING">Campeggio</option>
               <option value="PARKING_AREA">Parking Area</option>
@@ -279,7 +296,7 @@ function FacilityForm() {
               <Form.Control type="text" placeholder="Via/piazza giacomo matteotti" required plaintext className="border rounded  color-placeholder px-3"
                 autoFocus
                 name="indirizzo"
-                value={formFacility.address.street}
+                value={location.pathname !== "/add" ? formFacility.address.street : formFacility.address.street}
                 onChange={(e) => dispatch(handlerStreet(e.target.value))}
               />
             </Form.Group>
@@ -287,7 +304,7 @@ function FacilityForm() {
               <Form.Label className="fw-bolder form-label">Civico</Form.Label>
               <Form.Control type="text" placeholder="civico" plaintext required className="border rounded color-placeholder px-3"
                 name="civico"
-                value={formFacility.address.streetNumber}
+                value={location.pathname !== "/add" ? formFacility.address.streetNumber : formFacility.address.streetNumber}
                 onChange={(e) => dispatch(handlerStreetNumber(e.target.value))}
               />
             </Form.Group>

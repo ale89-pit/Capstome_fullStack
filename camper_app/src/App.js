@@ -1,6 +1,5 @@
 import logo from "./logo.svg";
 import "./App.css";
-import "./index.css";
 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import RegisterPage from "./components/RegisterPage";
@@ -15,6 +14,7 @@ import DetailsFacility from "./components/DetailsFacility";
 import NavBar from "./components/NavBar";
 import Jumbotron from "./components/Jumbotron";
 import ModifyFacility from "./components/ModifyFacility";
+
 function App() {
   return (
     <div className="App">
@@ -23,14 +23,15 @@ function App() {
           <Row className="backGround size mb-5">
             <Col fluid className=" m-0">
               <NavBar />
+
               <Routes>
-              <Route path="/" element={<Jumbotron />} />
+                <Route path="/" element={<Jumbotron />} />
               </Routes>
             </Col>
           </Row>
 
           <Row>
-            <Col >
+            <Col>
               <Routes>
                 <Route path="/register" element={<RegisterPage />} />
                 <Route path="/logIn" element={<LogIn />} />
