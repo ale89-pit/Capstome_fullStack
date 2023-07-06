@@ -26,8 +26,7 @@ export const resetFacility = ()=>{
 }
 
 export const getAllFacility = () => {
-  console.log("inizio fetch");
-  console.log(myHeaders);
+  
   return async (dispatch, getState) => {
     try {
       const response = await fetch(API_URL_FACILITY, {
@@ -46,8 +45,7 @@ export const getAllFacility = () => {
   };
 };
 export const getSingleFacility = (id) => {
-  console.log("inizio fetch");
-  console.log(myHeaders);
+  
   return async (dispatch, getState) => {
     try {
       const response = await fetch(API_URL_FACILITY + `/${id}`, {
@@ -57,7 +55,7 @@ export const getSingleFacility = (id) => {
       });
       if (response.ok) {
         const Facility = await response.json();
-        console.log(Facility);
+        
         dispatch(handlerSingleFacility(Facility));
       }
     } catch (error) {

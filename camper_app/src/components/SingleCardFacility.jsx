@@ -51,6 +51,7 @@ function SingleCardFacility({ facProp }) {
               }
             </div>
           </Card.Body>
+          <Link className="btn" to={"/add/" + facProp.id}>modifica</Link>
         </Container>
       </Card>
 

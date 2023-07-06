@@ -11,14 +11,14 @@ export const GET_COMUNE_ID = "GET_COMUNE_ID";
 export const RESET_FORM = "RESET_FORM";
 
 export const handlerName = (paylo) => {
-  console.log(paylo);
+  
   return {
     type: GET_NAME,
     payload: paylo,
   };
 };
 export const handlercover = (paylo) => {
-  console.log(paylo);
+  
   return {
     type: GET_COVER,
     payload: paylo,

@@ -27,7 +27,7 @@ import {
   resetForm,
 
 } from "../redux/actions/formFacilityAction"
-import { useHref } from "react-router-dom";
+import { useHref, useLocation, useParams } from "react-router-dom";
 
 function FacilityForm() {
   const API_URL_NEW_FACILITY = "http://localhost:8080/app/facilities"
@@ -38,15 +38,26 @@ function FacilityForm() {
   let fd = new FormData()
   let imgData = null
 
-  //controlla i servizi selezionati che saranno inviati nel Json
+
+
+  const location = useLocation()
+  const visibility = location.pathname !== "/add" ? "d-block" : "d-none"
+  const params = useParams()
+  const updateChechboxValues = Array(10).fill(false);
+
+
+
+
+  // controlla i servizi selezionati che saranno inviati nel Json
   const handleCheckboxChange = (index, newValue, value) => {
     // console.log(e)
-    console.log(index)
+
     const newCheckboxValues = [...checkboxValues];
     newCheckboxValues[index] = newValue;
     setCheckboxValues(newCheckboxValues);
     if (newValue) {
       //se il valore è vero aggiunge alla lista di servizi
+      console.log(idService + " handleChange")
       setIdService((prevIdService) => [...prevIdService, index + 1]);
     } else {
       //se il valore da vero diventa falso lo toglie dalla lista
@@ -55,10 +66,26 @@ function FacilityForm() {
       );
     }
   }
+
+
+  const updateCheckBox = (() => {
+
+    if (formFacility.service.length !== 0) {
+      formFacility.service.forEach((element) => {
+        if (element >= 1 && element <= 10) {
+          setIdService((prevIdService) => [...prevIdService, element]);
+          console.log(idService + " useEffect")
+          updateChechboxValues[element - 1] = true;
+        }
+      });
+    }
+    setCheckboxValues(updateChechboxValues);
+  });
+
   //invio dei dati appena inseriti
   const sendNewFacility = async (e) => {
     e.preventDefault()
-    console.log(formFacility)
+
     try {
       const response = await fetch(API_URL_NEW_FACILITY, {
         method: "POST",
@@ -67,7 +94,7 @@ function FacilityForm() {
         redirect: "follow",
       })
       if (response.ok) {
-        dispatch(resetForm)
+        dispatch(resetForm())
         alert("struttura inserita")
       } else {
         alert("errore fetch")
@@ -92,8 +119,7 @@ function FacilityForm() {
 
   const sendPhotoFacility = async (e) => {
     e.preventDefault()
-    console.log(fd)
-    console.log(fd.get("file").name)
+
 
     try {
       const response = await fetch("http://localhost:8080/app/facilities/image", {
@@ -103,7 +129,7 @@ function FacilityForm() {
         redirect: "follow",
       })
       if (response.ok) {
-        console.log(response)
+
         //recupero l'indirro della foto appena salvata 
         dispatch(handlercover(response.url + "/" + fd.get("file").name));
         alert("foto aggiunta" + response.url + fd.get("file").name)
@@ -118,6 +144,29 @@ function FacilityForm() {
     }
   }
 
+  const modifyFacility = async (e) => {
+    e.preventDefault()
+    {
+      try {
+        const response = await fetch(API_URL_NEW_FACILITY + "/" + params.id, {
+          method: "PUT",
+          headers: myHeadersToken,
+          body: JSON.stringify(formFacility),
+          redirect: "follow",
+        });
+        if (response.ok) {
+          alert("struttura modificata")
+          dispatch(resetForm())
+        }
+        const data = await response.json();
+
+
+
+      } catch (error) {
+        console.log('error', error);
+      }
+    };
+  }
 
 
 
@@ -126,13 +175,17 @@ function FacilityForm() {
 
   useEffect(() => {
     dispatch(toggleService(idService))
-    console.log(idService)
+
+
+
   }, [checkboxValues])
+
+
 
 
   return (
     <Container className="w-100">
-      <Row className="cardRegister w-50 mx-auto">
+      <Row className="cardRegister mx-auto">
         <Col>
           <Form className="w-75 w-xl-50 mx-auto">
             <Form.Group className="mb-3 text-center " controlId="exampleForm.ControlInputNome">
@@ -140,7 +193,7 @@ function FacilityForm() {
               <Form.Control type="text" placeholder="Mario" required plaintext className="border rounded  color-placeholder px-3"
                 autoFocus
                 name="nome"
-
+                value={formFacility.name}
                 onChange={(e) => dispatch(handlerName(e.target.value))}
               />
             </Form.Group>
@@ -152,25 +205,25 @@ function FacilityForm() {
 
             <Form.Group className="mb-3 text-center" controlId="exampleForm.ControlInputEmail">
               <Form.Label className="fw-bolder form-label">Descrizione</Form.Label>
-              <Form.Control type="text" placeholder="Inserisci una breve descrizione della struttura" maxLength={255} required plaintext className="border rounded color-placeholder px-3"
+              <Form.Control as="textarea" placeholder="Inserisci  descrizione della struttura" maxLength={255} required plaintext className="border rounded color-placeholder px-3"
                 name="descr"
-                // value={registerForm.email}
+                value={formFacility.description}
                 onChange={(e) => dispatch(handlerDescr(e.target.value))}
               />
             </Form.Group>
             <Form.Group className="mb-3 text-center" controlId="exampleForm.ControlInputEmail">
               <Form.Label className="fw-bolder form-label">Official site</Form.Label>
-              <Form.Control type="text" placeholder="Inserisci una breve descrizione della struttura" maxLength={255} required plaintext className="border rounded color-placeholder px-3"
+              <Form.Control type="text" placeholder="Https://www.example.com" maxLength={255} required plaintext className="border rounded color-placeholder px-3"
                 name="descr"
-                // value={registerForm.email}
+                value={formFacility.officialSite}
                 onChange={(e) => dispatch(handlerSite(e.target.value))}
               />
             </Form.Group>
             <Form.Group className="mb-3 text-center" controlId="exampleForm.ControlInputUsername">
               <Form.Label className="fw-bolder form-label">telefono</Form.Label>
-              <Form.Control type="number" placeholder="007123654" required plaintext className="border  color-placeholder px-3"
+              <Form.Control type="text" placeholder="007123654" required plaintext className="border  color-placeholder px-3"
                 name="phone"
-                // value={registerForm.userName}
+                value={formFacility.phoneNumber}
                 onChange={(e) => dispatch(handlerPhone(e.target.value))}
               />
             </Form.Group>
@@ -196,8 +249,9 @@ function FacilityForm() {
                                     : (index + 1) === 8 ? (<GiFoundryBucket title="scarico cassetta" />)
                                       : (index + 1) === 9 ? (<FaTruckDroplet title="scarico acque grige" />)
                                         : (<BsShop title="MArket" />)}
-                    id={index + 1}
-                    checked={value}
+                    id={index}
+                    // checked={value}
+                    // onChanged={() => updateCheckBox()}
                     value={index}
                     onClick={(newValue) => handleCheckboxChange(index, newValue, value)}
 
@@ -224,24 +278,24 @@ function FacilityForm() {
               <Form.Label className="fw-bolder form-label">Via/Piazza</Form.Label>
               <Form.Control type="text" placeholder="Via/piazza giacomo matteotti" required plaintext className="border rounded  color-placeholder px-3"
                 autoFocus
-                name="nome"
-                // value={registerForm.nome}
+                name="indirizzo"
+                value={formFacility.address.street}
                 onChange={(e) => dispatch(handlerStreet(e.target.value))}
               />
             </Form.Group>
             <Form.Group className="mb-3 text-center" controlId="exampleForm.ControlInputCognome">
               <Form.Label className="fw-bolder form-label">Civico</Form.Label>
-              <Form.Control type="number" placeholder="civico" plaintext required className="border rounded color-placeholder px-3"
-                name="cognome"
-                // value={registerForm.cognome}
+              <Form.Control type="text" placeholder="civico" plaintext required className="border rounded color-placeholder px-3"
+                name="civico"
+                value={formFacility.address.streetNumber}
                 onChange={(e) => dispatch(handlerStreetNumber(e.target.value))}
               />
             </Form.Group>
 
             <button onClick={sendNewFacility} type="submit" className="m-2 button">Invia</button>
             <button type="reset" value="Reset Form" className="m-2 button" onClick={() => (dispatch(resetForm()))} >Reset</button>
-            {/* <button  type="submit" className="m-2 button" >Modifica</button>
-            <button type="reset" value="Reset Form" className="m-2 button bg-warnig" >Cancella</button> */}
+            <button type="submit" onClick={modifyFacility} className={`m-2 button  ${visibility}`} >Modifica</button>
+            <button type="reset" value="Reset Form" className={`m-2 button bg-warnig  ${visibility}`}  >Cancella</button>
           </Form>
 
 

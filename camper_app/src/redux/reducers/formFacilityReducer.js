@@ -56,7 +56,7 @@ export const formFacilityReducer = (state = initailState, action) => {
         officialSite: action.payload,
       };
     case TOGGLE_SERVICE:
-      console.log(action.payload);
+      
       return {
         ...state,
         service: action.payload,

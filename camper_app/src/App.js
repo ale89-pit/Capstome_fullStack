@@ -14,6 +14,7 @@ import DetailsFacility from "./components/DetailsFacility";
 
 import NavBar from "./components/NavBar";
 import Jumbotron from "./components/Jumbotron";
+import ModifyFacility from "./components/ModifyFacility";
 function App() {
   return (
     <div className="App">
@@ -35,6 +36,7 @@ function App() {
                 <Route path="/logIn" element={<LogIn />} />
                 <Route path="/" element={<Home />} />
                 <Route path="/add" element={<FacilityForm />} />
+                <Route path="/add/:id" element={<ModifyFacility />} />
                 <Route path="/details/:id" element={<DetailsFacility />} />
               </Routes>
             </Col>

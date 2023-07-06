@@ -4,7 +4,7 @@ import { MdOutlineSettings } from "react-icons/md";
 import { PiGlobeStand } from "react-icons/pi"
 import { TbLogout2, TbLogin } from "react-icons/tb"
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { resetUser, userProfile } from "../redux/actions/userAction";
 import { logOut } from "../redux/actions/loginAction";
 import { resetFacility } from "../redux/actions/facilityAction";
@@ -29,7 +29,7 @@ function NavBar() {
 
     useEffect(() => {
         if (isLogged) {
-            console.log(username)
+
             dispatch(userProfile(username))
         }
 
@@ -38,7 +38,7 @@ function NavBar() {
     return (
         <Navbar expand="lg" className="navSpace navbar-dark">
             <Container fluid>
-                <Navbar.Brand href="#home"><img src="./giramondo.png" className="logo" /></Navbar.Brand>
+                <Nav.Link onClick={() => navigate("/")}>     <Navbar.Brand ><img src="./giramondo.png" className="logo" /></Navbar.Brand></Nav.Link>
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="me-auto bg-lg-none ">

@@ -62,7 +62,7 @@ export const logInThunk = (userLogin) => {
       });
       if (response.ok) {
         const authControll = await response.json();
-        console.log(authControll, getState);
+        
         window.localStorage.setItem("token", authControll.accessToken);
         dispatch(handleLogin());
       } else if (response.status === 400 || response.status === 500) {
@@ -76,9 +76,7 @@ export const logInThunk = (userLogin) => {
 
 export const userProfile = (userName) => {
   return async (dispatch, getState) => {
-    console.log(userName);
-    console.log(token);
-    console.log(myHeadersToken);
+    
     try {
       const response = await fetch(API_URL_USER + userName, {
         method: "GET",
