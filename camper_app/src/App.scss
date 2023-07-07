@@ -34,7 +34,20 @@ body {
   height: 100%;
 }
 /* inizio testo animato */
+.imgUser {
+  width: 40px;
+  height: 40px;
+  border-radius: 20px;
+}
 
+// .custom-dropdown-title{
+//   font
+// }
+
+.logo {
+  max-width: 100px;
+
+}
 .card-jumboTitle{
   width: 100%;
   padding: 30px;
@@ -43,85 +56,85 @@ body {
   box-shadow: 0 1px 1px rgba(91, 91, 91, 0.3);
 
 }
-.card-jumboTitle:hover {
-    box-shadow: 0 5px 20px rgba(122, 122, 122, 0.8);
-    transform: translateY(-10px) scale(1.02);
+// .card-jumboTitle:hover {
+//     box-shadow: 0 5px 20px rgba(122, 122, 122, 0.8);
+//     transform: translateY(-10px) scale(1.02);
   	
-  }
+//   }
 
-  .entry-title:hover{
-    background-position: -100% 0;
-  } 
-.entry-title{
-background: linear-gradient(90deg, rgba(255, 254, 254, 0.074) 50%, rgba(77,77,77,0.11537114845938379) 100%);
-  background-size: 200%;
-  font-size: 500;
-  background-position: 0 0;
-  display: inline;
-  transition: .5s ease-in-out;
-  text-transform: uppercase; 
-  color: #c2f3fa!important;
-  font-size: 1.9em;
-  font-family: 'Oswald', sans-serif !important;
+//   .entry-title:hover{
+//     background-position: -100% 0;
+//   } 
+// .entry-title{
+// background: linear-gradient(90deg, rgba(255, 254, 254, 0.074) 50%, rgba(77,77,77,0.11537114845938379) 100%);
+//   background-size: 200%;
+//   font-size: 500;
+//   background-position: 0 0;
+//   display: inline;
+//   transition: .5s ease-in-out;
+//   text-transform: uppercase; 
+//   color: #c2f3fa!important;
+//   font-size: 1.9em;
+//   font-family: 'Oswald', sans-serif !important;
   
-}
+// }
 
- a{
-  color: rgb(235, 27, 27);
-  text-decoration: none !important;
-}
-a:hover{
-  cursor: pointer;
-}
-small{
-  margin-top: 20px;
-  display: block;
-  font-family: raleway, arial, sans-serif;
-  color: rgb(255, 255, 255);
-  text-transform: uppercase;
+//  a{
+//   color: rgb(235, 27, 27);
+//   text-decoration: none !important;
+// }
+// a:hover{
+//   cursor: pointer;
+// }
+// small{
+//   margin-top: 20px;
+//   display: block;
+//   font-family: raleway, arial, sans-serif;
+//   color: rgb(255, 255, 255);
+//   text-transform: uppercase;
   
-  a{
-    font-weight: 700;
-    color: white;
-    text-decoration: none;
-  }
-}
+//   a{
+//     font-weight: 700;
+//     color: white;
+//     text-decoration: none;
+//   }
+// }
 
-span{
-  display: block;
-  margin-top: 10px;
-  font-family: raleway, arial, sans-serif;
-  font-weight: 700;
-  color: #2b3a37;
+// span{
+//   display: block;
+//   margin-top: 10px;
+//   font-family: raleway, arial, sans-serif;
+//   font-weight: 700;
+//   color: #2b3a37;
 	
-	a{color: white}
-}
+// 	a{color: white}
+// }
 
-.iklan{
-  position: fixed;
-  bottom: 0;
-  right: 0;
-  background: white;
-  width: 200px;
-  padding: 20px;
+// .iklan{
+//   position: fixed;
+//   bottom: 0;
+//   right: 0;
+//   background: white;
+//   width: 200px;
+//   padding: 20px;
  
   
-  p{
-    margin: 0 0 15px;
-    line-height: 1.4;
-    color: #333;
-  }
+//   p{
+//     margin: 0 0 15px;
+//     line-height: 1.4;
+//     color: #333;
+//   }
   
-  a{
-    background-color: #ff4757;
-    color: white;
-    display: inline-block;
-    padding: 10px 20px;
-    border-radius: 3px;
-    text-decoration: none;
-    font-size: 14px;
-  }
-} 
+//   a{
+//     background-color: #ff4757;
+//     color: white;
+//     display: inline-block;
+//     padding: 10px 20px;
+//     border-radius: 3px;
+//     text-decoration: none;
+//     font-size: 14px;
+//   }
+// } 
 
 /* fine testo animato */
 /*Search bar e titolo search*/
@@ -151,24 +164,31 @@ box-shadow: 5px 5px 10px 2px rgb(33,39,44) inset;
   height: 100%;
 }
 .imgSingleCard{
-  min-width: 250px;
-  max-width: 250px;
-  max-height: max-content;
+ max-width: 100%;
+ 
   padding: 1em;
   border-radius: 50px;
+  
 }
-@media screen and (max-width: 768px) {
-  .imgSingleCard{
-    min-width: 150px;
-    max-width: 150px;
-    max-height: max-content;
-    padding: 1em;
-    border-radius: 50px;
-  }
- .sizeBadge{
-  width: max-content;
- } 
+
+// @media screen and (min-width: 768px) {
+//   .imgSingleCard{
+//     min-width: 150px;
+//     max-width: 150px;
+//     max-height: max-content;
+//     padding: 1em;
+//     border-radius: 50px;
+//   }
+//   .sizeBadge{
+   
+//     width: max-content;
+//    } 
+ 
+// }
+svg .card{
+  font-size: 1em;
 }
+
 .form-label{
   font-size: 1.3em;
   text-align: center;
@@ -224,20 +244,7 @@ box-shadow: 5px 5px 10px 2px rgb(33,39,44) inset;
  
 }
 
-.imgUser {
-  width: 40px;
-  height: 40px;
-  border-radius: 20px;
-}
 
-// .custom-dropdown-title{
-//   font
-// }
-
-.logo {
-  max-width: 100px;
-
-}
 
 .button {
   appearance: none;

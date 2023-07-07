@@ -78,7 +78,7 @@ function SelectProvinceComuni() {
                     <option key={c.id} value={c.id}>{c.name}</option>)
 
                     : (<Form.Select aria-label="Default select example">
-                        <option>Provincia</option>
+                        <option></option>
                     </Form.Select>)}
 
             </Form.Select>

@@ -24,90 +24,22 @@ body {
 }
 
 /* inizio testo animato */
+.imgUser {
+  width: 40px;
+  height: 40px;
+  border-radius: 20px;
+}
+
+.logo {
+  max-width: 100px;
+}
+
 .card-jumboTitle {
   width: 100%;
   padding: 30px;
   margin: auto;
   transition: 0.3s ease;
   box-shadow: 0 1px 1px rgba(91, 91, 91, 0.3);
-}
-
-.card-jumboTitle:hover {
-  box-shadow: 0 5px 20px rgba(122, 122, 122, 0.8);
-  transform: translateY(-10px) scale(1.02);
-}
-
-.entry-title:hover {
-  background-position: -100% 0;
-}
-
-.entry-title {
-  background: linear-gradient(90deg, rgba(255, 254, 254, 0.074) 50%, rgba(77, 77, 77, 0.1153711485) 100%);
-  background-size: 200%;
-  font-size: 500;
-  background-position: 0 0;
-  display: inline;
-  transition: 0.5s ease-in-out;
-  text-transform: uppercase;
-  color: #c2f3fa !important;
-  font-size: 1.9em;
-  font-family: "Oswald", sans-serif !important;
-}
-
-a {
-  color: rgb(235, 27, 27);
-  text-decoration: none !important;
-}
-
-a:hover {
-  cursor: pointer;
-}
-
-small {
-  margin-top: 20px;
-  display: block;
-  font-family: raleway, arial, sans-serif;
-  color: rgb(255, 255, 255);
-  text-transform: uppercase;
-}
-small a {
-  font-weight: 700;
-  color: white;
-  text-decoration: none;
-}
-
-span {
-  display: block;
-  margin-top: 10px;
-  font-family: raleway, arial, sans-serif;
-  font-weight: 700;
-  color: #2b3a37;
-}
-span a {
-  color: white;
-}
-
-.iklan {
-  position: fixed;
-  bottom: 0;
-  right: 0;
-  background: white;
-  width: 200px;
-  padding: 20px;
-}
-.iklan p {
-  margin: 0 0 15px;
-  line-height: 1.4;
-  color: #333;
-}
-.iklan a {
-  background-color: #ff4757;
-  color: white;
-  display: inline-block;
-  padding: 10px 20px;
-  border-radius: 3px;
-  text-decoration: none;
-  font-size: 14px;
 }
 
 /* fine testo animato */
@@ -137,28 +69,15 @@ span a {
 }
 
 .imgSingleCard {
-  min-width: 250px;
-  max-width: 250px;
-  max-height: -moz-max-content;
-  max-height: max-content;
+  max-width: 100%;
   padding: 1em;
   border-radius: 50px;
 }
 
-@media screen and (max-width: 768px) {
-  .imgSingleCard {
-    min-width: 150px;
-    max-width: 150px;
-    max-height: -moz-max-content;
-    max-height: max-content;
-    padding: 1em;
-    border-radius: 50px;
-  }
-  .sizeBadge {
-    width: -moz-max-content;
-    width: max-content;
-  }
+svg .card {
+  font-size: 1em;
 }
+
 .form-label {
   font-size: 1.3em;
   text-align: center;
@@ -216,16 +135,6 @@ span a {
 
 .navSpace {
   margin-bottom: 1em;
-}
-
-.imgUser {
-  width: 40px;
-  height: 40px;
-  border-radius: 20px;
-}
-
-.logo {
-  max-width: 100px;
 }
 
 .button {
@@ -324,4 +233,4 @@ svg {
   font-family: "Oswald", sans-serif !important;
   font-family: "Georgia";
   text-shadow: 0px 0px rgba(112, 112, 112, 0.05), -1px 1px rgba(112, 112, 112, 0.05), -2px 2px rgba(112, 112, 112, 0.05), -3px 3px rgba(112, 112, 112, 0.05), -4px 4px rgba(112, 112, 112, 0.05), -5px 5px rgba(112, 112, 112, 0.05), -6px 6px rgba(112, 112, 112, 0.05), -7px 7px rgba(112, 112, 112, 0.05), -8px 8px rgba(112, 112, 112, 0.05), -9px 9px rgba(112, 112, 112, 0.05), -10px 10px rgba(112, 112, 112, 0.05), -11px 11px rgba(112, 112, 112, 0.05), -12px 12px rgba(112, 112, 112, 0.05), -13px 13px rgba(112, 112, 112, 0.05), -14px 14px rgba(112, 112, 112, 0.05), -15px 15px rgba(112, 112, 112, 0.05), -16px 16px rgba(112, 112, 112, 0.05), -17px 17px rgba(112, 112, 112, 0.05), -18px 18px rgba(112, 112, 112, 0.05), -19px 19px rgba(112, 112, 112, 0.05), -20px 20px rgba(112, 112, 112, 0.05), -21px 21px rgba(112, 112, 112, 0.05), -22px 22px rgba(112, 112, 112, 0.05), -23px 23px rgba(112, 112, 112, 0.05), -24px 24px rgba(112, 112, 112, 0.05), -25px 25px rgba(112, 112, 112, 0.05), -26px 26px rgba(112, 112, 112, 0.05), -27px 27px rgba(112, 112, 112, 0.05), -28px 28px rgba(112, 112, 112, 0.05), -29px 29px rgba(112, 112, 112, 0.05), -30px 30px rgba(112, 112, 112, 0.05), -31px 31px rgba(112, 112, 112, 0.05), -32px 32px rgba(112, 112, 112, 0.05), -33px 33px rgba(112, 112, 112, 0.05), -34px 34px rgba(112, 112, 112, 0.05), -35px 35px rgba(112, 112, 112, 0.05), -36px 36px rgba(112, 112, 112, 0.05), -37px 37px rgba(112, 112, 112, 0.05), -38px 38px rgba(112, 112, 112, 0.05), -39px 39px rgba(112, 112, 112, 0.05), -40px 40px rgba(112, 112, 112, 0.05), -41px 41px rgba(112, 112, 112, 0.05), -42px 42px rgba(112, 112, 112, 0.05), -43px 43px rgba(112, 112, 112, 0.05), -44px 44px rgba(112, 112, 112, 0.05), -45px 45px rgba(112, 112, 112, 0.05), -46px 46px rgba(112, 112, 112, 0.05), -47px 47px rgba(112, 112, 112, 0.05), -48px 48px rgba(112, 112, 112, 0.05), -49px 49px rgba(112, 112, 112, 0.05), -50px 50px rgba(112, 112, 112, 0.05), -51px 51px rgba(112, 112, 112, 0.05), -52px 52px rgba(112, 112, 112, 0.05), -53px 53px rgba(112, 112, 112, 0.05), -54px 54px rgba(112, 112, 112, 0.05), -55px 55px rgba(112, 112, 112, 0.05), -56px 56px rgba(112, 112, 112, 0.05), -57px 57px rgba(112, 112, 112, 0.05), -58px 58px rgba(112, 112, 112, 0.05), -59px 59px rgba(112, 112, 112, 0.05), -60px 60px rgba(112, 112, 112, 0.05), -61px 61px rgba(112, 112, 112, 0.05), -62px 62px rgba(112, 112, 112, 0.05), -63px 63px rgba(112, 112, 112, 0.05), -64px 64px rgba(112, 112, 112, 0.05), -65px 65px rgba(112, 112, 112, 0.05), -66px 66px rgba(112, 112, 112, 0.05), -67px 67px rgba(112, 112, 112, 0.05), -68px 68px rgba(112, 112, 112, 0.05), -69px 69px rgba(112, 112, 112, 0.05), -70px 70px rgba(112, 112, 112, 0.05), -71px 71px rgba(112, 112, 112, 0.05), -72px 72px rgba(112, 112, 112, 0.05), -73px 73px rgba(112, 112, 112, 0.05), -74px 74px rgba(112, 112, 112, 0.05), -75px 75px rgba(112, 112, 112, 0.05), -76px 76px rgba(112, 112, 112, 0.05), -77px 77px rgba(112, 112, 112, 0.05), -78px 78px rgba(112, 112, 112, 0.05), -79px 79px rgba(112, 112, 112, 0.05), -80px 80px rgba(112, 112, 112, 0.05), -81px 81px rgba(112, 112, 112, 0.05), -82px 82px rgba(112, 112, 112, 0.05), -83px 83px rgba(112, 112, 112, 0.05), -84px 84px rgba(112, 112, 112, 0.05), -85px 85px rgba(112, 112, 112, 0.05), -86px 86px rgba(112, 112, 112, 0.05), -87px 87px rgba(112, 112, 112, 0.05), -88px 88px rgba(112, 112, 112, 0.05), -89px 89px rgba(112, 112, 112, 0.05), -90px 90px rgba(112, 112, 112, 0.05), -91px 91px rgba(112, 112, 112, 0.05), -92px 92px rgba(112, 112, 112, 0.05), -93px 93px rgba(112, 112, 112, 0.05), -94px 94px rgba(112, 112, 112, 0.05), -95px 95px rgba(112, 112, 112, 0.05), -96px 96px rgba(112, 112, 112, 0.05), -97px 97px rgba(112, 112, 112, 0.05), -98px 98px rgba(112, 112, 112, 0.05), -99px 99px rgba(112, 112, 112, 0.05), -100px 100px rgba(112, 112, 112, 0.05);
-}/*# sourceMappingURL=App.css.map */
+}/*# sourceMappingURL=app.css.map */

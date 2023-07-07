@@ -234,7 +234,7 @@ function FacilityForm() {
 
             <Form.Group className="mb-3 text-center" controlId="exampleForm.ControlInputEmail">
               <Form.Label className="fw-bolder form-label">Descrizione</Form.Label>
-              <Form.Control as="textarea" placeholder="Inserisci  descrizione della struttura" required plaintext className="border rounded color-placeholder px-3"
+              <Form.Control as="textarea" rows={3} placeholder="Inserisci  descrizione della struttura" required plaintext className="border rounded color-placeholder px-3"
                 name="descr"
                 value={location.pathname !== "/add" ? formFacility.description : formFacility.description}
                 onChange={(e) => dispatch(handlerDescr(e.target.value))}

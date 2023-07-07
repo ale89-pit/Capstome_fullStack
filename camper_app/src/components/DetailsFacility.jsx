@@ -1,5 +1,5 @@
-import { useEffect } from "react"
-import { Badge, Button, Card, Col, Container, Row } from "react-bootstrap"
+import { useEffect, useState } from "react"
+import { Badge, Button, Card, Col, Container, Form, Modal, Row } from "react-bootstrap"
 import { useDispatch, useSelector } from "react-redux"
 import { Link, useLocation, useNavigate, useParams } from "react-router-dom"
 import { getSingleFacility } from "../redux/actions/facilityAction"
@@ -12,6 +12,7 @@ import { FaTruckDroplet } from "react-icons/fa6"
 import { MdSignalCellularNull } from "react-icons/md";
 import { AiFillHome, AiFillPhone } from "react-icons/ai"
 import { HiMapPin } from "react-icons/hi2"
+import { myHeadersToken } from "../redux/actions/userAction"
 
 
 
@@ -20,7 +21,65 @@ function DetailsFacility() {
     const dispatch = useDispatch()
     const navigate = useNavigate()
     const detailFacility = useSelector((state) => state.facility.singleFacility)
+    const user_Id = useSelector((state)=> state.login.profile[0].id)
+
     console.log(id)
+
+    const API_URL_SEND_COMMENT = "http://localhost:8080/app/comments"
+    
+    const [formComment,setFormComment] = useState({
+        
+            user_id: user_Id,
+             
+             facility_id: id,
+             
+             title:"",
+             
+             body:""
+         
+    })
+    
+    const handleChange = (event) => {
+        
+        setFormComment({
+          ...formComment,
+          [event.target.name]: event.target.value
+        });
+      };
+    const [show, setShow] = useState(false);
+
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
+
+    const sendComment = async (e) => {
+        e.preventDefault()
+        console.log(formComment)
+        try {
+            const response = await fetch(API_URL_SEND_COMMENT,{
+               method: 'POST',  
+               headers: myHeadersToken,
+               body: JSON.stringify(formComment),
+               redirect: 'follow'
+            })
+            if(response.ok){
+                alert("commento inviato")
+                setFormComment({
+                    user_id: user_Id,
+                    
+                    facility_id: id,
+                    
+                    title:"",
+                    
+                    body:""
+                })
+            }else{
+                alert("fetch fallita")
+            }
+        } catch (error) {
+            console.log('error', error);
+        }
+    }
+
 
 
     useEffect(() => {
@@ -124,7 +183,7 @@ function DetailsFacility() {
 
                                 <Card.Text className="d-flex align-items-center">
 
-                                    <Button variant="primary">commenta</Button>
+                                    <Button variant="primary" onClick={handleShow}>commenta</Button>
                                     <Link className="btn bt-primary" to={"/add/" + detailFacility.id}>modifica</Link>
 
 
@@ -135,16 +194,58 @@ function DetailsFacility() {
                 </Row >
 
             </Row >
-            {/* <Card > */}
-            {/* <Card.Img variant="top" src={detailFacility.cover} />
-                <Card.Body> */}
 
 
-            {/* 
-            {/* </Card.Body>
-            </Card> */}
+            <Modal show={show} onHide={handleClose}>
+                    <Form onSubmit={sendComment}>
+                <Modal.Header closeButton>
+                    <Modal.Title>Modal heading</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                        <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+                            <Form.Label>Titolo</Form.Label>
+                            <Form.Control
+                                type="text"
+                                placeholder="name@example.com"
+                                autoFocus
+                                name="title"
+                                onChange={handleChange}
+                            />
+                        </Form.Group>
+                        <Form.Group
+                            className="mb-3"
+                            controlId="exampleForm.ControlTextarea1"
+                        >
+                            <Form.Label>Join</Form.Label>
+                            <Form.Control as="textarea" rows={3}  onChange={handleChange} name="body"/>
+                        </Form.Group>
+                    </Modal.Body>
+                    <Modal.Footer>
+                    <Button variant="secondary" onClick={handleClose}>
+                        Close
+                    </Button>
+                    <Button variant="primary" type="submit">
+                        Save Changes
+                    </Button>
+                </Modal.Footer>
+                    </Form>
+                
+                
+            </Modal>
+
         </Container >)
 
 }
 
 export default DetailsFacility
+
+
+// {
+//     "user_id":1,
+     
+//      "facility_id":1,
+     
+//      "title":"campeggio bellissimo",
+     
+//      "body":"Ho avuto il piacere di trascorrere qualche giorno presso il campeggio XYZ e devo dire che è stata un'esperienza davvero piacevole. Situato in una bellissima area naturale, il campeggio offre tutto ciò che si può desiderare per un soggiorno all'aria aperta."
+//  }

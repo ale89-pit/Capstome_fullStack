@@ -62,11 +62,14 @@ function Home() {
                     </Col>
                 </Row>
                 <Row>
-                    <Col className="col-12 col-md-10 mx-auto">
+                    <Col className="mx-auto">
                         <h3>Strutture</h3>
-                        {isLoadingAll ? (<Spinner animation="border" role="status">
-                            <span className="visually-hidden">Loading...</span>
-                        </Spinner>) : (allFacility.map((f) => <SingleCardFacility key={f.id} facProp={f} />))}
+                        <Row>
+                            {isLoadingAll ? (<Spinner animation="border" role="status">
+                                <span className="visually-hidden">Loading...</span>
+
+                            </Spinner>) : (allFacility.map((f) => <SingleCardFacility key={f.id} facProp={f} />))}
+                        </Row>
                     </Col>
                 </Row>
             </Container>
