@@ -15,7 +15,7 @@ body {
   width: 100%;
   max-width: 100vw;
   max-height: 100vh;
-  background-image: url("../public/camperbg.jpg");
+  background-image: url("../public/camperbg2.jpg");
   background-repeat: no-repeat;
   background-size:  cover;
   background-attachment: fixed;
@@ -145,20 +145,44 @@ background: linear-gradient(90deg, rgba(33,39,44,0.768032212885154) 0%, rgba(70,
 box-shadow: 5px 5px 10px 2px rgb(33,39,44) inset;
 
 }
+.cardDetailPhoto{
+  padding: 10px 10px 70px 10px;
+  background-color: white;
+  height: 100%;
+}
+.imgSingleCard{
+  min-width: 250px;
+  max-width: 250px;
+  max-height: max-content;
+  padding: 1em;
+  border-radius: 50px;
+}
+@media screen and (max-width: 768px) {
+  .imgSingleCard{
+    min-width: 150px;
+    max-width: 150px;
+    max-height: max-content;
+    padding: 1em;
+    border-radius: 50px;
+  }
+ .sizeBadge{
+  width: max-content;
+ } 
+}
 .form-label{
   font-size: 1.3em;
   text-align: center;
-  color: rgb(0, 0, 0);
+  color: rgb(16, 16, 16);
 }
 .form-control-plaintext{
-  background-color: rgb(0, 0, 0) !important;
+  background-color: rgb(251, 251, 251) !important;
 }
  .form-label{
   color:#000000
 } 
 
 .color-placeholder::placeholder {
-  color: rgb(0, 0, 0)50% !important;
+  color: rgb(246, 244, 244)50% !important;
 }
 
 .color-link {

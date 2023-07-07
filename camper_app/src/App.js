@@ -14,6 +14,7 @@ import DetailsFacility from "./components/DetailsFacility";
 import NavBar from "./components/NavBar";
 import Jumbotron from "./components/Jumbotron";
 import ModifyFacility from "./components/ModifyFacility";
+import NotFound from "./components/NotFound";
 
 function App() {
   return (
@@ -39,11 +40,12 @@ function App() {
                 <Route path="/add" element={<FacilityForm />} />
                 <Route path="/add/:id" element={<ModifyFacility />} />
                 <Route path="/details/:id" element={<DetailsFacility />} />
+                <Route path="*" element={<NotFound />} />
               </Routes>
             </Col>
           </Row>
           <Row>
-            <Col className="fixed-bottom">
+            <Col className="w-100 bg-light">
               <Footer></Footer>
             </Col>
           </Row>

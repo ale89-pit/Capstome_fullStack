@@ -24,9 +24,9 @@ function Home() {
         <>
 
             <Container className="mx-auto ">
-                <Row >
-                    <Col className="d-flex justify-content-around">
-                        <Card style={{ width: '18rem' }} className="m-2 card-shadow">
+                <Row className="align-items-center">
+                    <Col >
+                        <Card style={{ width: '18rem' }} className="mx-auto card-shadow">
                             <Card.Body>
                                 <Card.Title className="text-center"><BsFillChatSquareTextFill /></Card.Title>
 
@@ -37,7 +37,9 @@ function Home() {
                                 <Card.Link to={"/LogIn"}>LogIn </Card.Link>
                             </Card.Body>
                         </Card>
-                        <Card style={{ width: '18rem' }} className="m-2 card-shadow">
+                    </Col>
+                    <Col className="my-2">
+                        <Card style={{ width: '18rem' }} className="mx-auto card-shadow">
                             <Card.Body>
                                 <Card.Title className="text-center "><RiRoadMapFill /></Card.Title>
 
@@ -46,7 +48,9 @@ function Home() {
                                 </Card.Text>
                             </Card.Body>
                         </Card>
-                        <Card style={{ width: '18rem' }} className="m-2 card-shadow">
+                    </Col>
+                    <Col>
+                        <Card style={{ width: '18rem' }} className="mx-auto card-shadow">
                             <Card.Body>
                                 <Card.Title className="text-center"><FaUserFriends /></Card.Title>
 
@@ -58,8 +62,8 @@ function Home() {
                     </Col>
                 </Row>
                 <Row>
-                    <Col className="col-md-8 col-sm-10 mx-auto">
-                        <h3></h3>
+                    <Col className="col-12 col-md-10 mx-auto">
+                        <h3>Strutture</h3>
                         {isLoadingAll ? (<Spinner animation="border" role="status">
                             <span className="visually-hidden">Loading...</span>
                         </Spinner>) : (allFacility.map((f) => <SingleCardFacility key={f.id} facProp={f} />))}

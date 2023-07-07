@@ -204,20 +204,33 @@ function FacilityForm() {
       <Row className="cardRegister mx-auto">
         <Col>
           <Form className="w-75 w-xl-50 mx-auto">
-            <Form.Group className="mb-3 text-center " controlId="exampleForm.ControlInputNome">
-              <Form.Label className="fw-bolder form-label">Nome struttura</Form.Label>
-              <Form.Control type="text" placeholder="Mario" required plaintext className="border rounded  color-placeholder px-3"
-                autoFocus
-                name="nome"
-                value={location.pathname !== "/add" ? formFacility.name : formFacility.name}
-                onChange={(e) => dispatch(handlerName(e.target.value))}
-              />
-            </Form.Group>
-            <div class="text-center">
+            <div class="text-center w-75 ">
               <label for="formFileLg " class="form-label">Foto</label>
-              <span className="d-flex"><input onChange={handleFile} class="form-control form-control-sm mx-2" id="formFileLg" type="file"></input>
+              <span className=""><input onChange={handleFile} class="form-control form-control-sm mx-2" id="formFileLg" type="file"></input>
                 <Button onClick={(e) => sendPhotoFacility(e)}>Invia</Button></span>
             </div>
+            <Form.Group className="mb-3  d-flex align-items-center justify-content-beetwen  " controlId="exampleForm.ControlInputNome">
+              <div className="text-center w-75 me-2">
+                <Form.Label className="fw-bolder form-label">Nome struttura</Form.Label>
+                <Form.Control type="text" placeholder="Mario" required plaintext className="border rounded  color-placeholder px-3"
+                  autoFocus
+                  name="nome"
+                  value={location.pathname !== "/add" ? formFacility.name : formFacility.name}
+                  onChange={(e) => dispatch(handlerName(e.target.value))}
+                />
+              </div>
+
+              <div class="text-center w-25">
+                <Form.Label className="fw-bolder form-label">Tipo</Form.Label>
+                <Form.Select onChange={(e) => dispatch(handlerType(e.target.value))} className="my-2" aria-label="Default select example">
+
+                  <option>Seleziona tipo</option>
+                  <option value="CAMPING">Campeggio</option>
+                  <option value="PARKING_AREA">Parking Area</option>
+                  <option value="FREE_PARKING_AREA">Free Parking Area</option>
+                </Form.Select>
+              </div>
+            </Form.Group>
 
             <Form.Group className="mb-3 text-center" controlId="exampleForm.ControlInputEmail">
               <Form.Label className="fw-bolder form-label">Descrizione</Form.Label>
@@ -227,26 +240,32 @@ function FacilityForm() {
                 onChange={(e) => dispatch(handlerDescr(e.target.value))}
               />
             </Form.Group>
-            <Form.Group className="mb-3 text-center" controlId="exampleForm.ControlInputEmail">
-              <Form.Label className="fw-bolder form-label">Official site</Form.Label>
-              <Form.Control type="text" placeholder="Https://www.example.com" maxLength={255} required plaintext className="border rounded color-placeholder px-3"
-                name="descr"
-                value={location.pathname !== "/add" ? formFacility.officialSite : ""}
-                onChange={(e) => dispatch(handlerSite(e.target.value))}
-              />
-            </Form.Group>
-            <Form.Group className="mb-3 text-center" controlId="exampleForm.ControlInputUsername">
-              <Form.Label className="fw-bolder form-label">telefono</Form.Label>
-              <Form.Control type="text" placeholder="007123654" required plaintext className="border  color-placeholder px-3"
-                name="phone"
-                value={location.pathname !== "/add" ? formFacility.phoneNumber : ""}
-                onChange={(e) => dispatch(handlerPhone(e.target.value))}
-              />
+            <Form.Group className="mb-3 text-center d-flex" controlId="exampleForm.ControlInputEmail">
+              <div className="w-50 me-1">
+                <Form.Label className="fw-bolder form-label">Official site</Form.Label>
+                <Form.Control type="text" placeholder="https://www.example.com" maxLength={255} required plaintext className="border rounded color-placeholder px-3"
+                  name="descr"
+                  value={location.pathname !== "/add" ? formFacility.officialSite : ""}
+                  onChange={(e) => dispatch(handlerSite(e.target.value))}
+                />
+              </div>
+              {/* <Form.Group className="mb-3 text-center" controlId="exampleForm.ControlInputUsername"> */}
+              <div className="w-50">
+                <Form.Label className="fw-bolder form-label">Telefono</Form.Label>
+                <Form.Control type="text" placeholder="007123654" required plaintext className="border  color-placeholder px-3"
+                  name="phone"
+                  value={location.pathname !== "/add" ? formFacility.phoneNumber : ""}
+                  onChange={(e) => dispatch(handlerPhone(e.target.value))}
+                />
+                {/* </Form.Group> */}
+              </div>
             </Form.Group>
             <Container >
-              <Row className="justify-content-center">
-                <Col className="col-10 d-flex flex-wrap justy-content-center align-items-center">
-                  {/* <div className="d-flex my-2 align-items-stretch justify-content-center"> */}
+              <Row className="justify-content-center" >
+                <Form.Label>Servizi</Form.Label>
+                <Col className="col-10 p-1 d-flex flex-wrap justy-content-center align-items-center border border-secondary">
+
+
                   {checkboxValues.map((value, index) => (<Checkbox
                     key={index}
                     label={
@@ -264,7 +283,7 @@ function FacilityForm() {
                                   : (index + 1) === 7 ? (<GrUserPolice title="sorveglianza notturna" />)
                                     : (index + 1) === 8 ? (<GiFoundryBucket title="scarico cassetta" />)
                                       : (index + 1) === 9 ? (<FaTruckDroplet title="scarico acque grige" />)
-                                        : (<BsShop title="MArket" />)}
+                                        : (<BsShop title="Market" />)}
                     id={index}
                     checked={value}
                     // onChanged={location.pathname !== "/add" ? () => updateCheckBox() : null}
@@ -279,38 +298,38 @@ function FacilityForm() {
               </Row>
             </Container>
 
-            <Form.Select onChange={(e) => dispatch(handlerType(e.target.value))} className="my-2" aria-label="Default select example">
-
-              <option>Open this select menu</option>
-              <option value="CAMPING">Campeggio</option>
-              <option value="PARKING_AREA">Parking Area</option>
-              <option value="FREE_PARKING_AREA">Free Parking Area</option>
-            </Form.Select>
 
 
+            <Form.Label className="fw-bolder form-labeltext-center w-100">Indirizzo</Form.Label>
+            <div className="border dorder-secondary p-2">
 
-            <SelectProvinceComuni />
+              <SelectProvinceComuni />
 
-            <Form.Group className="mb-3  text-center" controlId="exampleForm.ControlInputNome">
-              <Form.Label className="fw-bolder form-label">Via/Piazza</Form.Label>
-              <Form.Control type="text" placeholder="Via/piazza giacomo matteotti" required plaintext className="border rounded  color-placeholder px-3"
-                autoFocus
-                name="indirizzo"
-                value={location.pathname !== "/add" ? formFacility.address.street : formFacility.address.street}
-                onChange={(e) => dispatch(handlerStreet(e.target.value))}
-              />
-            </Form.Group>
-            <Form.Group className="mb-3 text-center" controlId="exampleForm.ControlInputCognome">
-              <Form.Label className="fw-bolder form-label">Civico</Form.Label>
-              <Form.Control type="text" placeholder="civico" plaintext required className="border rounded color-placeholder px-3"
-                name="civico"
-                value={location.pathname !== "/add" ? formFacility.address.streetNumber : formFacility.address.streetNumber}
-                onChange={(e) => dispatch(handlerStreetNumber(e.target.value))}
-              />
-            </Form.Group>
+              <Form.Group className="mb-3  text-center d-flex" controlId="exampleForm.ControlInputNome">
+                <div className="w-75 me-1">
+                  <Form.Label className="fw-bolder form-label">Via/Piazza</Form.Label>
+                  <Form.Control type="text" placeholder="Via/piazza giacomo matteotti" required plaintext className="border rounded  color-placeholder px-3"
+                    autoFocus
+                    name="indirizzo"
+                    value={location.pathname !== "/add" ? formFacility.address.street : formFacility.address.street}
+                    onChange={(e) => dispatch(handlerStreet(e.target.value))}
+                  />
+                </div>
+                <div className="w-25">
+                  <Form.Label className="fw-bolder form-label">Civico</Form.Label>
+                  <Form.Control type="text" placeholder="civico" plaintext required className="border rounded color-placeholder px-3"
+                    name="civico"
+                    value={location.pathname !== "/add" ? formFacility.address.streetNumber : formFacility.address.streetNumber}
+                    onChange={(e) => dispatch(handlerStreetNumber(e.target.value))}
+                  />
+                </div>
+              </Form.Group>
+            </div>
 
-            <button onClick={sendNewFacility} type="submit" className="m-2 button">Invia</button>
-            <button type="reset" value="Reset Form" className="m-2 button" onClick={() => (dispatch(resetForm()))} >Reset</button>
+
+
+            <button onClick={sendNewFacility} type="submit" className={`{m-2 button${location.pathname !== "/add" ? " d-none" : "d-block"}`}>Invia</button>
+            <button type="reset" value="Reset Form" className={`{m-2 button${location.pathname !== "/add" ? " d-none" : "d-block"}`} onClick={() => (dispatch(resetForm()))} >Reset</button>
             <button type="submit" onClick={modifyFacility} className={`m-2 button  ${visibility}`} >Modifica</button>
             <button type="reset" value="Reset Form" className={`m-2 button bg-warnig  ${visibility}`}  >Cancella</button>
           </Form>
@@ -318,7 +337,7 @@ function FacilityForm() {
 
         </Col>
       </Row>
-    </Container>
+    </Container >
   )
 }
 

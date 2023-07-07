@@ -46,7 +46,7 @@ function NavBar() {
     return (
         <Navbar expand="lg" className="navSpace navbar-dark">
             <Container fluid>
-                <Nav.Link onClick={() => navigate("/")}>      <Navbar.Brand ><img src="./giramondo.png" className="logo" /></Navbar.Brand></Nav.Link>
+                <Nav.Link onClick={() => navigate("/")}>      <Navbar.Brand className="m-auto" ><img src="./giramondo.png" className="logo" /></Navbar.Brand></Nav.Link>
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="me-auto bg-lg-none align-items-center">
