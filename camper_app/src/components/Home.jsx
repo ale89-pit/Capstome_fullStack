@@ -24,9 +24,9 @@ function Home() {
         <>
 
             <Container className="mx-auto ">
-                <Row className="align-items-center">
-                    <Col >
-                        <Card style={{ width: '18rem' }} className="mx-auto card-shadow">
+                <Row >
+                    <Col className="align-items-stretch d-block d-md-flex" >
+                        <Card style={{ width: '18rem' }} className="mx-auto my-3 card-shadow">
                             <Card.Body>
                                 <Card.Title className="text-center"><BsFillChatSquareTextFill /></Card.Title>
 
@@ -37,9 +37,9 @@ function Home() {
                                 <Card.Link to={"/LogIn"}>LogIn </Card.Link>
                             </Card.Body>
                         </Card>
-                    </Col>
-                    <Col className="my-2">
-                        <Card style={{ width: '18rem' }} className="mx-auto card-shadow">
+
+
+                        <Card style={{ width: '18rem' }} className="mx-auto my-3 card-shadow">
                             <Card.Body>
                                 <Card.Title className="text-center "><RiRoadMapFill /></Card.Title>
 
@@ -48,9 +48,8 @@ function Home() {
                                 </Card.Text>
                             </Card.Body>
                         </Card>
-                    </Col>
-                    <Col>
-                        <Card style={{ width: '18rem' }} className="mx-auto card-shadow">
+
+                        <Card style={{ width: '18rem' }} className="mx-auto my-3 card-shadow">
                             <Card.Body>
                                 <Card.Title className="text-center"><FaUserFriends /></Card.Title>
 
@@ -64,13 +63,17 @@ function Home() {
                 <Row>
                     <Col className="mx-auto">
                         <h3>Strutture</h3>
-                        <Row>
+                    </Col>
+                    <Row className="g-0">
+                        {/* col-12 col-md-6 col-lg-6 w-100 mx-auto */}
+                        <Col className="">
                             {isLoadingAll ? (<Spinner animation="border" role="status">
                                 <span className="visually-hidden">Loading...</span>
 
                             </Spinner>) : (allFacility.map((f) => <SingleCardFacility key={f.id} facProp={f} />))}
-                        </Row>
-                    </Col>
+                        </Col>
+                    </Row>
+
                 </Row>
             </Container>
         </>

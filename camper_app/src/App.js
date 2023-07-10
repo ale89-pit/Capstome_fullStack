@@ -15,6 +15,7 @@ import NavBar from "./components/NavBar";
 import Jumbotron from "./components/Jumbotron";
 import ModifyFacility from "./components/ModifyFacility";
 import NotFound from "./components/NotFound";
+import ProfilePage from "./components/ProfilePage";
 
 function App() {
   return (
@@ -36,6 +37,7 @@ function App() {
               <Routes>
                 <Route path="/register" element={<RegisterPage />} />
                 <Route path="/logIn" element={<LogIn />} />
+                <Route path="/profile" element={<ProfilePage />} />
                 <Route path="/" element={<Home />} />
                 <Route path="/add" element={<FacilityForm />} />
                 <Route path="/add/:id" element={<ModifyFacility />} />

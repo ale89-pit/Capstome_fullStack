@@ -48,6 +48,8 @@ export const myHeadersToken = {
   Authorization: `Bearer ${token}`,
 };
 export const myHeadersTokenPhoto = {
+  
+  
   Authorization: `Bearer ${token}`,
 };
 

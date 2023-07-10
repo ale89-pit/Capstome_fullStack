@@ -14,10 +14,12 @@ import { resetForm } from "../redux/actions/formFacilityAction";
 function NavBar() {
     // const isLogged = useSelector((state)=>state.login.isLogged)
     const isLogged = useSelector((state) => state.login.isLogged)
+    const loadProfile = useSelector((state) => state.login.loadProfile)
     const navigate = useNavigate();
     const visibilityRegister = isLogged ? "d-none" : "d-block";
     const username = useSelector((state) => state.user.userName)
     const profile = useSelector((state) => state.login.profile)
+    const photoProfile = isLogged ? profile?.photoProfile : null
 
     const dispatch = useDispatch()
 
@@ -41,12 +43,14 @@ function NavBar() {
             dispatch(userProfile(username))
         }
 
-    }, [!isLogged])
+    }, [!isLogged, photoProfile])
 
     return (
-        <Navbar expand="lg" className="navSpace navbar-dark">
+        <Navbar expand="lg" className="navSpace navbar-light bg-light m-0 p-0">
             <Container fluid>
-                <Nav.Link onClick={() => navigate("/")}>      <Navbar.Brand className="m-auto" ><img src="./giramondo.png" className="logo" /></Navbar.Brand></Nav.Link>
+                <Nav.Link onClick={() => navigate("/")}>      <Navbar.Brand className="m-auto logo" >
+                    <img src="./giramondo.png" className="logo" />
+                </Navbar.Brand></Nav.Link>
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="me-auto bg-lg-none align-items-center">
@@ -57,14 +61,19 @@ function NavBar() {
 
                     </Nav>
                     <span className="d-flex align-items-center">
-                        <img className="imgUser m-2" src="http://placekitten.com/200/300" />
+                        <img className="imgUser m-2" src={loadProfile ? profile[0].photoProfile : ""}
+                        // onError={(event) =>
+                        // (event.target.src =
+                        //     "https://cdn.icon-icons.com/icons2/1189/PNG/512/1490793840-user-interface33_82361.png%22")
+                        // } 
+                        />
                         <Nav className="bg-none w-100  align-items-center">
                             {profile !== null ? (
 
-                                <NavDropdown title={<span className="custom-dropdown-title w-100">{profile[0].nome}</span>} menuProps={{ className: "custom-dropdown-arrow" }} id="basic-nav-dropdow " className="bg-none" >
+                                <NavDropdown title={<span className="custom-dropdown-title w-100">{loadProfile ? profile[0].nome : ""}</span>} menuProps={{ className: "custom-dropdown-arrow" }} id="basic-nav-dropdow " className="bg-none" >
 
                                     <NavDropdown.Item href="#action/3.1">
-                                        <Nav.Link className="color-link" ><MdOutlineSettings />Impostazioni</Nav.Link></NavDropdown.Item>
+                                        <Nav.Link className="color-link" onClick={() => navigate("/profile")}><MdOutlineSettings />Impostazioni</Nav.Link></NavDropdown.Item>
                                     <NavDropdown.Item href="#action/3.2">
                                         <Nav.Link className="color-link" > <PiGlobeStand />    Preferiti</Nav.Link>
                                     </NavDropdown.Item>

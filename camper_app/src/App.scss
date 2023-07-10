@@ -45,7 +45,8 @@ body {
 // }
 
 .logo {
-  max-width: 100px;
+  
+  width: 50px;
 
 }
 .card-jumboTitle{
@@ -163,12 +164,17 @@ box-shadow: 5px 5px 10px 2px rgb(33,39,44) inset;
   background-color: white;
   height: 100%;
 }
-.imgSingleCard{
- max-width: 100%;
- 
-  padding: 1em;
-  border-radius: 50px;
+.sigleCard{
+  width: 50%;
   
+}
+.imgSingleCard{
+  padding: 0.25rem;
+  background-color: #fff;
+  border: 1px solid #dee2e6;
+  border-radius: 0.25rem;
+  max-width: 100%;
+ 
 }
 
 // @media screen and (min-width: 768px) {
@@ -185,8 +191,14 @@ box-shadow: 5px 5px 10px 2px rgb(33,39,44) inset;
 //    } 
  
 // }
-svg .card{
-  font-size: 1em;
+svg div .card{
+  font-size: 0.8em;
+}
+@media screen and (max-width: 768px) {
+  svg div .card{
+    font-size: 0.3em;
+  }
+  
 }
 
 .form-label{
@@ -205,44 +217,44 @@ svg .card{
   color: rgb(246, 244, 244)50% !important;
 }
 
-.color-link {
-  color: rgb(255, 255, 255) !important;
-}
+// .color-link {
+//   color: rgb(255, 255, 255) !important;
+// }
 
-.color-link:hover {
-  background-color: #282c34;
-}
+// .color-link:hover {
+//   background-color: #282c34;
+// }
 
-.custom-dropdown-title {
-  color: rgb(218, 217, 217) !important;
+// .custom-dropdown-title {
+//   color: rgb(218, 217, 217) !important;
 
-}
+// }
 
-.dropdown-toggle::after {
-  color: rgb(217, 215, 215) !important;
+// .dropdown-toggle::after {
+//   color: rgb(217, 215, 215) !important;
 
-}
+// }
 
-.dropdown-menu {
-  color: rgb(255, 255, 255) !important;
-  background-color: transparent !important;
-}
+// .dropdown-menu {
+//   color: rgb(255, 255, 255) !important;
+//   background-color: transparent !important;
+// }
 
-.dropdown-item {
-  padding: 0 !important;
-  margin: 0 auto;
-}
+// .dropdown-item {
+//   padding: 0 !important;
+//   margin: 0 auto;
+// }
 
-.navBar{
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  background-color: makelongshadow(#707070,0.05);
-}
-.navSpace {
-  margin-bottom: 1em;
+// .navBar{
+//   display: flex;
+//   align-items: center;
+//   justify-content: space-between;
+  
+// }
+// .navSpace {
+//   margin-bottom: 1em;
  
-}
+// }
 
 
 

@@ -3,6 +3,7 @@ import { GET_PROFILE } from "../actions/userAction";
 const initailState = {
   isLogged: false,
   profile: null,
+  loadProfile: false,
 };
 
 export const loginReducer = (state = initailState, action) => {
@@ -18,6 +19,7 @@ export const loginReducer = (state = initailState, action) => {
       return {
         ...state,
         profile: [action.payload],
+        loadProfile: true,
       };
     case LOGOUT:
       return initailState;

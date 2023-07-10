@@ -135,7 +135,7 @@ function FacilityForm() {
 
         //recupero l'indirro della foto appena salvata 
         dispatch(handlercover(response.url + "/" + fd.get("file").name));
-        alert("foto aggiunta" + response.url + fd.get("file").name)
+
       } else if (response.status === 417) {
         alert("nome file gia esistente")
       } else if (response.status === 500) {

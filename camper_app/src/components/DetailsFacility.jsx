@@ -12,7 +12,7 @@ import { FaTruckDroplet } from "react-icons/fa6"
 import { MdSignalCellularNull } from "react-icons/md";
 import { AiFillHome, AiFillPhone } from "react-icons/ai"
 import { HiMapPin } from "react-icons/hi2"
-import { myHeadersToken } from "../redux/actions/userAction"
+import { myHeaders, myHeadersToken } from "../redux/actions/userAction"
 
 
 
@@ -21,9 +21,10 @@ function DetailsFacility() {
     const dispatch = useDispatch()
     const navigate = useNavigate()
     const detailFacility = useSelector((state) => state.facility.singleFacility)
+    const [comments,setComments] = useState([])
     const user_Id = useSelector((state)=> state.login.profile[0].id)
 
-    console.log(id)
+    console.log(comments)
 
     const API_URL_SEND_COMMENT = "http://localhost:8080/app/comments"
     
@@ -80,12 +81,36 @@ function DetailsFacility() {
         }
     }
 
-
+    const getComment =async ()=>{
+try {
+    const response = await fetch(API_URL_SEND_COMMENT + "/allBy?facility_id="+id,{
+        method: 'GET',  
+        headers: myHeaders,
+        redirect: 'follow'
+    })
+    if(response.ok){
+        const data = await response.json();
+        setComments(data)
+        // getComment()
+        console.log("data",data)    
+    }
+} catch (error) {
+    console.log('error', error);    
+    
+}
+    }
 
     useEffect(() => {
         dispatch(getSingleFacility(id))
+        getComment()
         console.log(detailFacility)
-    }, [id])
+        
+    }, [])
+
+    useEffect(()=>{
+
+    },[id])
+   
     return (
         <Container >
             <Row>
@@ -178,13 +203,13 @@ function DetailsFacility() {
                     <Col className="">
                         <Card className="justify-content-center mx-auto
                         ">
-                            <Card.Header>Contatti</Card.Header>
+                            <Card.Header></Card.Header>
                             <Card.Body>
 
                                 <Card.Text className="d-flex align-items-center">
 
                                     <Button variant="primary" onClick={handleShow}>commenta</Button>
-                                    <Link className="btn bt-primary" to={"/add/" + detailFacility.id}>modifica</Link>
+                                    <Link className="btn btn-primary" to={"/add/" + detailFacility.id}>modifica</Link>
 
 
                                 </Card.Text>
@@ -192,7 +217,23 @@ function DetailsFacility() {
                         </Card>
                     </Col>
                 </Row >
+           <Col>
 
+           {comments.map((comment)=>{
+               return(
+                   <Card className="mb-2">
+                   
+                       <Card.Header>
+                       <img className="imgUser" src={comment.user.photoProfile}></img>
+                        {comment.user.userName}</Card.Header>
+                       
+                       <Card.Title>{comment.title}</Card.Title>
+                       <Card.Body>
+                           {comment.body}
+                       </Card.Body>
+                   </Card>
+           )})}
+           </Col> 
             </Row >
 
 
