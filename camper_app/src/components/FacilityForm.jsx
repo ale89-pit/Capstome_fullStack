@@ -25,6 +25,7 @@ import {
   handlerStreet,
   handlerStreetNumber,
   resetForm,
+  handlerEmail,
 
 } from "../redux/actions/formFacilityAction"
 import { useHref, useLocation, useParams } from "react-router-dom";
@@ -245,19 +246,27 @@ function FacilityForm() {
                 <Form.Label className="fw-bolder form-label">Official site</Form.Label>
                 <Form.Control type="text" placeholder="https://www.example.com" maxLength={255} required plaintext className="border rounded color-placeholder px-3"
                   name="descr"
-                  value={location.pathname !== "/add" ? formFacility.officialSite : ""}
+                  value={location.pathname !== "/add" ? formFacility.officialSite : formFacility.officialSite}
                   onChange={(e) => dispatch(handlerSite(e.target.value))}
                 />
               </div>
               {/* <Form.Group className="mb-3 text-center" controlId="exampleForm.ControlInputUsername"> */}
               <div className="w-50">
-                <Form.Label className="fw-bolder form-label">Telefono</Form.Label>
-                <Form.Control type="text" placeholder="007123654" required plaintext className="border  color-placeholder px-3"
+                <Form.Label className="fw-bolder  form-label">Telefono</Form.Label>
+                <Form.Control type="text" placeholder="007123654" required plaintext className="border rounded color-placeholder px-3"
                   name="phone"
-                  value={location.pathname !== "/add" ? formFacility.phoneNumber : ""}
+                  value={location.pathname !== "/add" ? formFacility.phoneNumber : formFacility.phoneNumber}
                   onChange={(e) => dispatch(handlerPhone(e.target.value))}
                 />
                 {/* </Form.Group> */}
+              </div>
+              <div>
+                <Form.Label className="fw-bolder  form-label">Email</Form.Label>
+                <Form.Control type="email" placeholder="esempio@email.com" required plaintext className="border rounded color-placeholder px-3"
+                  name="phone"
+                  value={location.pathname !== "/add" ? formFacility.email : formFacility.email}
+                  onChange={(e) => dispatch(handlerEmail(e.target.value))}
+                />
               </div>
             </Form.Group>
             <Container >
@@ -330,8 +339,8 @@ function FacilityForm() {
 
             <button onClick={sendNewFacility} type="submit" className={`{m-2 button${location.pathname !== "/add" ? " d-none" : "d-block"}`}>Invia</button>
             <button type="reset" value="Reset Form" className={`{m-2 button${location.pathname !== "/add" ? " d-none" : "d-block"}`} onClick={() => (dispatch(resetForm()))} >Reset</button>
-            <button type="submit" onClick={modifyFacility} className={`m-2 button  ${visibility}`} >Modifica</button>
-            <button type="reset" value="Reset Form" className={`m-2 button bg-warnig  ${visibility}`}  >Cancella</button>
+            <button type="submit" onClick={modifyFacility} className={`m-2 button ${visibility}`} >Modifica</button>
+            <button type="reset" value="Reset Form" className={`m-2 button ${visibility}`}  >Cancella</button>
           </Form>
 
 

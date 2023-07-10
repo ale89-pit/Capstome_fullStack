@@ -166,6 +166,7 @@ function RegisterPage() {
                         style={{ color: disabled ? 'gray' : 'white' }} />
                 </Form.Group>
                 <button type="submit" className={`${visibility} m-2 button }`}>Register</button>
+                <button type="submit" className={`${location.pathname == "profile" ? "d-block" : "d-none"}m-2 button`}>Modifica</button>
                 <button type="reset" value="Reset Form" className="m-2 button" onClick={() => resetForm()}>Reset</button>
             </Form>
 

@@ -2,6 +2,7 @@ export const GET_NAME = "GET_NAME";
 export const GET_COVER = "GET_COVER";
 export const GET_DESCRIPTION = "GET_DESCRIPTION";
 export const GET_PHONE = "GET_PHONE";
+export const GET_EMAIL = "GET_EMAIL";
 export const GET_SITE = "GET_SITE";
 export const TOGGLE_SERVICE = "TOGGLE_SERVICE";
 export const GET_TYPE = "GET_TYPE";
@@ -31,6 +32,12 @@ export const handlerDescr = (paylo) => {
 export const handlerPhone = (paylo) => {
   return {
     type: GET_PHONE,
+    payload: paylo,
+  };
+};
+export const handlerEmail = (paylo) => {
+  return {
+    type: GET_EMAIL,
     payload: paylo,
   };
 };

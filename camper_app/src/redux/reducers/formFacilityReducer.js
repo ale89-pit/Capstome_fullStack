@@ -11,6 +11,7 @@ import {
   GET_STREET_NUMBER,
   GET_COMUNE_ID,
   RESET_FORM,
+  GET_EMAIL,
 } from "../actions/formFacilityAction";
 
 const initailState = {
@@ -19,6 +20,7 @@ const initailState = {
   description: "",
   phoneNumber: "",
   officialSite: "",
+  email:"",
   service: [],
   facilityType: "",
   address: {
@@ -49,6 +51,11 @@ export const formFacilityReducer = (state = initailState, action) => {
       return {
         ...state,
         phoneNumber: action.payload,
+      };
+    case GET_EMAIL:
+      return {
+        ...state,
+        email: action.payload,
       };
     case GET_SITE:
       return {

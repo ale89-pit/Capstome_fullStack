@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import { Badge, Button, Card, Col, Container, Form, Modal, Row } from "react-bootstrap"
 import { useDispatch, useSelector } from "react-redux"
-import { Link, useLocation, useNavigate, useParams } from "react-router-dom"
+import { Link, useNavigate, useParams } from "react-router-dom"
 import { getSingleFacility } from "../redux/actions/facilityAction"
 import { FaHouseFloodWaterCircleArrowRight, FaPlugCircleBolt, FaRestroom, FaShower } from "react-icons/fa6"
 import { HiWifi } from "react-icons/hi"
@@ -17,15 +17,22 @@ import { myHeaders, myHeadersToken } from "../redux/actions/userAction"
 
 
 function DetailsFacility() {
+    const isLogged = useSelector((state) => state.login.isLogged)
+    
     const { id } = useParams()
     const dispatch = useDispatch()
     const navigate = useNavigate()
     const detailFacility = useSelector((state) => state.facility.singleFacility)
     const [comments,setComments] = useState([])
-    const user_Id = useSelector((state)=> state.login.profile[0].id)
+    const profile = useSelector((state) => state.login.profile);
+    const user_Id = profile ? profile[0]?.id : null;
+    
 
+    
+    
+    
     console.log(comments)
-
+    
     const API_URL_SEND_COMMENT = "http://localhost:8080/app/comments"
     
     const [formComment,setFormComment] = useState({
@@ -37,21 +44,31 @@ function DetailsFacility() {
              title:"",
              
              body:""
-         
+             
     })
     
     const handleChange = (event) => {
         
         setFormComment({
-          ...formComment,
-          [event.target.name]: event.target.value
+            ...formComment,
+            [event.target.name]: event.target.value
         });
-      };
+    };
+    const [showModalError, setShowModalError] = useState(false);
     const [show, setShow] = useState(false);
 
-    const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
+    const handleClose = () => {
+        setShow(false);
+        setShowModalError(false)
+    }
+    const handleShow = () => {
+        if(!isLogged){
+            setShowModalError(true)
+        }else{
 
+            setShow(true);
+        }
+    }
     const sendComment = async (e) => {
         e.preventDefault()
         console.log(formComment)
@@ -209,7 +226,7 @@ try {
                                 <Card.Text className="d-flex align-items-center">
 
                                     <Button variant="primary" onClick={handleShow}>commenta</Button>
-                                    <Link className="btn btn-primary" to={"/add/" + detailFacility.id}>modifica</Link>
+                                    <Button className="btn btn-primary" onClick={!isLogged?handleShow:() => navigate("/add/" + detailFacility.id)}>modifica</Button>
 
 
                                 </Card.Text>
@@ -237,6 +254,21 @@ try {
             </Row >
 
 
+            <Modal show={showModalError} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>Effettua il login o registrati</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>Woohoo, ancora non fai parte della nosta famiglia! Cosa aspetti!!!</Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleClose}>
+            Close
+          </Button>
+          <Link to="/register" className="btn btn-primary"  >Register</Link>
+          <Link to="/LogIn" className="btn btn-primary"  >LogIn</Link>
+        </Modal.Footer>
+      </Modal>
+
+            
             <Modal show={show} onHide={handleClose}>
                     <Form onSubmit={sendComment}>
                 <Modal.Header closeButton>
