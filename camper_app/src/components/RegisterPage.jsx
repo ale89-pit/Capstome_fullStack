@@ -19,6 +19,7 @@ function RegisterPage() {
     const visibility = location.pathname !== "/register" ? "d-none" : "d-block"
     const disabled = location.pathname === "/register" ? false : true
     const photoformVisibility = location.pathname !== "/register" ? "d-block" : "d-none"
+    const title = location.pathname !== "/register" ? "Modifica account" : "Crea il tuo Account!!"
     let fd = new FormData()
     let imgData = null
     const API_URL_SEND_PHOTO = `http://localhost:8080/app/users/${idProfile}/image`
@@ -124,7 +125,7 @@ function RegisterPage() {
             <Row>
                 <Col className="col-12 col-md-6 col-lg-3  mx-auto mb-5">
                     <Form onSubmit={handleSubmit} className="cardRegister px-3">
-                        <h3>Crea il tuo account!!!</h3>
+                        <h3>{title}</h3>
                         <div className={`${photoformVisibility} text-center w-75  `}>
                             <label for="formFileLg " class="form-label">Aggiungi la tua foto profilo</label>
                             <span className="d-flex"><input onChange={handleFile} className="form-control form-control-sm mx-2" id="formFileLg" type="file" name="image"></input>

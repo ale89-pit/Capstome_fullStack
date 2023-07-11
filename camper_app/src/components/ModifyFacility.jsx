@@ -13,14 +13,16 @@ import {
     handlerStreetNumber,
 
 } from "../redux/actions/formFacilityAction"
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { setSingleFacility } from "../redux/actions/facilityAction";
 
 function ModifyFacility() {
     const dispatch = useDispatch();
     const param = useParams()
     const [dataService, setDataService] = useState([])
-
+    const isLoading = useSelector((state) => state.facility.isLoading)
     let id = param.id
+
 
 
     var requestOptions = {
@@ -28,6 +30,7 @@ function ModifyFacility() {
         redirect: 'follow'
     };
     const getFacilityToModify = async () => {
+
         try {
             const response = await fetch("http://localhost:8080/app/" + id, requestOptions);
             const data = await response.json();
@@ -57,7 +60,12 @@ function ModifyFacility() {
     }, [id]);
 
     return (
-        <FacilityForm />
+        <>
+
+            {!isLoading && (<FacilityForm />)}
+
+        </>
+
     )
 }
 

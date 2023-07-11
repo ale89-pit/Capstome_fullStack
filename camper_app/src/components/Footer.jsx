@@ -10,7 +10,7 @@ function Footer() {
                 <CDBBox display="flex" justifyContent="around" className="flex-wrap">
                     <CDBBox alignSelf="center">
                         <a href="/" className="d-flex align-items-center p-0 text-dark">
-                            <img alt="logo" src="logo" width="30px" />
+                            <img alt="logo" src="./giramondo.png" width="30px" />
                             <span className="ms-3 h5 font-weight-bold">Devwares</span>
                         </a>
                         <CDBBox className="mt-5" display="flex">

@@ -10,14 +10,14 @@ function SelectProvinceComuni() {
     const [comuni, setComuni] = useState([]);
     const dispatch = useDispatch();
     const facility = useSelector((state) => state.facility.singleFacility)
-    const provinciaDefault = location.pathname !== "/add" ? facility.address.comune.provincename.sign : ""
-    const comuneDefault = location.pathname !== "/add" ? facility.address.comune.id : ""
+    const provinciaDefault = location.pathname !== "/add" ? facility.address.comune.provincename.name : "Provincia"
+    const comuneDefault = location.pathname !== "/add" ? facility.address.comune.name : "Comune"
 
     const [selectedProvince, setSelectedProvince] = useState(provinciaDefault)
-    console.log(facility)
+
 
     const handleChangeProvince = (e) => {
-        console.log(e.target.value)
+
 
 
         setSelectedProvince(e.target.value)
@@ -35,9 +35,10 @@ function SelectProvinceComuni() {
             if (response.ok) {
                 const data = await response.json();
                 setProvince(data)
+
                 if (location.pathname !== "/add") {
-                    setSelectedProvince(provinciaDefault)
-                    console.log(provinciaDefault + "provincia default")
+                    setSelectedProvince(facility.address.comune.provincename.sign)
+
                 }// console.log(data)
             }
         } catch (error) {
@@ -68,15 +69,15 @@ function SelectProvinceComuni() {
         getProvince()
 
         if (location.pathname !== "/add") {
-            dispatch(handlerComune(comuneDefault))
+            dispatch(handlerComune(facility.address.comune.id))
         }
 
     }, [])
     return (
         <div className="d-flex">
             <select className="mx-2" onClick={getComuni} onChange={handleChangeProvince} aria-label="Default select example">
-                <option>Provincia
-                </option>
+                <option>{provinciaDefault}</option>
+
 
 
                 {province !== null ? province.map((p) =>
@@ -88,7 +89,7 @@ function SelectProvinceComuni() {
 
             </select>
             <Form.Select className="mx-2" onChange={(e) => dispatch(handlerComune(e.target.value))} aria-label="Default select example">
-                <option>Comune</option>
+                <option>{comuneDefault}</option>
 
 
                 {comuni !== null ? comuni.map((c) =>

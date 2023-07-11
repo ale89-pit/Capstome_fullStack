@@ -26,7 +26,7 @@ function NavBar() {
     const puliziaStato = () => {
 
         dispatch(logOut());
-        dispatch(resetFacility())
+
         dispatch(resetUser())
     }
     const goToaddFacility = (e) => {

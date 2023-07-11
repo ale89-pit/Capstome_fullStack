@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 import { Badge, Button, Card, Col, Container, Form, Modal, Row } from "react-bootstrap"
 import { useDispatch, useSelector } from "react-redux"
 import { Link, useNavigate, useParams } from "react-router-dom"
-import { getSingleFacility } from "../redux/actions/facilityAction"
+import { getSingleFacility, setSingleFacility } from "../redux/actions/facilityAction"
 import { FaHouseFloodWaterCircleArrowRight, FaPlugCircleBolt, FaRestroom, FaShower } from "react-icons/fa6"
 import { HiWifi } from "react-icons/hi"
 import { GrUserPolice } from "react-icons/gr"
@@ -19,7 +19,7 @@ import { myHeaders, myHeadersToken } from "../redux/actions/userAction"
 
 function DetailsFacility() {
     const isLogged = useSelector((state) => state.login.isLogged)
-    
+    const isLoading = useSelector((state) => state.facility.isLoading)
     const { id } = useParams()
     const dispatch = useDispatch()
     const navigate = useNavigate()
@@ -28,7 +28,6 @@ function DetailsFacility() {
     const profile = useSelector((state) => state.login.profile);
     const user_Id = profile ? profile[0]?.id : null;
     
-
     
     
     
@@ -126,11 +125,13 @@ try {
     }, [])
 
     useEffect(()=>{
-
+        dispatch(setSingleFacility())
     },[id])
    
     return (
+        <>
         <Container >
+        {!isLoading && (
             <Row>
                 <Card.Title className="text-center fs-1 fw-bolder mb-4">{detailFacility.name}</Card.Title>
                 <Col className="cardDetailPhoto mb-4">
@@ -259,7 +260,7 @@ try {
            )})}
            </Col> 
             </Row >
-
+            )}
 
             <Modal show={showModalError} onHide={handleClose}>
         <Modal.Header closeButton>
@@ -313,7 +314,8 @@ try {
                 
             </Modal>
 
-        </Container >)
+        </Container >
+        </>)
 
 }
 

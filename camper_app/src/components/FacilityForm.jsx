@@ -29,6 +29,7 @@ import {
 
 } from "../redux/actions/formFacilityAction"
 import { useHref, useLocation, useParams } from "react-router-dom";
+import { resetFacility } from "../redux/actions/facilityAction";
 
 function FacilityForm() {
   const API_URL_NEW_FACILITY = "http://localhost:8080/app/facilities"
@@ -36,6 +37,7 @@ function FacilityForm() {
   const [idService, setIdService] = useState([])
   const dispatch = useDispatch()
   const formFacility = useSelector((state) => (state.formFacility))
+  const facility = useSelector((state) => state.facility.singleFacility)
   let fd = new FormData()
   let imgData = null
 
@@ -45,7 +47,7 @@ function FacilityForm() {
   const visibility = location.pathname !== "/add" ? "d-block" : "d-none"
   const params = useParams()
   const updateChechboxValues = Array(10).fill(false);
-
+  const typeDefault = location.pathname !== "/add" ? facility.facilityType : "Seleziona tipo"
 
 
 
@@ -72,18 +74,21 @@ function FacilityForm() {
   const updateCheckBox = (() => {
     console.log("sto aggiornando lo stato delle checkbox")
     console.log(formFacility.service)
+    let newIdService = []
     if (formFacility.service.length !== 0) {
       formFacility.service.forEach((element) => {
         if (element >= 1 && element <= 10) {
-          setIdService((prevIdService) => [...prevIdService, element]);
+          console.log("setto i valori della checqbox")
+          newIdService = [...newIdService, element];
 
           updateChechboxValues[element - 1] = true;
         }
       });
+      setIdService(newIdService)
     }
     console.log("qui dovrei aggiornare lo stato delle checkbox")
     setCheckboxValues(updateChechboxValues);
-    console.log(checkboxValues)
+
   });
 
   //invio dei dati appena inseriti
@@ -194,16 +199,21 @@ function FacilityForm() {
 
       dispatch(toggleService(idService))
 
+
       console.log(checkboxValues)
     }
   }, [checkboxValues])
+
+  // useEffect(() => {
+  //   
+  // }, [formFacility])
 
 
 
   return (
     <Container className="w-100">
-      <Row className="cardRegister mx-auto">
-        <Col>
+      <Row className=" mx-auto">
+        <Col className="mb-4 cardRegister">
           <Form className="w-75 w-xl-50 mx-auto">
             <div class="text-center w-75 ">
               <label for="formFileLg " class="form-label">Foto</label>
@@ -225,7 +235,7 @@ function FacilityForm() {
                 <Form.Label className="fw-bolder form-label">Tipo</Form.Label>
                 <Form.Select onChange={(e) => dispatch(handlerType(e.target.value))} className="my-2" aria-label="Default select example">
 
-                  <option>Seleziona tipo</option>
+                  <option>{typeDefault}</option>
                   <option value="CAMPING">Campeggio</option>
                   <option value="PARKING_AREA">Parking Area</option>
                   <option value="FREE_PARKING_AREA">Free Parking Area</option>
@@ -336,11 +346,12 @@ function FacilityForm() {
             </div>
 
 
-
-            <button onClick={sendNewFacility} type="submit" className={`{m-2 button${location.pathname !== "/add" ? " d-none" : "d-block"}`}>Invia</button>
-            <button type="reset" value="Reset Form" className={`{m-2 button${location.pathname !== "/add" ? " d-none" : "d-block"}`} onClick={() => (dispatch(resetForm()))} >Reset</button>
-            <button type="submit" onClick={modifyFacility} className={`m-2 button ${visibility}`} >Modifica</button>
-            <button type="reset" value="Reset Form" className={`m-2 button ${visibility}`}  >Cancella</button>
+            <span className="d-flex">
+              <button onClick={sendNewFacility} type="submit" className={`m-2 btn btn-primary ${location.pathname !== "/add" ? " d-none" : "d-block"}`}>Invia</button>
+              <button type="reset" value="Reset Form" className={`m-2 btn btn-warning ${location.pathname !== "/add" ? " d-none" : "d-block"}`} onClick={() => (dispatch(resetForm()))} >Reset</button>
+              <button type="submit" onClick={modifyFacility} className={`m-2 btn btn-primary ${visibility}`} >Modifica</button>
+              <button type="reset" value="Reset Form" className={`m-2 btn btn-danger ${visibility}`}  >Cancella</button>
+            </span>
           </Form>
 
 
