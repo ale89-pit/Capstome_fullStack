@@ -12,6 +12,7 @@ import { FaTruckDroplet } from "react-icons/fa6"
 import { MdSignalCellularNull } from "react-icons/md";
 import { AiFillHome, AiFillPhone } from "react-icons/ai"
 import { HiMapPin } from "react-icons/hi2"
+import { ImMail3 } from "react-icons/im"
 import { myHeaders, myHeadersToken } from "../redux/actions/userAction"
 
 
@@ -161,6 +162,12 @@ try {
                                 <AiFillPhone />
                                 {detailFacility.phoneNumber}
                             </Card.Text>
+                            <Card.Text className="align-items-center">
+                            <Link target="_blank" to='javascript:void(0)'
+      onClick={() => window.location =`mailto:${detailFacility.email}`}>    <ImMail3/>
+                                {/* {detailFacility.email} */}
+                                Contatta Struttura</Link>
+                            </Card.Text>
                             <Card.Text className="d-flex align-items-center">
                                 <HiMapPin />
                                 <span className="m-1">
@@ -240,10 +247,10 @@ try {
                return(
                    <Card className="mb-2">
                    
-                       <Card.Header>
-                       <img className="imgUser" src={comment.user.photoProfile}></img>
-                        {comment.user.userName}</Card.Header>
-                       
+                       <Card.Header className="d-flex justify-content-between align-items-center">
+                      <span> <img className="imgUser" src={comment.user.photoProfile}></img>
+                        {comment.user.userName}</span>
+                       <p>{comment.date}</p></Card.Header>
                        <Card.Title>{comment.title}</Card.Title>
                        <Card.Body>
                            {comment.body}

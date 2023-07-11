@@ -64,14 +64,14 @@ function Home() {
                     <Col className="mx-auto">
                         <h3>Strutture</h3>
                     </Col>
-                    <Row className="g-0">
+                    <Row>
                         {/* col-12 col-md-6 col-lg-6 w-100 mx-auto */}
-                        <Col className="">
-                            {isLoadingAll ? (<Spinner animation="border" role="status">
-                                <span className="visually-hidden">Loading...</span>
 
-                            </Spinner>) : (allFacility.map((f) => <SingleCardFacility key={f.id} facProp={f} />))}
-                        </Col>
+                        {isLoadingAll ? (<Spinner animation="border" role="status">
+                            <span className="visually-hidden">Loading...</span>
+
+                        </Spinner>) : (allFacility.map((f) => <SingleCardFacility key={f.id} facProp={f} />))}
+
                     </Row>
 
                 </Row>

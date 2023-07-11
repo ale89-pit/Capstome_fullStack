@@ -14,80 +14,80 @@ function SingleCardFacility({ facProp }) {
 
   // className="d-flex "
   return (
+    <Col className="col-12 col-md-6 col-lg-6 mx-auto">
 
+      <Card className="my-4 pb-4 card-shadow singleCard">
 
-    <Card className="my-4 singleCard">
+        <Row >
+          <Col className="col-12 col-md-6" >
 
-      <Row >
-        <Col className="col-12 col-md-3" >
+            <img className="w-100 imgSingleCard" variant="top" src={facProp.cover} />
 
-          <img className="imgSingleCard" variant="top" src={facProp.cover} />
+          </Col >
+          <Col className="col-12 col-md-6">
+            <Card.Body className="w-100">
+              <Row>
+                <Col>
+                  <Link to={"/details/" + facProp.id}> <h4>{facProp.name}</h4> </Link>
 
-        </Col >
-        <Col className="col-12 col-md-9">
-          <Card.Body className="w-100">
-            <Row>
-              <Col>
-                <Link to={"/details/" + facProp.id}> <h4>{facProp.name}</h4> </Link>
+                </Col>
+              </Row>
+              <Row>
+                <Col className="d-flex">
 
-              </Col>
-            </Row>
-            <Row>
-              <Col className="d-flex">
+                  <h5>{facProp.address.comune.name}</h5><Badge className="sizeBadge">{facProp.address.comune.provincename.sign}</Badge>
+                </Col>
+              </Row>
+              <Row>
+                <Col className="overflow-hidden">
+                  <Card.Text className="fs-6 text-break" style={{ maxHeight: '100px' }}>
+                    {facProp.description}
+                  </Card.Text>
+                </Col>
+              </Row>
+              <Row>
+                <Col>
+                  <Card.Text>
+                    <Link to={facProp.officialSite} target="_blank" title="official site">Official Site</Link>
+                    <Link title="contatti" to={facProp.phoneNumber}><AiTwotonePhone /></Link>
+                  </Card.Text>
+                  <Badge bg="warning" text="dark" className="my-1 sizeBadge">
+                    {facProp.facilityType}
+                  </Badge>
+                </Col>
+              </Row>
+            </Card.Body>
+          </Col>
+        </Row>
 
-                <h5>{facProp.address.comune.name}</h5><Badge className="sizeBadge">{facProp.address.comune.provincename.sign}</Badge>
-              </Col>
-            </Row>
-            <Row>
-              <Col className="overflow-hidden">
-                <Card.Text className="fs-6">
-                  {facProp.description}
-                </Card.Text>
-              </Col>
-            </Row>
-            <Row>
-              <Col>
-                <Card.Text>
-                  <Link to={facProp.officialSite} target="_blank" title="official site">Official Site</Link>
-                  <Link title="contatti" to={facProp.phoneNumber}><AiTwotonePhone /></Link>
-                </Card.Text>
-                <Badge bg="warning" text="dark" className="my-1 sizeBadge">
-                  {facProp.facilityType}
-                </Badge>
-              </Col>
-            </Row>
-          </Card.Body>
-        </Col>
-      </Row>
+        <Row >
+          <Col className="grid p-2  d-flex">
+            {facProp.serviceFacility !== null ? facProp.serviceFacility.map((s) => {
 
-      <Row >
-        <Col className="grid p-2  d-flex">
-          {facProp.serviceFacility !== null ? facProp.serviceFacility.map((s) => {
+              switch (s.id) {
+                case 1: return <FaHouseFloodWaterCircleArrowRight title="carico acqua" />
+                case 2: return <FaPlugCircleBolt title="allaccio corrente 220v" />;
+                case 3: return <FaShower title="doccie" />
+                case 4: return <div className="position-relative"><FaShower title="doccia calda" /> <Badge bg="danger" text="dark" className="position-absolute top-100 start-50  translate-middle badge rounded-pill bg-danger z-n0">hot</Badge></div>
+                case 5: return <FaRestroom title="Bagni" />
+                case 6: return <HiWifi title="WiFi" />
+                case 7: return <GrUserPolice title="sorveglianza notturna" />
+                case 8: return <GiFoundryBucket title="scarico cassetta" />
+                case 9: return <FaTruckDroplet title="scarico acque grige" />
+                case 10: return <BsShop />
+              }
+            }) : <MdSignalCellularNull title="Market" />
 
-            switch (s.id) {
-              case 1: return <FaHouseFloodWaterCircleArrowRight title="carico acqua" />
-              case 2: return <FaPlugCircleBolt title="allaccio corrente 220v" />;
-              case 3: return <FaShower title="doccie" />
-              case 4: return <div className="position-relative"><FaShower title="doccia calda" /> <Badge bg="danger" text="dark" className="position-absolute top-100 start-50  translate-middle badge rounded-pill bg-danger z-n0">hot</Badge></div>
-              case 5: return <FaRestroom title="Bagni" />
-              case 6: return <HiWifi title="WiFi" />
-              case 7: return <GrUserPolice title="sorveglianza notturna" />
-              case 8: return <GiFoundryBucket title="scarico cassetta" />
-              case 9: return <FaTruckDroplet title="scarico acque grige" />
-              case 10: return <BsShop />
             }
-          }) : <MdSignalCellularNull title="Market" />
-
-          }
-        </Col>
-      </Row>
+          </Col>
+        </Row>
 
 
 
 
-    </Card >
+      </Card >
 
-
+    </Col>
 
   )
 }

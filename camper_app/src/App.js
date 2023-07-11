@@ -8,7 +8,6 @@ import { Col, Container, Row } from "react-bootstrap";
 import Footer from "./components/Footer";
 import LogIn from "./components/LogIn";
 import Home from "./components/Home";
-import FacilityForm from "./components/FacilityForm";
 import DetailsFacility from "./components/DetailsFacility";
 
 import NavBar from "./components/NavBar";
@@ -16,6 +15,7 @@ import Jumbotron from "./components/Jumbotron";
 import ModifyFacility from "./components/ModifyFacility";
 import NotFound from "./components/NotFound";
 import ProfilePage from "./components/ProfilePage";
+import FacilityForm from "./components/FacilityForm";
 
 function App() {
   return (
