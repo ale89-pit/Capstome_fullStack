@@ -21,9 +21,9 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter>
-        <Container fluid className="w-100 m-0 p-0">
-          <Row className="backGround size mb-5">
-            <Col fluid className=" m-0">
+        <Container fluid className="w-100  p-0">
+          <Row className="backGround size ">
+            <Col className="w-100 mx-auto mb-5  p-0">
               <NavBar />
 
               <Routes>
@@ -32,8 +32,8 @@ function App() {
             </Col>
           </Row>
 
-          <Row>
-            <Col>
+          <Row className="m-0">
+            <Col className="w-100 m-0 ">
               <Routes>
                 <Route path="/register" element={<RegisterPage />} />
                 <Route path="/logIn" element={<LogIn />} />

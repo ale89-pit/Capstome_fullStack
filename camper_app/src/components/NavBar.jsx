@@ -46,8 +46,8 @@ function NavBar() {
     }, [!isLogged, photoProfile])
 
     return (
-        <Navbar expand="lg" className="navSpace navbar-light bg-light m-0 p-0">
-            <Container fluid>
+        <Navbar expand="lg" className=" navbar-light bg-light  px-3">
+            <Container fluid className="bg-light mx-auto p-0 ">
                 <Nav.Link onClick={() => navigate("/")}>      <Navbar.Brand className="m-auto logo" >
                     <img src="./giramondo.png" className="logo" />
                 </Navbar.Brand></Nav.Link>
@@ -61,16 +61,10 @@ function NavBar() {
 
                     </Nav>
                     <span className="d-flex align-items-center">
-                        <img className="imgUser m-2" src={loadProfile ? profile[0].photoProfile : ""}
-                        // onError={(event) =>
-                        // (event.target.src =
-                        //     "https://cdn.icon-icons.com/icons2/1189/PNG/512/1490793840-user-interface33_82361.png%22")
-                        // } 
-                        />
-                        <Nav className="bg-none w-100  align-items-center">
+                        <Nav className="bg-none w-100  align-items-center ">
                             {profile !== null ? (
 
-                                <NavDropdown title={<span className="custom-dropdown-title w-100">{loadProfile ? profile[0].nome : ""}</span>} menuProps={{ className: "custom-dropdown-arrow" }} id="basic-nav-dropdow " className="bg-none" >
+                                <NavDropdown title={<span className="custom-dropdown-title ">{loadProfile ? profile[0].nome : ""}</span>} menuProps={{ className: "custom-dropdown-arrow" }} id="basic-nav-dropdow " className="me-5" >
 
                                     <NavDropdown.Item href="#action/3.1">
                                         <Nav.Link className="color-link" onClick={() => navigate("/profile")}><MdOutlineSettings />Impostazioni</Nav.Link></NavDropdown.Item>
@@ -86,6 +80,12 @@ function NavBar() {
                                     className="color-link w-100" >
                                     <TbLogin className="color-link" />LogIn</Nav.Link>)}
                         </Nav>
+                        <img className="imgUser m-2" src={loadProfile ? profile[0].photoProfile : ""}
+                        // onError={(event) =>
+                        // (event.target.src =
+                        //     "https://cdn.icon-icons.com/icons2/1189/PNG/512/1490793840-user-interface33_82361.png%22")
+                        // } 
+                        />
                     </span>
                 </Navbar.Collapse>
             </Container>

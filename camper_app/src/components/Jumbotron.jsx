@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 function Jumbotron() {
     return (
         <Row className="size">
-            <Col className="jumbotron jumbotron-fluid mx-0 ">
+            <Col className="jumbotron jumbotron-fluid mx-0 p-0">
                 {/* <div className="title">
                     Benvenuti  <br />
                     nella nostra famiglia <br />

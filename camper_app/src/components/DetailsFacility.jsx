@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { Badge, Button, Card, Col, Container, Form, Modal, Row } from "react-bootstrap"
+import { Badge, Button, Card, Col, Container, Form, Modal, Row, Spinner } from "react-bootstrap"
 import { useDispatch, useSelector } from "react-redux"
 import { Link, useNavigate, useParams } from "react-router-dom"
 import { getSingleFacility, setSingleFacility } from "../redux/actions/facilityAction"
@@ -130,7 +130,12 @@ try {
    
     return (
         <>
+
         <Container >
+        {isLoading && (<Spinner animation="border" role="status">
+                            <span className="visually-hidden">Loading...</span>
+
+                        </Spinner>)}
         {!isLoading && (
             <Row>
                 <Card.Title className="text-center fs-1 fw-bolder mb-4">{detailFacility.name}</Card.Title>
@@ -315,7 +320,7 @@ try {
             </Modal>
 
         </Container >
-        </>)
+        </>) 
 
 }
 

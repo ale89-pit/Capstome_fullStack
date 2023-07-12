@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 
 function Footer() {
     return (
-        <CDBSidebarFooter >
+        <CDBSidebarFooter className="w-100" >
             <CDBBox display="flex" flex="column" className="mx-auto py-5" style={{ width: '90%' }}>
                 <CDBBox display="flex" justifyContent="around" className="flex-wrap">
                     <CDBBox alignSelf="center">

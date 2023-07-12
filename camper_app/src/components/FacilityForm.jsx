@@ -189,20 +189,18 @@ function FacilityForm() {
 
   useEffect(() => {
     dispatch(toggleService(idService))
-    if (location.pathname !== "/add") {
+    if (location.pathname !== '/add') {
       updateCheckBox()
-
     }
   }, [])
   useEffect(() => {
-    if (location.pathname !== "/add") {
-
-      dispatch(toggleService(idService))
-
+    if (location.pathname !== '/add') {
+      // dispatch(toggleService(idService))
+      updateCheckBox()
 
       console.log(checkboxValues)
     }
-  }, [checkboxValues])
+  }, [formFacility])
 
   // useEffect(() => {
   //   
