@@ -48,8 +48,7 @@ export const myHeadersToken = {
   Authorization: `Bearer ${token}`,
 };
 export const myHeadersTokenPhoto = {
-  
-  
+  // "Content-Type": "multipart/form-data",
   Authorization: `Bearer ${token}`,
 };
 
@@ -64,7 +63,7 @@ export const logInThunk = (userLogin) => {
       });
       if (response.ok) {
         const authControll = await response.json();
-        
+
         window.localStorage.setItem("token", authControll.accessToken);
         dispatch(handleLogin());
       } else if (response.status === 400 || response.status === 500) {
@@ -78,7 +77,6 @@ export const logInThunk = (userLogin) => {
 
 export const userProfile = (userName) => {
   return async (dispatch, getState) => {
-    
     try {
       const response = await fetch(API_URL_USER + userName, {
         method: "GET",

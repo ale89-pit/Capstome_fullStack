@@ -65,16 +65,16 @@ function SingleCardFacility({ facProp }) {
             {facProp.serviceFacility !== null ? facProp.serviceFacility.map((s) => {
 
               switch (s.id) {
-                case 1: return <FaHouseFloodWaterCircleArrowRight title="carico acqua" />
-                case 2: return <FaPlugCircleBolt title="allaccio corrente 220v" />;
-                case 3: return <FaShower title="doccie" />
-                case 4: return <div className="position-relative"><FaShower title="doccia calda" /> <Badge bg="danger" text="dark" className="position-absolute top-100 start-50  translate-middle badge rounded-pill bg-danger z-n0">hot</Badge></div>
-                case 5: return <FaRestroom title="Bagni" />
-                case 6: return <HiWifi title="WiFi" />
-                case 7: return <GrUserPolice title="sorveglianza notturna" />
-                case 8: return <GiFoundryBucket title="scarico cassetta" />
-                case 9: return <FaTruckDroplet title="scarico acque grige" />
-                case 10: return <BsShop />
+                case 1: return <FaHouseFloodWaterCircleArrowRight key={s.id} title="carico acqua" />
+                case 2: return <FaPlugCircleBolt key={s.id} title="allaccio corrente 220v" />;
+                case 3: return <FaShower key={s.id} title="doccie" />
+                case 4: return <div key={s.id} className="position-relative"><FaShower title="doccia calda" /> <Badge bg="danger" text="dark" className="position-absolute top-100 start-50  translate-middle badge rounded-pill bg-danger z-n0">hot</Badge></div>
+                case 5: return <FaRestroom key={s.id} title="Bagni" />
+                case 6: return <HiWifi key={s.id} title="WiFi" />
+                case 7: return <GrUserPolice key={s.id} title="sorveglianza notturna" />
+                case 8: return <GiFoundryBucket key={s.id} title="scarico cassetta" />
+                case 9: return <FaTruckDroplet key={s.id} title="scarico acque grige" />
+                case 10: return <BsShop key={s.id} />
               }
             }) : <MdSignalCellularNull title="Market" />
 

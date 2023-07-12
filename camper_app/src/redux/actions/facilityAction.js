@@ -43,7 +43,6 @@ export const getAllFacility = () => {
   };
 };
 export const getSingleFacility = (id) => {
-  console.log("sto prendendo la single facility");
   return async (dispatch, getState) => {
     try {
       const response = await fetch(API_URL_FACILITY + `/${id}`, {

@@ -84,11 +84,7 @@ function RegisterPage() {
     }
     const handleSubmit = async (event) => {
 
-        console.log(event)
         event.preventDefault();
-        console.log(registerForm)
-
-
 
         try {
             const response = await fetch("http://localhost:8080/api/auth/register", {
@@ -102,7 +98,7 @@ function RegisterPage() {
             if (response.ok) {
                 console.log("Registrazione avvenuta con successo");
                 alert("Registrazione avviata con successo");
-                resetForm();
+                dispatch(resetForm());
                 navigation("/LogIn");
             } else {
                 console.log("Errore durante la registrazione " + registerForm);

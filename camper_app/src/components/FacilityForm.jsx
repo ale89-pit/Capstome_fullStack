@@ -31,12 +31,15 @@ import {
 import { useHref, useLocation, useParams } from "react-router-dom";
 import { resetFacility } from "../redux/actions/facilityAction";
 
+
+export const API_URL_ADD_PHOTO = "http://localhost:8080/app/facilities/image";
 function FacilityForm() {
   const API_URL_NEW_FACILITY = "http://localhost:8080/app/facilities"
   const [checkboxValues, setCheckboxValues] = useState(Array(10).fill(false));
   const [idService, setIdService] = useState([])
   const dispatch = useDispatch()
   const formFacility = useSelector((state) => (state.formFacility))
+  const service = useSelector((state) => state.formFacility.service)
   const facility = useSelector((state) => state.facility.singleFacility)
   let fd = new FormData()
   let imgData = null
@@ -56,18 +59,22 @@ function FacilityForm() {
     // console.log(e)
 
     const newCheckboxValues = [...checkboxValues];
+    console.log("sono nell'hanldCheckboxChange")
     newCheckboxValues[index] = newValue;
     setCheckboxValues(newCheckboxValues);
     if (newValue) {
       //se il valore è vero aggiunge alla lista di servizi
-      console.log(idService + " handleChange")
       setIdService((prevIdService) => [...prevIdService, index + 1]);
+      console.log(idService + " handleChange")
+
     } else {
       //se il valore da vero diventa falso lo toglie dalla lista
       setIdService((prevIdService) =>
         prevIdService.filter((id) => id !== index + 1)
       );
     }
+    // dispatch(toggleService(idService))
+
   }
 
 
@@ -82,6 +89,7 @@ function FacilityForm() {
           newIdService = [...newIdService, element];
 
           updateChechboxValues[element - 1] = true;
+
         }
       });
       setIdService(newIdService)
@@ -103,7 +111,7 @@ function FacilityForm() {
         redirect: "follow",
       })
       if (response.ok) {
-        dispatch(resetForm())
+        resetForm()
         alert("struttura inserita")
       } else {
         alert("errore fetch")
@@ -131,7 +139,7 @@ function FacilityForm() {
 
 
     try {
-      const response = await fetch("http://localhost:8080/app/facilities/image", {
+      const response = await fetch(API_URL_ADD_PHOTO, {
         method: "POST",
         headers: myHeadersTokenPhoto,
         body: fd,
@@ -189,22 +197,19 @@ function FacilityForm() {
 
   useEffect(() => {
     dispatch(toggleService(idService))
-    if (location.pathname !== '/add') {
-      updateCheckBox()
-    }
+
+
   }, [])
   useEffect(() => {
     if (location.pathname !== '/add') {
-      // dispatch(toggleService(idService))
-      updateCheckBox()
 
-      console.log(checkboxValues)
+      updateCheckBox()
     }
+
+
   }, [formFacility])
 
-  // useEffect(() => {
-  //   
-  // }, [formFacility])
+
 
 
 
@@ -215,7 +220,7 @@ function FacilityForm() {
           <Form className="w-75 w-xl-50 mx-auto">
             <div class="text-center w-75 ">
               <label for="formFileLg " class="form-label">Foto</label>
-              <span className=""><input onChange={handleFile} class="form-control form-control-sm mx-2" id="formFileLg" type="file"></input>
+              <span className="d-flex align-items-center"><input onChange={handleFile} class="form-control form-control-sm mx-2" id="formFileLg" type="file"></input>
                 <Button onClick={(e) => sendPhotoFacility(e)}>Invia</Button></span>
             </div>
             <Form.Group className="mb-3  d-flex align-items-center justify-content-beetwen  " controlId="exampleForm.ControlInputNome">

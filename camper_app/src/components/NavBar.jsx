@@ -46,7 +46,7 @@ function NavBar() {
     }, [!isLogged, photoProfile])
 
     return (
-        <Navbar expand="lg" className=" navbar-light bg-light  px-3">
+        <Navbar expand="lg" className=" navbar-light bg-light fixed-top  px-3">
             <Container fluid className="bg-light mx-auto p-0 ">
                 <Nav.Link onClick={() => navigate("/")}>      <Navbar.Brand className="m-auto logo" >
                     <img src="./giramondo.png" className="logo" />
@@ -64,7 +64,7 @@ function NavBar() {
                         <Nav className="bg-none w-100  align-items-center ">
                             {profile !== null ? (
 
-                                <NavDropdown title={<span className="custom-dropdown-title ">{loadProfile ? profile[0].nome : ""}</span>} menuProps={{ className: "custom-dropdown-arrow" }} id="basic-nav-dropdow " className="me-5" >
+                                <NavDropdown title={<span className="custom-dropdown-title ">{loadProfile ? profile[0].nome : ""}</span>} id="basic-nav-dropdow " className="me-5" >
 
                                     <NavDropdown.Item href="#action/3.1">
                                         <Nav.Link className="color-link" onClick={() => navigate("/profile")}><MdOutlineSettings />Impostazioni</Nav.Link></NavDropdown.Item>
