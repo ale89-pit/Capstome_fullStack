@@ -1,12 +1,12 @@
 @import url("https://fonts.googleapis.com/css2?family=Oswald:wght@200;500;600&display=swap");
 body {
   font-family: "Oswald", sans-serif !important;
-  color: #000 !important;
+  color: #070707 !important;
   height: 100%;
   width: 100%;
   box-sizing: border-box;
   max-height: 100vh;
-  background-image: url("../public/camperbg2.jpg");
+  background-image: url("../public/bg2.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;
@@ -40,6 +40,10 @@ body {
 
 /* fine testo animato */
 /*Search bar e titolo search*/
+.cursor-pointer {
+  cursor: pointer;
+}
+
 .searchTitle {
   font-size: 50px;
 }

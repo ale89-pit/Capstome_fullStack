@@ -33,7 +33,7 @@ import { resetFacility } from "../redux/actions/facilityAction";
 
 
 export const API_URL_ADD_PHOTO = "http://localhost:8080/app/facilities/image";
-function FacilityForm() {
+function FacilityForm({ serviceFromModify }) {
   const API_URL_NEW_FACILITY = "http://localhost:8080/app/facilities"
   const [checkboxValues, setCheckboxValues] = useState(Array(10).fill(false));
   const [idService, setIdService] = useState([])
@@ -73,13 +73,14 @@ function FacilityForm() {
         prevIdService.filter((id) => id !== index + 1)
       );
     }
-    // dispatch(toggleService(idService))
+
 
   }
 
 
   const updateCheckBox = (() => {
     console.log("sto aggiornando lo stato delle checkbox")
+    console.log(serviceFromModify + "questi sono i servizi che gli passo appena il componente entra in /add/idFacility")
     console.log(formFacility.service)
     let newIdService = []
     if (formFacility.service.length !== 0) {
@@ -195,21 +196,52 @@ function FacilityForm() {
   // }, [])
 
 
+  // useEffect(() => {
+  //   dispatch(toggleService(idService))
+
+  //   if (location.pathname !== '/add') {
+
+
+  //     updateCheckBox()
+
+  //   }
+
+  // }, [])
+
+
+  // useEffect(() => {
+  //   dispatch(toggleService(idService))
+
+  //   if (location.pathname !== '/add') {
+
+
+  //     updateCheckBox()
+
+  //   }
+
+  // }, [!formFacility.service]);
+
+
+  // useEffect(() => {
+
+
+
+  // }, [checkboxValues]);
+
   useEffect(() => {
     dispatch(toggleService(idService))
-
-
+    if (location.pathname !== '/add') {
+      updateCheckBox()
+    }
   }, [])
   useEffect(() => {
     if (location.pathname !== '/add') {
-
+      // dispatch(toggleService(idService))
       updateCheckBox()
+
+      console.log(checkboxValues)
     }
-
-
   }, [formFacility])
-
-
 
 
 

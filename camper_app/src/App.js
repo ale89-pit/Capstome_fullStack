@@ -47,7 +47,7 @@ function App() {
             </Col>
           </Row>
           <Row>
-            <Col className="w-100 bg-light">
+            <Col className="w-100 bg-light ">
               <Footer></Footer>
             </Col>
           </Row>

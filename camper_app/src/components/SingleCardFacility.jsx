@@ -7,21 +7,98 @@ import { BsShop } from "react-icons/bs"
 import { GiFoundryBucket } from "react-icons/gi"
 import { FaTruckDroplet } from "react-icons/fa6"
 import { MdSignalCellularNull } from "react-icons/md";
-import { AiTwotonePhone } from "react-icons/ai"
+import { AiFillHeart, AiFillStar, AiOutlineHeart, AiOutlineStar, AiTwotonePhone } from "react-icons/ai"
+import { BiMessageDetail } from "react-icons/bi"
+import { useDispatch, useSelector } from "react-redux";
+import { myHeadersToken, userProfile } from "../redux/actions/userAction";
+import { useEffect } from "react";
 function SingleCardFacility({ facProp }) {
   //gli passo le propieta di ogni struttura per mostrarle nalla home
-  // "C:/Users/Aless/Desktop/Camper_App/Camper_App_Server/src/main/resources/imageFacility/foto.jpg
+  const API_URL_ADD_REMOVE_PREFERENCE = "http://localhost:8080/app/users/"
+  const user_id = useSelector((state) => state.login.profile[0]?.id);
+  const userName = useSelector((state) => state.login.profile[0]?.userName);
+  const preferences = useSelector((state) => state.login.profile[0]?.preference)
+  const dispatch = useDispatch();
 
-  // className="d-flex "
+
+
+
+  const addToPreference = async () => {
+    try {
+      let response = await fetch(API_URL_ADD_REMOVE_PREFERENCE + user_id + "/" + facProp.id, {
+        method: "PUT",
+        headers: myHeadersToken,
+        redirect: "follow",
+      })
+      if (response.ok) {
+
+        dispatch(userProfile(userName))
+      } else {
+        alert("errore")
+      }
+
+    } catch (error) {
+
+    }
+  }
+
+  const removeFromPreference = async () => {
+    try {
+      let response = await fetch(API_URL_ADD_REMOVE_PREFERENCE + user_id + "/" + facProp.id, {
+        method: "DELETE",
+        headers: myHeadersToken,
+        redirect: "follow",
+      })
+      if (response.ok) {
+
+        dispatch(userProfile(userName))
+      } else {
+        alert("errore")
+      }
+
+    } catch (error) {
+
+    }
+  }
+
+
+
+
   return (
     <Col className="col-12 col-md-6 col-lg-6 mx-auto">
 
       <Card className="my-4 pb-4 card-shadow singleCard">
+        <Row>
+          <Col className="d-flex justify-content-end">
+            <BiMessageDetail className="cursor-pointer" title="commenta" />
+            {preferences.some((element) => element.id === facProp.id) ? (
+              <AiFillHeart
+                onClick={removeFromPreference}
+                className="cursor-pointer text-danger"
+                title="remove from preference"
+              />
+            ) : (
+              <AiOutlineHeart
+                onClick={addToPreference}
+                className="cursor-pointer "
+                title="add to preference"
+              />
+            )}
+
+
+
+
+
+
+
+
+          </Col>
+        </Row>
 
         <Row >
           <Col className="col-12 col-md-6" >
 
-            <img className="w-100 imgSingleCard" variant="top" src={facProp.cover} />
+            <Link to={"/details/" + facProp.id}>     <img className="w-100 imgSingleCard" variant="top" src={facProp.cover} /></Link>
 
           </Col >
           <Col className="col-12 col-md-6">
@@ -74,9 +151,9 @@ function SingleCardFacility({ facProp }) {
                 case 7: return <GrUserPolice key={s.id} title="sorveglianza notturna" />
                 case 8: return <GiFoundryBucket key={s.id} title="scarico cassetta" />
                 case 9: return <FaTruckDroplet key={s.id} title="scarico acque grige" />
-                case 10: return <BsShop key={s.id} />
+                case 10: return <BsShop title="Market" key={s.id} />
               }
-            }) : <MdSignalCellularNull title="Market" />
+            }) : ""
 
             }
           </Col>

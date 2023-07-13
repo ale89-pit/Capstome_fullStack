@@ -35,6 +35,12 @@ import { myHeaders, myHeadersToken, myHeadersTokenPhoto } from "../redux/actions
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { API_URL_ADD_PHOTO } from "./FacilityForm";
+
+
+
+
+
+
 function DetailsFacility() {
     const isLogged = useSelector((state) => state.login.isLogged);
     const isLoading = useSelector((state) => state.facility.isLoading);
@@ -101,14 +107,14 @@ function DetailsFacility() {
         e.preventDefault();
         try {
             console.log(fd.get("image"));
-            const response = await fetch(API_URL_ADD_PHOTO + "/" + detailFacility.id, {
+            let response = await fetch(API_URL_ADD_PHOTO + "/" + detailFacility.id, {
                 method: "POST",
                 headers: myHeadersTokenPhoto,
                 body: fd,
                 redirect: "follow",
             })
             if (response.ok) {
-
+                dispatch(getSingleFacility(detailFacility.id))
                 alert("foto aggiunta alla struttura da " + profile.userName)
             } else {
                 alert("errore fetch")
@@ -121,13 +127,14 @@ function DetailsFacility() {
         e.preventDefault();
         console.log(formComment);
         try {
-            const response = await fetch(API_URL_SEND_COMMENT, {
+            let response = await fetch(API_URL_SEND_COMMENT, {
                 method: "POST",
-                headers: myHeadersTokenPhoto,
+                headers: myHeadersToken,
                 body: JSON.stringify(formComment),
                 redirect: "follow",
             });
             if (response.ok) {
+                getComment()
                 alert("commento inviato");
                 setFormComment({
                     user_id: user_Id,
@@ -170,12 +177,15 @@ function DetailsFacility() {
     useEffect(() => {
         dispatch(getSingleFacility(id));
         getComment();
+        console.log(comments)
 
     }, []);
 
     useEffect(() => {
         dispatch(setSingleFacility());
-    }, [id]);
+        getComment()
+    }, [id.comments]);
+
 
 
     return (
