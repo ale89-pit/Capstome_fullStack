@@ -75,6 +75,8 @@ function SelectProvinceComuni() {
     }, [])
     return (
         <div className="d-flex">
+
+            <label>Provincia</label>
             <select className="mx-2" onClick={getComuni} onChange={handleChangeProvince} aria-label="Default select example">
                 <option>{provinciaDefault}</option>
 
@@ -88,6 +90,9 @@ function SelectProvinceComuni() {
                     </Form.Select>)}
 
             </select>
+
+
+            <label>Comune</label>
             <Form.Select className="mx-2" onChange={(e) => dispatch(handlerComune(e.target.value))} aria-label="Default select example">
                 <option>{comuneDefault}</option>
 
@@ -100,6 +105,7 @@ function SelectProvinceComuni() {
                     </Form.Select>)}
 
             </Form.Select>
+
         </div>
     )
 }

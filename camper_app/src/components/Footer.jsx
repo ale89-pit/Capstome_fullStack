@@ -11,7 +11,7 @@ function Footer() {
                     <CDBBox alignSelf="center">
                         <a href="/" className="d-flex align-items-center p-0 text-dark">
                             <img alt="logo" src="./giramondo.png" width="30px" />
-                            <span className="ms-3 h5 font-weight-bold">Devwares</span>
+                            <span className="ms-3 h5 font-weight-bold">Giramondo</span>
                         </a>
                         <CDBBox className="mt-5" display="flex">
                             <CDBBtn flat color="dark" className="p-2">
@@ -27,23 +27,13 @@ function Footer() {
                     </CDBBox>
                     <CDBBox>
                         <p className="h5 mb-4" style={{ fontWeight: '600' }}>
-                            Devwares
+                            Giramondo
                         </p>
                         <CDBBox display="flex" flex="column" style={{ cursor: 'pointer' }}>
                             <Link href="/">Resources</Link>
                             <Link href="/">About Us</Link>
                             <Link href="/">Contact</Link>
                             <Link href="/">Blog</Link>
-                        </CDBBox>
-                    </CDBBox>
-                    <CDBBox>
-                        <p className="h5 mb-4" style={{ fontWeight: '600' }}>
-                            Products
-                        </p>
-                        <CDBBox display="flex" flex="column" style={{ cursor: 'pointer' }}>
-                            <Link href="/">Windframe</Link>
-                            <Link href="/">Loop</Link>
-                            <Link href="/">Contrast</Link>
                         </CDBBox>
                     </CDBBox>
                     <CDBBox>
@@ -57,7 +47,7 @@ function Footer() {
                         </CDBBox>
                     </CDBBox>
                 </CDBBox>
-                <small className="text-center mt-5 text-dark">&copy; Devwares, 2023. All rights reserved.</small>
+                <small className="text-center mt-5 text-dark">&copy; Alessio Pitorri, {new Date().getFullYear()}. All rights reserved.</small>
             </CDBBox>
         </CDBSidebarFooter>
     )

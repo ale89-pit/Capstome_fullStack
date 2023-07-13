@@ -1,18 +1,27 @@
-@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@200;500;600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Kaushan+Script&display=swap");
 body {
-  font-family: "Oswald", sans-serif !important;
+  font-family: "Kaushan Script", cursive !important;
   color: #070707 !important;
   height: 100%;
   width: 100%;
   box-sizing: border-box;
   max-height: 100vh;
-  background-image: url("../public/bg2.jpg");
+  background-image: url("https://img.freepik.com/free-photo/shot-highway-road-surrounded-by-dried-grass-fields-sky-during-sunset_181624-10934.jpg?w=900&t=st=1689265545~exp=1689266145~hmac=a42df11ac94a3ef4b8e201a23e967ffe781ab2b42007634e235d45739baef844");
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;
   background-position: center;
-  margin: auto;
   padding: 0;
+}
+
+body h3 {
+  font-size: 5em;
+  text-align: center;
+  color: white !important;
+}
+
+p {
+  font-size: 1em;
 }
 
 .backGround {
@@ -38,6 +47,19 @@ body {
   box-shadow: 0 1px 1px rgba(91, 91, 91, 0.3);
 }
 
+.caraousel img {
+  width: 100%;
+  height: 200px;
+}
+
+a {
+  text-decoration: none !important;
+}
+
+.card a {
+  color: rgb(43, 29, 248) !important;
+}
+
 /* fine testo animato */
 /*Search bar e titolo search*/
 .cursor-pointer {
@@ -54,8 +76,6 @@ body {
 
 .cardRegister {
   padding: 1em;
-  background: rgb(33, 39, 44);
-  background: linear-gradient(90deg, rgba(33, 39, 44, 0.7680322129) 0%, rgba(70, 89, 87, 0.4262955182) 77%);
   box-shadow: 5px 5px 10px 2px rgb(33, 39, 44) inset;
 }
 

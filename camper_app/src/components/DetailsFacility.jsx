@@ -35,6 +35,7 @@ import { myHeaders, myHeadersToken, myHeadersTokenPhoto } from "../redux/actions
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { API_URL_ADD_PHOTO } from "./FacilityForm";
+import { CDBCarousel, CDBCarouselInner, CDBCarouselItem, CDBView } from "cdbreact";
 
 
 
@@ -190,7 +191,7 @@ function DetailsFacility() {
 
     return (
         <>
-            <Container>
+            <Container className="w-75">
                 {isLoading && (
                     <Spinner animation="border" role="status">
                         <span className="visually-hidden">Loading...</span>
@@ -198,21 +199,23 @@ function DetailsFacility() {
                 )}
                 {!isLoading && (
                     <>
-                        <Row className="cardRegister">
+                        <Row className="cardRegister align-items-stretch">
                             <Card.Title className="text-center fs-1 fw-bolder mb-4">
                                 {detailFacility.name}
                             </Card.Title>
-                            <Col className="cardDetailPhoto mb-4">
-                                <Card.Img variant="top" src={detailFacility.cover} />
+                            <Col xs={12} className="cardDetailPhoto mb-4">
+                                <Card.Img variant="top" style={{ maxHeight: "500px" }} src={detailFacility.cover} />
                             </Col>
-                            <Col className="d-flex flex-column h-100 justify-content-beetwen mb-2">
+
+                            <Col xs={12} sm={8} className=" mb-2">
                                 <Card className="mb-2">
                                     <Card.Header>Descrizione</Card.Header>
                                     <Card.Body>
                                         <Card.Text>{detailFacility.description}</Card.Text>
                                     </Card.Body>
                                 </Card>
-
+                            </Col>
+                            <Col xs={12} sm={4}>
                                 <Card>
                                     <Card.Header>Contatti</Card.Header>
                                     <Card.Body>
@@ -222,6 +225,7 @@ function DetailsFacility() {
                                                 Official Site
                                             </Link>
                                         </Card.Text>
+
                                         <Card.Text className="align-items-center">
                                             <AiFillPhone />
                                             {detailFacility.phoneNumber}
@@ -256,8 +260,11 @@ function DetailsFacility() {
                                     </Card.Body>
                                 </Card>
                             </Col>
+
+
+
                             <Row className="mx-auto d-flex justify-content-beetwen">
-                                <Col className="p-0 justify-content-center">
+                                <Col xs={12} sm={4} className="p-0 justify-content-center">
                                     <Card className=" mb-2">
                                         <Card.Header>Servizi Struttura</Card.Header>
                                         <Card.Body>
@@ -278,11 +285,11 @@ function DetailsFacility() {
                                                             case 4:
                                                                 return (
                                                                     <span key={s.id} className="position-relative">
-                                                                        <FaShower title="doccia calda" />{" "}
+                                                                        <FaShower title="doccia calda text-warnig" />{" "}
                                                                         <Badge
                                                                             bg="danger"
                                                                             text="dark"
-                                                                            className="position-absolute top-100 start-50  translate-middle badge rounded-pill bg-danger z-n0">
+                                                                            className="position-absolute top-100 start-50  translate-middle badge rounded-pill bg-danger z-n0 ">
                                                                             hot
                                                                         </Badge>
                                                                     </span>
@@ -315,7 +322,7 @@ function DetailsFacility() {
                                         </Card.Body>
                                     </Card>
                                 </Col>
-                                <Col className="">
+                                <Col xs={12} sm={4} className="">
                                     <Card
                                         className="justify-content-center mx-auto
                         ">
@@ -369,21 +376,23 @@ function DetailsFacility() {
                             </Col>
                             <h3>Le vostre foto!!</h3>
                             <Col className="col-12 col-md-8 mx-auto">
-                                {/* onChange={onChange} onClickItem={onClickItem} onClickThumb={onClickThumb} */}
-                                <Carousel>
+                                <Carousel infiniteLoop={true}>
                                     {photoFacilityFromUser !== null
                                         ? photoFacilityFromUser.map((photo) => (
                                             <div key={photo.id}>
                                                 <img src={photo.filePath} />
-                                                {/* <p className="legend">Legend 1</p> */}
                                             </div>
                                         ))
                                         : ""}
                                 </Carousel>
+
+
                             </Col>
                         </Row>
+
                     </>
-                )}
+                )
+                }
 
                 {/* modale per errore in caso di utente non registrato o non loggato */}
 
@@ -477,7 +486,7 @@ function DetailsFacility() {
                         </Modal.Footer>
                     </Form>
                 </Modal>
-            </Container>
+            </Container >
         </>
     );
 }

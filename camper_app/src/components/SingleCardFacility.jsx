@@ -15,9 +15,12 @@ import { useEffect } from "react";
 function SingleCardFacility({ facProp }) {
   //gli passo le propieta di ogni struttura per mostrarle nalla home
   const API_URL_ADD_REMOVE_PREFERENCE = "http://localhost:8080/app/users/"
-  const user_id = useSelector((state) => state.login.profile[0]?.id);
-  const userName = useSelector((state) => state.login.profile[0]?.userName);
-  const preferences = useSelector((state) => state.login.profile[0]?.preference)
+
+
+
+  const user_id = useSelector((state) => state.login.profile[0]?.id) || null;
+  const userName = useSelector((state) => state.login.profile[0]?.userName) || null;
+  const preferences = useSelector((state) => state.login.profile[0]?.preference) || null;
   const dispatch = useDispatch();
 
 
