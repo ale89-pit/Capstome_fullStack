@@ -69,7 +69,7 @@ function NavBar() {
                                     <NavDropdown.Item href="#action/3.1">
                                         <Nav.Link className="color-link" onClick={() => navigate("/profile")}><MdOutlineSettings />Impostazioni</Nav.Link></NavDropdown.Item>
                                     <NavDropdown.Item href="#action/3.2">
-                                        <Nav.Link className="color-link" > <PiGlobeStand />    Preferiti</Nav.Link>
+                                        <Nav.Link className="color-link" onClick={() => navigate("/preferences")} > <PiGlobeStand />    Preferiti</Nav.Link>
                                     </NavDropdown.Item>
 
                                     <NavDropdown.Divider />

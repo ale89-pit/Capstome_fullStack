@@ -191,20 +191,7 @@ function FacilityForm({ serviceFromModify }) {
 
   // useEffect(() => {
 
-  //   updateCheckBox
-
-  // }, [])
-
-
-  // useEffect(() => {
-  //   dispatch(toggleService(idService))
-
-  //   if (location.pathname !== '/add') {
-
-
-  //     updateCheckBox()
-
-  //   }
+  //   updateCheckBox()
 
   // }, [])
 
@@ -222,26 +209,39 @@ function FacilityForm({ serviceFromModify }) {
   // }, [!formFacility.service]);
 
 
-  // useEffect(() => {
+  useEffect(() => {
+    dispatch(toggleService(idService))
+
+    if (location.pathname !== '/add') {
 
 
+      updateCheckBox()
 
-  // }, [checkboxValues]);
+    }
+
+  }, []);
+
 
   useEffect(() => {
     dispatch(toggleService(idService))
-    if (location.pathname !== '/add') {
-      updateCheckBox()
-    }
-  }, [])
-  useEffect(() => {
-    if (location.pathname !== '/add') {
-      // dispatch(toggleService(idService))
-      updateCheckBox()
 
-      console.log(checkboxValues)
-    }
-  }, [formFacility])
+
+  }, [checkboxValues]);
+
+  // useEffect(() => {
+  //   dispatch(toggleService(idService))
+  //   if (location.pathname !== '/add') {
+  //     updateCheckBox()
+  //   }
+  // }, [])
+  // useEffect(() => {
+  //   if (location.pathname !== '/add') {
+  //     dispatch(toggleService(idService))
+  //     updateCheckBox()
+
+  //     console.log(checkboxValues)
+  //   }
+  // }, [formFacility])
 
 
 
@@ -319,7 +319,6 @@ function FacilityForm({ serviceFromModify }) {
                 <Form.Label>Servizi</Form.Label>
                 <Col className="col-10 p-1 d-flex flex-wrap justy-content-center align-items-center border border-secondary">
 
-
                   {checkboxValues.map((value, index) => (<Checkbox
                     key={index}
                     label={
@@ -346,6 +345,7 @@ function FacilityForm({ serviceFromModify }) {
 
                   />
                   ))}
+
 
                   {/* </div> */}
                 </Col>

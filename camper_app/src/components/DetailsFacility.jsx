@@ -32,10 +32,11 @@ import { AiFillHome, AiFillPhone } from "react-icons/ai";
 import { HiMapPin } from "react-icons/hi2";
 import { ImMail3 } from "react-icons/im";
 import { myHeaders, myHeadersToken, myHeadersTokenPhoto } from "../redux/actions/userAction";
-import { Carousel } from "react-responsive-carousel";
+import Carousel from 'react-bootstrap/Carousel';
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { API_URL_ADD_PHOTO } from "./FacilityForm";
-import { CDBCarousel, CDBCarouselInner, CDBCarouselItem, CDBView } from "cdbreact";
+
+import RatingStar from "./RatingStar";
 
 
 
@@ -135,6 +136,7 @@ function DetailsFacility() {
                 redirect: "follow",
             });
             if (response.ok) {
+                setShow(false);
                 getComment()
                 alert("commento inviato");
                 setFormComment({
@@ -199,24 +201,16 @@ function DetailsFacility() {
                 )}
                 {!isLoading && (
                     <>
-                        <Row className="cardRegister align-items-stretch">
+                        <Row className=" justify-content-between">
                             <Card.Title className="text-center fs-1 fw-bolder mb-4">
                                 {detailFacility.name}
                             </Card.Title>
-                            <Col xs={12} className="cardDetailPhoto mb-4">
+                            <Col xs={12} sm={6} className="cardDetailPhoto  mb-4">
                                 <Card.Img variant="top" style={{ maxHeight: "500px" }} src={detailFacility.cover} />
                             </Col>
 
-                            <Col xs={12} sm={8} className=" mb-2">
+                            <Col xs={12} sm={5}>
                                 <Card className="mb-2">
-                                    <Card.Header>Descrizione</Card.Header>
-                                    <Card.Body>
-                                        <Card.Text>{detailFacility.description}</Card.Text>
-                                    </Card.Body>
-                                </Card>
-                            </Col>
-                            <Col xs={12} sm={4}>
-                                <Card>
                                     <Card.Header>Contatti</Card.Header>
                                     <Card.Body>
                                         <Card.Text className="align-items-center">
@@ -243,38 +237,50 @@ function DetailsFacility() {
                                                 Contatta Struttura
                                             </Link>
                                         </Card.Text>
-                                        <Card.Text className="d-flex align-items-center">
+                                        <Card.Text className="d-flex  align-items-center">
                                             <HiMapPin />
-                                            <span className="m-1">
-                                                {detailFacility.address.comune.name}
-                                            </span>
-                                            -
-                                            <span className="m-1">
-                                                {detailFacility.address.comune.provincename.sign}
-                                            </span>
-                                            -
-                                            <span className="m-1">
-                                                {detailFacility.address.comune.provincename.region}
+                                            <span className="d-flex flex-sm-column flex-lg-row">
+                                                <span className="m-1">
+                                                    {detailFacility.address.comune.name}
+                                                </span>
+                                                -
+                                                <span className="m-1">
+                                                    {detailFacility.address.comune.provincename.sign}
+                                                </span>
+                                                -
+                                                <span className="m-1">
+                                                    {detailFacility.address.comune.provincename.region}
+                                                </span>
                                             </span>
                                         </Card.Text>
+                                    </Card.Body>
+                                </Card>
+                            </Col>
+                            <Col xs={12} className=" mb-2">
+                                <Card className="mb-2">
+                                    <Card.Header>Descrizione</Card.Header>
+                                    <Card.Body>
+                                        <Card.Text>{detailFacility.description}</Card.Text>
                                     </Card.Body>
                                 </Card>
                             </Col>
 
 
 
-                            <Row className="mx-auto d-flex justify-content-beetwen">
-                                <Col xs={12} sm={4} className="p-0 justify-content-center">
+                            <Row className="mx-auto p-0 d-flex justify-content-beetwen align-items-center">
+                                <Col xs={12} md={7} className="p-0">
                                     <Card className=" mb-2">
                                         <Card.Header>Servizi Struttura</Card.Header>
                                         <Card.Body>
-                                            <Card.Text className="d-flex flex-row align-items-center jusify-content-center">
+                                            <Card.Text className=" d-flex flex-row align-items-center jusify-content-center">
                                                 {detailFacility.serviceFacility !== null ? (
                                                     detailFacility.serviceFacility.map((s) => {
                                                         switch (s.id) {
                                                             case 1:
                                                                 return (
-                                                                    <FaHouseFloodWaterCircleArrowRight key={s.id} title="carico acqua" />
+                                                                    <span className="m-2">
+                                                                        <FaHouseFloodWaterCircleArrowRight key={s.id} title="carico acqua" />
+                                                                    </span>
                                                                 );
                                                             case 2:
                                                                 return (
@@ -289,7 +295,7 @@ function DetailsFacility() {
                                                                         <Badge
                                                                             bg="danger"
                                                                             text="dark"
-                                                                            className="position-absolute top-100 start-50  translate-middle badge rounded-pill bg-danger z-n0 ">
+                                                                            className="sizeResp   position-absolute top-100 start-50 w-xs-50  translate-middle badge rounded-pill bg-danger z-n0 ">
                                                                             hot
                                                                         </Badge>
                                                                     </span>
@@ -322,13 +328,13 @@ function DetailsFacility() {
                                         </Card.Body>
                                     </Card>
                                 </Col>
-                                <Col xs={12} sm={4} className="">
+                                <Col xs={12} md={5} className="p-0 mx-auto">
                                     <Card
-                                        className="justify-content-center mx-auto
+                                        className=" mb-2 justify-content-center mx-auto
                         ">
                                         <Card.Header>Dai il tuo supporto!!</Card.Header>
                                         <Card.Body>
-                                            <Card.Text className="d-flex align-items-center">
+                                            <Card.Text className="d-flex justify-content-between align-items-center">
                                                 <Button
                                                     variant="primary"
                                                     className="mx-2"
@@ -375,15 +381,20 @@ function DetailsFacility() {
                                 })}
                             </Col>
                             <h3>Le vostre foto!!</h3>
-                            <Col className="col-12 col-md-8 mx-auto">
-                                <Carousel infiniteLoop={true}>
+                            <Col className="col-12 col-md-8 mb-5 mx-auto">
+                                <Carousel infiniteLoop={true} showStatus={false}>
+
                                     {photoFacilityFromUser !== null
                                         ? photoFacilityFromUser.map((photo) => (
-                                            <div key={photo.id}>
+
+
+                                            <Carousel.Item key={photo.id}>
                                                 <img src={photo.filePath} />
-                                            </div>
+                                            </Carousel.Item>
+
                                         ))
                                         : ""}
+
                                 </Carousel>
 
 
@@ -449,7 +460,7 @@ function DetailsFacility() {
                 <Modal show={show} onHide={handleClose}>
                     <Form onSubmit={sendComment}>
                         <Modal.Header closeButton>
-                            <Modal.Title>Modal heading</Modal.Title>
+                            <Modal.Title>Dicci la tua!!</Modal.Title>
                         </Modal.Header>
                         <Modal.Body>
                             <Form.Group
@@ -485,6 +496,7 @@ function DetailsFacility() {
                             </Button>
                         </Modal.Footer>
                     </Form>
+                    <RatingStar />
                 </Modal>
             </Container >
         </>
