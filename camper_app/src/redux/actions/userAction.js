@@ -12,12 +12,14 @@ export const GET_PROFILE = "GET_PROFILE";
 export const RESET_USER = "RESET_USER";
 
 export const handleUser = (paylo) => {
+  console.log(paylo)
   return {
     type: GET_USER,
     payload: paylo,
   };
 };
 export const handlePassword = (paylo) => {
+  
   return {
     type: GET_PASSWORD,
     payload: paylo,
@@ -29,9 +31,11 @@ export const handleProfile = (paylo) => {
     type: GET_PROFILE,
     payload: paylo,
   };
+  
 };
 
 export const resetUser = () => {
+  
   return {
     type: RESET_USER,
   };
@@ -54,6 +58,7 @@ export const myHeadersTokenPhoto = {
 
 export const logInThunk = (userLogin) => {
   return async (dispatch, getState) => {
+    console.log("login")
     try {
       const response = await fetch(API_URL_LOGIN, {
         method: "POST",
@@ -66,8 +71,13 @@ export const logInThunk = (userLogin) => {
 
         window.localStorage.setItem("token", authControll.accessToken);
         dispatch(handleLogin());
+        return  200;
+
+        
       } else if (response.status === 400 || response.status === 500) {
-        alert("credenziali non valide");
+        console.log(response.status + "sono l'errore");
+        
+        return 400 || 500;
       }
     } catch (error) {
       console.log(error + " sono l'errore");
@@ -85,6 +95,7 @@ export const userProfile = (userName) => {
       });
       if (response.ok) {
         const profile = await response.json();
+    
         dispatch(handleProfile(profile));
       } else if (response.status === 500) {
         alert("errore nella chiamata");

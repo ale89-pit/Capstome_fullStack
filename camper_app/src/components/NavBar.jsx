@@ -21,6 +21,7 @@ function NavBar() {
     const profile = useSelector((state) => state.login.profile)
     const photoProfile = isLogged ? profile?.photoProfile : null
 
+
     const dispatch = useDispatch()
 
     const puliziaStato = () => {
@@ -28,6 +29,8 @@ function NavBar() {
         dispatch(logOut());
 
         dispatch(resetUser())
+        navigate("/")
+
     }
     const goToaddFacility = (e) => {
         e.preventDefault()
@@ -49,7 +52,7 @@ function NavBar() {
         <Navbar expand="lg" className=" navbar-light bg-light fixed-top  px-3">
             <Container fluid className="bg-light mx-auto p-0 ">
                 <Nav.Link onClick={() => navigate("/")}>      <Navbar.Brand className="m-auto logo" >
-                    <img src="./giramondo.png" className="logo" />
+                    <img src="./logo.jpg" className="logo" />
                 </Navbar.Brand></Nav.Link>
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">

@@ -7,6 +7,7 @@ export const GET_SINGLE_FACILITY = "GET_SINGLE_FACILITY";
 export const SET_SINGLE_FACILITY = "RESET_FACILITY";
 
 export const handlerFacility = (paylo) => {
+  console.log(paylo)
   return {
     type: GET_ALL_FACILTY,
     payload: paylo,

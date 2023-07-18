@@ -27,21 +27,100 @@
 
 body {
   font-family: 'Domine', serif !important;
-  color: #070707 !important;
+  color:#000000!important;
 //   height: 100%;
 //   width: 100%;
 //   box-sizing: border-box;
 //   max-height: 100vh;
 //   // ../public/bg2.jpg
+
+
+ 
+  // margin: auto;
+  padding: 0; 
+  
+}
+
+// Login
+.user_card {
+  height: 400px;
+  width: 350px;
+  margin-top: auto;
+  margin-bottom: auto;
+  background: #000000;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  padding: 10px;
+  color: rgb(255, 255, 255);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  -webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  -moz-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  border-radius: 5px;
+
+}
+.brand_logo_container {
+  
+  position: absolute;
+  height: 170px;
+  width: 170px;
+  top: -75px;
+  border-radius: 50%;
+  background: #929292;
+  padding: 10px;
+  text-align: center;
+}
+.brand_logo {
+  height: 150px;
+  width: 150px;
+  border-radius: 50%;
+  border: 2px solid white;
+}
+.form_container {
+  margin-top: 100px;
+}
+.login_btn {
+  width: 100%;
+  background: #026f0b !important;
+  color: white !important;
+}
+.login_btn:focus {
+  box-shadow: none !important;
+  outline: 0px !important;
+}
+.login_container {
+  padding: 0 2rem;
+}
+.input-group-text {
+  background:#929292 !important;
+  color: white !important;
+  height: 100%;
+  border: 0 !important;
+  border-radius: 0.25rem 0 0 0.25rem !important;
+}
+.input_user,
+.input_pass:focus {
+  box-shadow: none !important;
+  outline: 0px !important;
+}
+.custom-checkbox .custom-control-input:checked~.custom-control-label::before {
+  background-color: #c0392b !important;
+}
+//fine login
+
+
+h5,h4,h3{
+  line-height: 150%;
+  color: #000;
+  text-shadow: -1px 0 #faf9f9, 0 1px  #faf9f9, 1px 0  #faf9f9, 0 -1px  #faf9f9;
+}
+.bgRoad{
   background-image: url("https://img.freepik.com/free-photo/shot-highway-road-surrounded-by-dried-grass-fields-sky-during-sunset_181624-10934.jpg?w=900&t=st=1689265545~exp=1689266145~hmac=a42df11ac94a3ef4b8e201a23e967ffe781ab2b42007634e235d45739baef844");
   background-repeat: no-repeat;
   background-size:  cover;
   background-attachment:fixed; 
     background-position: center; 
- 
-  // margin: auto;
-  padding: 0; 
-  
 }
 
 
@@ -55,7 +134,7 @@ body {
 //   font-size: 1em;
 // }
 // .backGround {
- 
+   
 //   height: 100%;
 // }
 // // .size{
@@ -66,124 +145,54 @@ body {
   height: 40px;
   border-radius: 20px;
 }
-// /* inizio testo animato */
 
-// // .custom-dropdown-title{
-// //   font
-// // }
 
 .logo {
   
   width: 50px;
 
 }
-// .card-jumboTitle{
-//   width: 100%;
-//   padding: 30px;
-//   margin: auto;
-//   transition: .3s ease;
-//   box-shadow: 0 1px 1px rgba(91, 91, 91, 0.3);
 
-// }
-
-// .caraousel img{
-//   width: 100% ;
-//   height: 200px;
-// }
-// // .card-jumboTitle:hover {
-// //     box-shadow: 0 5px 20px rgba(122, 122, 122, 0.8);
-// //     transform: translateY(-10px) scale(1.02);
-  	
-// //   }
-
-// //   .entry-title:hover{
-// //     background-position: -100% 0;
-// //   } 
-// // .entry-title{
-// // background: linear-gradient(90deg, rgba(255, 254, 254, 0.074) 50%, rgba(77,77,77,0.11537114845938379) 100%);
-// //   background-size: 200%;
-// //   font-size: 500;
-// //   background-position: 0 0;
-// //   display: inline;
-// //   transition: .5s ease-in-out;
-// //   text-transform: uppercase; 
-// //   color: #c2f3fa!important;
-// //   font-size: 1.9em;
-// //   font-family: 'Oswald', sans-serif !important;
-  
-// // }
-
-// //  a{
-// //   color: rgb(235, 27, 27);
-// //   text-decoration: none !important;
-// // }
-// // a:hover{
-// //   cursor: pointer;
-// // }
-// // small{
-// //   margin-top: 20px;
-// //   display: block;
-// //   font-family: raleway, arial, sans-serif;
-// //   color: rgb(255, 255, 255);
-// //   text-transform: uppercase;
-  
-// //   a{
-// //     font-weight: 700;
-// //     color: white;
-// //     text-decoration: none;
-// //   }
-// // }
-
-// // span{
-// //   display: block;
-// //   margin-top: 10px;
-// //   font-family: raleway, arial, sans-serif;
-// //   font-weight: 700;
-// //   color: #2b3a37;
 a{
   text-decoration: none !important;
+  
 }
 
-// .card	a{
-//   color: rgb(43, 29, 248)!important;
-  
-// }
+.singleCard a {
+  color: #faf9f9 !important;
+  letter-spacing: 2px;
+}
 
+a:hover{
+ cursor: pointer;
+}
 
-// // .iklan{
-// //   position: fixed;
-// //   bottom: 0;
-// //   right: 0;
-// //   background: white;
-// //   width: 200px;
-// //   padding: 20px;
- 
-  
-// //   p{
-// //     margin: 0 0 15px;
-// //     line-height: 1.4;
-// //     color: #333;
-// //   }
-  
-// //   a{
-// //     background-color: #ff4757;
-// //     color: white;
-// //     display: inline-block;
-// //     padding: 10px 20px;
-// //     border-radius: 3px;
-// //     text-decoration: none;
-// //     font-size: 14px;
-// //   }
-// // } 
+input[type=radio]{
+  display: none;
+}
+.star{
+  cursor: pointer;
+}
+.triangle {
 
+  position: absolute;
+  top: 40px;
+  left: -10px;
+  width: 0;
+  height: 0;
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+  border-right: 10px solid #090909;
+
+}
 // /* fine testo animato */
 // /*Search bar e titolo search*/
-// .cursor-pointer{
-//   cursor: pointer;
-// }
-// .searchTitle{
-//     font-size: 50px;
-// }
+.cursor-pointer{
+  cursor: pointer;
+}
+.searchTitle{
+    font-size: 50px;
+}
 
 
 .card-shadow{
@@ -191,29 +200,31 @@ a{
  
 }
 
-// .cardRegister{
-//   padding:1em;
-//   // background: rgb(155,177,231);
-//   // background: linear-gradient(180deg, rgba(155,177,231,1) 0%, rgba(0,26,255,0.45702030812324934) 95%);
-// box-shadow: 5px 5px 10px 2px rgb(33,39,44) inset;
+.cardFormFacility{
+  // padding:1em;
+  // background-color: #000;
+  // color: #faf9f9;
+  background: #F4D6BA;
+  // background: linear-gradient(180deg, rgba(155,177,231,1) 0%, rgba(0,26,255,0.45702030812324934) 95%);
+box-shadow: 5px 5px 10px 2px rgb(33,39,44);
 
-// }
+}
 // .cardDetailPhoto{
 //   padding: 10px 10px 70px 10px;
 //   background-color: white;
 //   height: 100%;
 //   margin:0 2 
 // }
-// // .singleCard{
-// //   max-height: 400px;
+.singleCard{
+ width: 100%
   
-// // }
+}
 .imgSingleCard{
-  padding: 0.25rem;
- 
-  border-radius: 1.25rem;
-  height: 150px; 
-  max-width: 100%;
+  border-radius: 0.25rem!important;
+  object-fit: cover !important;
+  overflow: hidden;
+  max-height: 100% !important;
+  max-width: 100% !important;
  
 }
 .font-size{
@@ -263,22 +274,22 @@ a{
 .sizeResp  {
  font-size: 1.4em;
 }
-// .form-label{
-//   font-size: 1.3em;
-//   text-align: center;
-//   color: rgb(16, 16, 16);
-// }
-// .form-control-plaintext{
-//   background-color: rgb(251, 251, 251) !important;
-//   width: auto;
-// }
-//  .form-label{
-//   color:#000000
-// } 
+.form-label{
+  font-size: 1.3em;
+  text-align: center;
+  color: rgb(16, 16, 16);
+}
+.form-control-plaintext{
+  background-color: rgb(251, 251, 251) !important;
+  width: auto;
+}
+ .form-label{
+  color:#000000
+} 
 
-// .color-placeholder::placeholder {
-//   color: rgb(246, 244, 244)50% !important;
-// }
+.color-placeholder::placeholder {
+  color: rgb(246, 244, 244)50% !important;
+}
 
 // // .color-link {
 // //   color: rgb(255, 255, 255) !important;
@@ -371,57 +382,35 @@ a{
 // //   transform: translateY(0);
 // // }
 
-// svg {
-//   margin: 0.2em;
-//   font-size: 2em;
+svg {
+  margin: 0.2em;
+  font-size: 2em;
  
-// }
+}
 
 
-// .checkbox-label {
-//   position: relative;
-//   display: inline-block;
-//   cursor: pointer;
-//   background-color: rgb(250, 250, 250)
-// }
+.checkbox-label {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  background-color: rgb(250, 250, 250)
+}
 
-// .checkbox-input {
-//   position: absolute;
-//   opacity: 0;
-// }
+.checkbox-input {
+  position: absolute;
+  opacity: 0;
+}
 
 
-// .checkbox-label.selected ::after {
-//   display: block;
+.checkbox-label.selected ::after {
+  display: block;
 
-// }
+}
 
-// .selected {
-//   border: 2px;
-//   border-color: #0061bd;
-//   background-color: rgb(56, 140, 161);
+.selected {
+  border: 2px;
+  border-color: #020202;
+  background-color: rgb(140, 140, 140);
 //   /* Altri stili desiderati per la checkbox selezionata */
-// }
-// /** Change this if you need to modify
-// /** the amount of lines displayed
-// */
-
-
-// .title{
-// 	padding : 10px;
-// 	overflow:hidden;
-// 	margin: 0px auto;
-// 	width: 100%;
-// 	font-weight: 600; 
-// 	line-height: 60px; 
-// 	font-size: 60px; 
-// 	text-align: center;
-// 	font-size: 3rem;
-// 	color: #000; 
-// 	font-family: 'Oswald', sans-serif !important;font-family: 'Georgia'; 
-// 	text-shadow: makelongshadow(#707070,0.05);
-
-// }
-
-// //prova navbar
+}
 

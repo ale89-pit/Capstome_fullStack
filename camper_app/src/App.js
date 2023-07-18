@@ -33,8 +33,8 @@ function App() {
             </Col>
           </Row>
 
-          <Row className="mt-5">
-            <Col className="w-100 mt-5 ">
+          <Row className="my-5">
+            <Col className="w-100 my-5 ">
               <Routes>
                 <Route path="/register" element={<RegisterPage />} />
                 <Route path="/logIn" element={<LogIn />} />

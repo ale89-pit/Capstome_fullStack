@@ -2,7 +2,7 @@ import { Badge, Button, Card, Col, Container, Form, Modal, Row } from "react-boo
 import { Link } from "react-router-dom";
 import { FaHouseFloodWaterCircleArrowRight, FaPlugCircleBolt, FaRestroom, FaShower } from "react-icons/fa6"
 import { HiWifi } from "react-icons/hi"
-import { GrUserPolice } from "react-icons/gr"
+import { GiPoliceOfficerHead } from "react-icons/gi"
 import { BsShop } from "react-icons/bs"
 import { GiFoundryBucket } from "react-icons/gi"
 import { FaTruckDroplet } from "react-icons/fa6"
@@ -135,19 +135,22 @@ function SingleCardFacility({ facProp }) {
 
   return (
     <>
-      <Col className="col-12  mx-auto ">
+      <Col className="col-12 col-md-6 mx-auto mb-3">
         {/* my-4 pb-4 */}
-        <Card className=" card-shadow singleCard">
-          <Row className="d-flex align-items-center">
-            <Col className="col-12 col-md-2" >
+        <Card className=" card-shadow singleCard bg-dark text-white">
+          <Row className="d-flex align-items-stretch">
+            <Col className="col-12 col-md-4 pe-0"  >
 
-              <Link to={"/details/" + facProp.id}>     <img className="w-100 imgSingleCard align-self-center justify-content-center" variant="top" src={facProp.cover} /></Link>
+              <Link to={"/details/" + facProp.id} className="h-100 ">     <img className=" imgSingleCard h-100 " src={facProp.cover} onError={(event) =>
+              (event.target.src =
+                "https://upload.wikimedia.org/wikipedia/commons/d/d1/Image_not_available.png")
+              } /></Link>
 
 
 
             </Col >
-            <Col className="col-12 col-md-10 ">
-              <Card.Body className="w-100">
+            <Col className="col-12  col-md-8 ps-0">
+              <Card.Body className="w-100 ps-1">
                 <Row>
                   <Col className="d-flex justify-content-between">
                     <Link to={"/details/" + facProp.id}> <h5>{facProp.name}</h5> </Link>
@@ -211,8 +214,10 @@ function SingleCardFacility({ facProp }) {
             </Col>
           </Row>
 
-          <Row className="p-2">
-            <Col xs={8} className=" my-1  d-flex">
+          <Row className="p-2 my-0">
+
+            <Col xs={8} className=" my-1 w-100 d-flex">
+              <p>Servizi struttura</p>
               {facProp.serviceFacility !== null ? facProp.serviceFacility.map((s) => {
 
                 switch (s.id) {
@@ -222,7 +227,7 @@ function SingleCardFacility({ facProp }) {
                   case 4: return <span key={s.id} className="position-relative"><FaShower title="doccia calda" /> <Badge bg="danger" text="dark" className="sizeResp position-absolute top-100 start-50  translate-middle badge rounded-pill bg-danger z-n0">hot</Badge></span>
                   case 5: return <FaRestroom key={s.id} title="Bagni" />
                   case 6: return <HiWifi key={s.id} title="WiFi" />
-                  case 7: return <GrUserPolice key={s.id} title="sorveglianza notturna" />
+                  case 7: return <GiPoliceOfficerHead className="text-white" key={s.id} title="sorveglianza notturna" />
                   case 8: return <GiFoundryBucket key={s.id} title="scarico cassetta" />
                   case 9: return <FaTruckDroplet key={s.id} title="scarico acque grige" />
                   case 10: return <BsShop title="Market" key={s.id} />
@@ -231,7 +236,9 @@ function SingleCardFacility({ facProp }) {
 
               }
             </Col>
-            <Col xs={4} className="d-flex justify-content-end">
+          </Row>
+          <Row>
+            <Col xs={4} className="d-flex w-100 justify-content-end">
               {averageRating >= 5 ? < AiFillStar className="text-warning" /> :
                 < AiOutlineStar />}
               {averageRating >= 4 ? <AiFillStar className="text-warning" /> : < AiOutlineStar />}
@@ -239,8 +246,8 @@ function SingleCardFacility({ facProp }) {
               {averageRating >= 2 ? <AiFillStar className="text-warning" /> : < AiOutlineStar />}
               {averageRating >= 1 ? <AiFillStar className="text-warning" /> : < AiOutlineStar />}
             </Col>
-          </Row>
 
+          </Row>
 
 
 
@@ -305,7 +312,7 @@ function SingleCardFacility({ facProp }) {
             <Button variant="primary" type="submit">
               Save Changes
             </Button>
-            <RatingStar />
+
           </Modal.Footer>
         </Form>
       </Modal>

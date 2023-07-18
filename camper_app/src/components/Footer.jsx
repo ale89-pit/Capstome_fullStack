@@ -10,7 +10,7 @@ function Footer() {
                 <CDBBox display="flex" justifyContent="around" className="flex-wrap">
                     <CDBBox alignSelf="center">
                         <a href="/" className="d-flex align-items-center p-0 text-dark">
-                            <img alt="logo" src="./giramondo.png" width="30px" />
+                            <img src="./logo.jpg" className="logo" />
                             <span className="ms-3 h5 font-weight-bold">Giramondo</span>
                         </a>
                         <CDBBox className="mt-5" display="flex">
@@ -36,7 +36,7 @@ function Footer() {
                             <Link href="/">Blog</Link>
                         </CDBBox>
                     </CDBBox>
-                    <CDBBox>
+                    {/* <CDBBox>
                         <p className="h5 mb-4" style={{ fontWeight: '600' }}>
                             Help
                         </p>
@@ -45,7 +45,7 @@ function Footer() {
                             <Link href="/">Sign Up</Link>
                             <Link href="/">Sign In</Link>
                         </CDBBox>
-                    </CDBBox>
+                     </CDBBox> */}
                 </CDBBox>
                 <small className="text-center mt-5 text-dark">&copy; Alessio Pitorri, {new Date().getFullYear()}. All rights reserved.</small>
             </CDBBox>

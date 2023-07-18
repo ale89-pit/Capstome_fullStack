@@ -4,16 +4,14 @@ import { Badge, Button, Col, Container, Form, Row, ToggleButton } from "react-bo
 
 import { FaHouseFloodWaterCircleArrowRight, FaPlugCircleBolt, FaRestroom, FaShower } from "react-icons/fa6"
 import { HiWifi } from "react-icons/hi"
-import { GrUserPolice } from "react-icons/gr"
+import { GiPoliceOfficerHead } from "react-icons/gi"
 import { BsShop } from "react-icons/bs"
 import { GiFoundryBucket } from "react-icons/gi"
 import { FaTruckDroplet } from "react-icons/fa6"
-import { propTypes } from "react-bootstrap/esm/Image";
-import { MdSignalCellularNull } from "react-icons/md";
 import Checkbox from "./Checkbox";
 import SelectProvinceComuni from "./SelectProvinceComuni";
 import { useDispatch, useSelector } from "react-redux";
-import { myHeaders, myHeadersToken, myHeadersTokenPhoto } from "../redux/actions/userAction";
+import { myHeadersToken, myHeadersTokenPhoto } from "../redux/actions/userAction";
 import {
   handlerName,
   handlercover,
@@ -248,7 +246,10 @@ function FacilityForm({ serviceFromModify }) {
   return (
     <Container className="w-100">
       <Row className=" mx-auto">
-        <Col className="mb-4 cardRegister">
+        <Col xs={"none"} md={6} className="mb-4 p-0">
+          <img className="w-100 h-100" variant="top" src={"/RegisterForm.jpg"} />
+        </Col>
+        <Col xs={12} md={6} className="mb-4 p-0 cardFormFacility ">
           <Form className="w-75 w-xl-50 mx-auto">
             <div class="text-center w-75 ">
               <label for="formFileLg " class="form-label">Foto</label>
@@ -333,7 +334,7 @@ function FacilityForm({ serviceFromModify }) {
                             )
                               : (index + 1) === 5 ? (<FaRestroom title="Bagni" />)
                                 : (index + 1) === 6 ? (<HiWifi title="WiFi" />)
-                                  : (index + 1) === 7 ? (<GrUserPolice title="sorveglianza notturna" />)
+                                  : (index + 1) === 7 ? (<GiPoliceOfficerHead title="sorveglianza notturna" />)
                                     : (index + 1) === 8 ? (<GiFoundryBucket title="scarico cassetta" />)
                                       : (index + 1) === 9 ? (<FaTruckDroplet title="scarico acque grige" />)
                                         : (<BsShop title="Market" />)}
