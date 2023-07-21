@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
-import { Button, Col, Container, Form, Row } from "react-bootstrap";
+import { Button, Col, Container, Form, Modal, Row } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { useLocation, useNavigate } from "react-router-dom";
-import { myHeadersTokenPhoto, userProfile } from "../redux/actions/userAction";
+import { myHeadersToken, myHeadersTokenPhoto, userProfile } from "../redux/actions/userAction";
 
 
 function RegisterPage() {
@@ -16,15 +16,25 @@ function RegisterPage() {
     const navigation = useNavigate();
 
 
+    const [showModalImage, setshowModalImage] = useState(false);
     const visibility = location.pathname !== "/register" ? "d-none" : "d-block"
     const disabled = location.pathname === "/register" ? false : true
-    const photoformVisibility = location.pathname !== "/register" ? "d-block" : "d-none"
+    const photoformVisibility = location.pathname !== "/register" ? "cursor-pointer" : ""
     const title = location.pathname !== "/register" ? "Modifica account" : "Crea il tuo Account!!"
     let fd = new FormData()
     let imgData = null
     const API_URL_SEND_PHOTO = `http://localhost:8080/app/users/${idProfile}/image`
     const API_URL_MODIFY_USER = `http://localhost:8080/app/users/${idProfile}`
 
+
+    const handlerShowImage = () => {
+        setshowModalImage(true);
+    };
+    const handleClose = () => {
+
+
+        setshowModalImage(false);
+    };
 
     const handleFile = (e) => {
         imgData = e.target.files[0];
@@ -76,19 +86,14 @@ function RegisterPage() {
     }
     const handleChange = (event) => {
         event.preventDefault();
-
+        console.log(event.target.value);
         setRegisterForm({
             ...registerForm,
             [event.target.name]: event.target.value,
         });
     }
     const handleSubmit = async (event) => {
-
-        console.log(event)
         event.preventDefault();
-        console.log(registerForm)
-
-
 
         try {
             const response = await fetch("http://localhost:8080/api/auth/register", {
@@ -98,12 +103,12 @@ function RegisterPage() {
                 },
                 body: JSON.stringify(registerForm)
             });
-
+            console.log("Response status:", response.status);
             if (response.ok) {
                 console.log("Registrazione avvenuta con successo");
                 alert("Registrazione avviata con successo");
-                resetForm();
                 navigation("/LogIn");
+                //  dispatch(resetForm());
             } else {
                 console.log("Errore durante la registrazione " + registerForm);
                 alert("Errore durante la registrazione");
@@ -113,73 +118,160 @@ function RegisterPage() {
             console.log("Si è verificato un errore durante la richiesta di registrazione");
             alert(error);
         }
-
-    };
-
+    }
 
 
+
+    const modifyUser = async () => {
+        try {
+            const response = await fetch(API_URL_MODIFY_USER, {
+                method: "PUT",
+                headers: myHeadersToken,
+                body: JSON.stringify(registerForm)
+            });
+
+            if (response.ok) {
+                console.log("User Aggiornato con Successo");
+                alert("User Aggiornato con Successo");
+                dispatch(userProfile(profile.userName));
+
+
+            } else {
+                console.log("Errore durante la modifica " + registerForm);
+                alert("Errore durante la modifica");
+
+            }
+        } catch (error) {
+            console.log("Si è verificato un errore durante la richiesta di registrazione");
+            alert(error);
+        }
+    }
 
 
     return (
-        <Container className="mx-auto">
-            <Row>
-                <Col className="col-12 col-md-6 col-lg-3  mx-auto mb-5">
-                    <Form onSubmit={handleSubmit} className="cardRegister px-3">
-                        <h3>{title}</h3>
-                        <div className={`${photoformVisibility} text-center w-75  `}>
-                            <label for="formFileLg " class="form-label">Aggiungi la tua foto profilo</label>
-                            <span className="d-flex"><input onChange={handleFile} className="form-control form-control-sm mx-2" id="formFileLg" type="file" name="image"></input>
-                                <Button onClick={(e) => sendPhotoUser(e)}>add</Button>
-                            </span>
+        <Container fluid className=" my-5 px-0 bgRoad">
+            < Row >
+                <Col className="col-12 col-md-6 col-lg-3  mx-auto my-5">
+
+
+                    <div className="user_card ">
+                        <div className="d-flex justify-content-center">
+                            <div onClick={handlerShowImage} className={`${photoformVisibility} brand_logo_container`}>
+                                <img src={profile.photoProfile ? profile.photoProfile : "./AddUser.png"} className="brand_logo" alt="Logo" title="Foto profilo" />
+                                     />
+                            </div>
                         </div>
-                        <Form.Group className="mb-3  " controlId="exampleForm.ControlInputNome">
-                            <Form.Label className="fw-bolder fs-6">Nome</Form.Label>
-                            <Form.Control type="text" placeholder="Mario" required plaintext className="border rounded  color-placeholder px-3"
-                                autoFocus
-                                name="nome"
-                                value={registerForm.nome}
-                                onChange={handleChange} />
-                        </Form.Group>
-                        <Form.Group className="mb-3" controlId="exampleForm.ControlInputCognome">
-                            <Form.Label className="fw-bolder fs-6">Cognome</Form.Label>
-                            <Form.Control type="text" placeholder="Rossi" plaintext required className="border rounded color-placeholder px-3"
-                                name="cognome"
-                                value={registerForm.cognome}
-                                onChange={handleChange} />
-                        </Form.Group>
-                        <Form.Group className="mb-3" controlId="exampleForm.ControlInputEmail">
-                            <Form.Label className="fw-bolder fs-6">Email address</Form.Label>
-                            <Form.Control type="email" placeholder="name@example.com" required plaintext className="border rounded  color-placeholder px-3"
-                                name="email"
-                                value={registerForm.email}
-                                onChange={handleChange} />
-                        </Form.Group>
-                        <Form.Group className="mb-3" controlId="exampleForm.ControlInputUsername">
-                            <Form.Label className="fw-bolder fs-6">Username</Form.Label>
-                            <Form.Control type="text" placeholder="mario.r" required plaintext className="border rounded  color-placeholder px-3"
-                                name="userName"
-                                value={registerForm.userName}
-                                onChange={handleChange} />
-                        </Form.Group>
-                        <Form.Group className="mb-3 " controlId="exampleForm.ControlInputPassword">
-                            <Form.Label className="fw-bolder fs-6">Password</Form.Label>
-                            <Form.Control type="password" disabled={disabled} placeholder="password" required plaintext className="border rounded  color-placeholder px-3"
-                                name="password"
-                                value={registerForm.password}
-                                onChange={handleChange}
-                                style={{ color: disabled ? 'gray' : 'white' }} />
-                        </Form.Group>
-                        <span className="d-flex">
-                            <button type="submit" className={`${visibility} m-2 btn btn-primary }`}>Register</button>
-                            <button type="submit" className={`${location.pathname !== "/profile" ? "d-none" : "d-block"} m-2 btn btn-primary`}>Modifica</button>
-                            <button type="reset" value="Reset Form" className="m-2 btn btn-warning" onClick={() => resetForm()}>Reset</button>
-                        </span>
-                    </Form>
+
+
+                        <div className="d-flex justify-content-center form_container">
+                            <form onSubmit={handleSubmit}>
+                                <div className="input-group mb-3">
+                                    <div className="input-group-append">
+                                        <span className="input-group-text"><i className="fas fa-user"></i></span>
+                                    </div>
+                                    <input type="text" className="form-control
+                                 input_user"
+                                        required plaintext
+                                        placeholder="nome" name="nome"
+                                        value={registerForm.nome}
+                                        onChange={handleChange} />
+                                </div>
+                                <div className="input-group mb-3">
+                                    <div className="input-group-append">
+                                        <span className="input-group-text"><i className="fas fa-user"></i></span>
+                                    </div>
+                                    <input type="text" className="form-control input_user"
+                                        required plaintext placeholder="cognome"
+                                        name="cognome"
+                                        value={registerForm.cognome}
+                                        onChange={handleChange} />
+                                </div>
+                                <div className="input-group mb-3">
+                                    <div className="input-group-append">
+                                        <span className="input-group-text"><i className="fas fa-user"></i></span>
+                                    </div>
+                                    <input type="email" className="form-control input_user"
+                                        required plaintext
+                                        placeholder="email"
+                                        name="email"
+                                        value={registerForm.email}
+                                        onChange={handleChange} />
+                                </div>
+                                <div className="input-group mb-3">
+                                    <div className="input-group-append">
+                                        <span className="input-group-text"><i className="fas fa-user"></i></span>
+                                    </div>
+                                    <input type="text" className="form-control input_user"
+                                        required plaintext placeholder="username"
+                                        name="userName"
+                                        value={registerForm.userName}
+                                        onChange={handleChange} />
+                                </div>
+                                <div className="input-group mb-2">
+                                    <div className="input-group-append">
+                                        <span className="input-group-text"><i className="fas fa-key"></i></span>
+                                    </div>
+                                    <input type="password" className="form-control input_pass"
+                                        required plaintext
+                                        placeholder="password"
+                                        name="password"
+                                        value={registerForm.password}
+                                        disabled={disabled}
+                                        onChange={handleChange}
+                                        style={{
+                                            backgroundColor: disabled ? 'gray' : 'white',
+                                            color: disabled ? 'gray' : 'black',
+                                        }}
+                                    />
+                                </div>
+
+                                <div className="d-flex justify-content-center my-3 login_container">
+
+                                    <button type="submit" className={`${visibility} btn login_btn my-2`}>Register</button>
+                                    <button onClick={modifyUser} className={`${location.pathname !== "/profile" ? "d-none" : "d-block"} btn login_btn my-2`}>Modifica</button>
+                                    <button type="reset" value="Reset Form" className="m-2 btn btn-warning" onClick={() => resetForm()}>Reset</button>
+                                </div>
+                            </form>
+                        </div>
+
+                        <div className="mt-4">
+
+                        </div>
+
+                    </div>
 
                 </Col>
 
-            </Row>
-        </Container>
+
+
+
+            </Row >
+            <Modal show={showModalImage} onHide={handleClose}>
+                <Form className=" mx-auto">
+                    <Modal.Header closeButton>
+                        <Modal.Title>Contribuisci anche tu!!</Modal.Title>
+                    </Modal.Header>
+                    {/* <div className={`${photoformVisibility} text-center w-75  `}> */}
+                    <label for="formFileLg " class="form-label">Aggiungi la tua foto profilo</label>
+                    <span className="d-flex">
+                        <input onChange={handleFile} className="form-control form-control-sm mx-2" id="formFileLg" type="file" name="image">
+
+                        </input>
+
+                    </span>
+
+                    <Modal.Footer>
+                        <Button onClick={(e) => sendPhotoUser(e)}>Invia</Button>
+                        <Button
+                            variant="secondary"
+                            className="text-start"
+                            onClick={handleClose}>
+                            Close
+                        </Button>
+                    </Modal.Footer>
+                </Form>
+            </Modal>
+        </Container >
     )
 }
 

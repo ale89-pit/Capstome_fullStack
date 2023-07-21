@@ -7,6 +7,7 @@ export const GET_SINGLE_FACILITY = "GET_SINGLE_FACILITY";
 export const SET_SINGLE_FACILITY = "RESET_FACILITY";
 
 export const handlerFacility = (paylo) => {
+  console.log(paylo)
   return {
     type: GET_ALL_FACILTY,
     payload: paylo,
@@ -43,7 +44,6 @@ export const getAllFacility = () => {
   };
 };
 export const getSingleFacility = (id) => {
-  console.log("sto prendendo la single facility");
   return async (dispatch, getState) => {
     try {
       const response = await fetch(API_URL_FACILITY + `/${id}`, {

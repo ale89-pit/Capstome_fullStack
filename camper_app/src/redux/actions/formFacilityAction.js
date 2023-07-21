@@ -48,7 +48,7 @@ export const handlerSite = (paylo) => {
   };
 };
 export const toggleService = (paylo) => {
-  console.log(paylo);
+  
   return {
     type: TOGGLE_SERVICE,
     payload: paylo,

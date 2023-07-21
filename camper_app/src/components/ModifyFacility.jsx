@@ -62,7 +62,7 @@ function ModifyFacility() {
     return (
         <>
 
-            {!isLoading && (<FacilityForm />)}
+            {!isLoading && (<FacilityForm serviceFromModify={dataService} />)}
 
         </>
 

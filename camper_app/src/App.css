@@ -1,29 +1,167 @@
-@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@200;500;600&display=swap");
 body {
-  font-family: "Oswald", sans-serif !important;
-  color: #000 !important;
-  height: 100%;
+  font-family: "Domine", serif !important;
+  color: #000000 !important;
+  padding: 0;
+}
+
+.user_card {
+  height: 400px;
+  width: 350px;
+  margin-top: auto;
+  margin-bottom: auto;
+  background: #000000;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  padding: 10px;
+  color: rgb(255, 255, 255);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  -webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  -moz-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  border-radius: 5px;
+}
+
+.brand_logo_container {
+  position: absolute;
+  height: 170px;
+  width: 170px;
+  top: -75px;
+  border-radius: 50%;
+  background: #929292;
+  padding: 10px;
+  text-align: center;
+}
+
+.brand_logo {
+  height: 150px;
+  width: 150px;
+  border-radius: 50%;
+  border: 2px solid white;
+}
+
+.form_container {
+  margin-top: 100px;
+}
+
+.login_btn {
   width: 100%;
-  max-width: 100vw;
-  max-height: 100vh;
-  background-image: url("../public/camperbg2.jpg");
+  background: #026f0b !important;
+  color: white !important;
+}
+
+.login_btn:focus {
+  box-shadow: none !important;
+  outline: 0px !important;
+}
+
+.login_container {
+  padding: 0 2rem;
+}
+
+.input-group-text {
+  background: #929292 !important;
+  color: white !important;
+  height: 100%;
+  border: 0 !important;
+  border-radius: 0.25rem 0 0 0.25rem !important;
+}
+
+.input_user,
+.input_pass:focus {
+  box-shadow: none !important;
+  outline: 0px !important;
+}
+
+.custom-checkbox .custom-control-input:checked ~ .custom-control-label::before {
+  background-color: #c0392b !important;
+}
+
+.facility_card {
+  background-image: url("../public/RegisterForm.jpg");
+  box-shadow: 5px 5px 10px 2px rgb(33, 39, 44);
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;
   background-position: center;
-  margin: 0;
-  padding: 0;
 }
 
-.backGround {
-  height: 100%;
+.upload_file {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 300px;
+  width: 100%;
+  margin: 0 auto;
+  cursor: pointer;
+  border: 2px dashed rgb(255, 253, 253);
+  border-radius: 5px;
 }
 
-.size {
-  height: 100%;
+.carousel-control-next-icon {
+  translate: 3em !important;
 }
 
-/* inizio testo animato */
+.carousel-control-prev-icon {
+  translate: -3em !important;
+}
+
+.carousel-weather {
+  width: 80% !important;
+  margin: 2em auto !important;
+}
+.carousel-weather span {
+  padding: 0.5em !important;
+  border-left: 1px solid black !important;
+  border-right: 1px solid black !important;
+}
+
+.carousel-weather p {
+  margin: 0 !important;
+  font-size: 0.8em;
+}
+
+.carousel-weather img {
+  width: 15px;
+}
+
+@media screen and (max-width: 600px) {
+  .upload_file {
+    width: 100%;
+    height: 150px;
+  }
+}
+.cardFormFacility {
+  width: 100% !important;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.cardFormFacility .form-control-plaintext {
+  background-color: #fefefe !important;
+}
+.cardFormFacility .form-label {
+  color: white !important;
+}
+
+h5, h4, h3 {
+  line-height: 150%;
+  color: #000;
+  text-shadow: -1px 0 #faf9f9, 0 1px #faf9f9, 1px 0 #faf9f9, 0 -1px #faf9f9;
+}
+
+.bgRoad {
+  background-image: url("https://img.freepik.com/free-photo/shot-highway-road-surrounded-by-dried-grass-fields-sky-during-sunset_181624-10934.jpg?w=900&t=st=1689265545~exp=1689266145~hmac=a42df11ac94a3ef4b8e201a23e967ffe781ab2b42007634e235d45739baef844");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
+}
+
 .imgUser {
   width: 40px;
   height: 40px;
@@ -34,16 +172,42 @@ body {
   width: 50px;
 }
 
-.card-jumboTitle {
-  width: 100%;
-  padding: 30px;
-  margin: auto;
-  transition: 0.3s ease;
-  box-shadow: 0 1px 1px rgba(91, 91, 91, 0.3);
+a {
+  text-decoration: none !important;
 }
 
-/* fine testo animato */
-/*Search bar e titolo search*/
+.singleCard a {
+  color: #faf9f9 !important;
+  letter-spacing: 2px;
+}
+
+a:hover {
+  cursor: pointer;
+}
+
+input[type=radio] {
+  display: none;
+}
+
+.star {
+  cursor: pointer;
+}
+
+.triangle {
+  position: absolute;
+  top: 40px;
+  left: -10px;
+  width: 0;
+  height: 0;
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+  border-right: 10px solid #090909;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
 .searchTitle {
   font-size: 50px;
 }
@@ -52,36 +216,53 @@ body {
   box-shadow: 5px 5px 10px 2px rgb(33, 39, 44);
 }
 
-.cardRegister {
-  padding: 1em;
-  background: rgb(33, 39, 44);
-  background: linear-gradient(90deg, rgba(33, 39, 44, 0.7680322129) 0%, rgba(70, 89, 87, 0.4262955182) 77%);
-  box-shadow: 5px 5px 10px 2px rgb(33, 39, 44) inset;
-}
-
-.cardDetailPhoto {
-  padding: 10px 10px 70px 10px;
-  background-color: white;
-  height: 100%;
+.singleCard {
+  width: 100%;
 }
 
 .imgSingleCard {
-  padding: 0.25rem;
-  background-color: #fff;
-  border: 1px solid #dee2e6;
-  border-radius: 0.25rem;
-  max-height: 250px;
+  border-radius: 0.25rem !important;
+  -o-object-fit: cover !important;
+     object-fit: cover !important;
+  overflow: hidden;
+  max-height: 100% !important;
+  max-width: 100% !important;
 }
 
-svg div .card {
-  font-size: 0.8em;
+.font-size {
+  font-size: 0.8em !important;
+}
+
+::-webkit-scrollbar {
+  width: 0.45rem;
+  overflow-x: hidden;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: rgba(27, 27, 27, 0.4);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
 }
 
 @media screen and (max-width: 768px) {
-  svg div .card {
-    font-size: 0.3em;
+  .card div svg {
+    font-size: 1.8em !important;
+  }
+  .sizeResp {
+    font-size: 0.4em !important;
   }
 }
+.card div svg {
+  font-size: 1.5em !important;
+}
+
+.sizeResp {
+  font-size: 1.4em;
+}
+
 .form-label {
   font-size: 1.3em;
   text-align: center;
@@ -90,6 +271,7 @@ svg div .card {
 
 .form-control-plaintext {
   background-color: rgb(251, 251, 251) !important;
+  width: auto;
 }
 
 .form-label {
@@ -116,6 +298,12 @@ svg {
   background-color: rgb(250, 250, 250);
 }
 
+.checkbox-label:hover {
+  /* Aggiungi qui le regole di stile per l'hover */
+  transform: scale(1.2); /* Esempio: ingrandisci l'elemento del 20% */
+  transition: transform 0.3s ease; /* Esempio: aggiungi una transizione di 0.3 secondi per effetto animato */
+}
+
 .checkbox-input {
   position: absolute;
   opacity: 0;
@@ -127,26 +315,10 @@ svg {
 
 .selected {
   border: 2px;
-  border-color: #0061bd;
-  background-color: rgb(56, 140, 161);
-  /* Altri stili desiderati per la checkbox selezionata */
+  border-color: #020202;
+  background-color: rgb(140, 140, 140);
 }
 
-/** Change this if you need to modify
-/** the amount of lines displayed
-*/
-.title {
-  padding: 10px;
-  overflow: hidden;
-  margin: 0px auto;
-  width: 100%;
-  font-weight: 600;
-  line-height: 60px;
-  font-size: 60px;
-  text-align: center;
-  font-size: 3rem;
-  color: #000;
-  font-family: "Oswald", sans-serif !important;
-  font-family: "Georgia";
-  text-shadow: 0px 0px rgba(112, 112, 112, 0.05), -1px 1px rgba(112, 112, 112, 0.05), -2px 2px rgba(112, 112, 112, 0.05), -3px 3px rgba(112, 112, 112, 0.05), -4px 4px rgba(112, 112, 112, 0.05), -5px 5px rgba(112, 112, 112, 0.05), -6px 6px rgba(112, 112, 112, 0.05), -7px 7px rgba(112, 112, 112, 0.05), -8px 8px rgba(112, 112, 112, 0.05), -9px 9px rgba(112, 112, 112, 0.05), -10px 10px rgba(112, 112, 112, 0.05), -11px 11px rgba(112, 112, 112, 0.05), -12px 12px rgba(112, 112, 112, 0.05), -13px 13px rgba(112, 112, 112, 0.05), -14px 14px rgba(112, 112, 112, 0.05), -15px 15px rgba(112, 112, 112, 0.05), -16px 16px rgba(112, 112, 112, 0.05), -17px 17px rgba(112, 112, 112, 0.05), -18px 18px rgba(112, 112, 112, 0.05), -19px 19px rgba(112, 112, 112, 0.05), -20px 20px rgba(112, 112, 112, 0.05), -21px 21px rgba(112, 112, 112, 0.05), -22px 22px rgba(112, 112, 112, 0.05), -23px 23px rgba(112, 112, 112, 0.05), -24px 24px rgba(112, 112, 112, 0.05), -25px 25px rgba(112, 112, 112, 0.05), -26px 26px rgba(112, 112, 112, 0.05), -27px 27px rgba(112, 112, 112, 0.05), -28px 28px rgba(112, 112, 112, 0.05), -29px 29px rgba(112, 112, 112, 0.05), -30px 30px rgba(112, 112, 112, 0.05), -31px 31px rgba(112, 112, 112, 0.05), -32px 32px rgba(112, 112, 112, 0.05), -33px 33px rgba(112, 112, 112, 0.05), -34px 34px rgba(112, 112, 112, 0.05), -35px 35px rgba(112, 112, 112, 0.05), -36px 36px rgba(112, 112, 112, 0.05), -37px 37px rgba(112, 112, 112, 0.05), -38px 38px rgba(112, 112, 112, 0.05), -39px 39px rgba(112, 112, 112, 0.05), -40px 40px rgba(112, 112, 112, 0.05), -41px 41px rgba(112, 112, 112, 0.05), -42px 42px rgba(112, 112, 112, 0.05), -43px 43px rgba(112, 112, 112, 0.05), -44px 44px rgba(112, 112, 112, 0.05), -45px 45px rgba(112, 112, 112, 0.05), -46px 46px rgba(112, 112, 112, 0.05), -47px 47px rgba(112, 112, 112, 0.05), -48px 48px rgba(112, 112, 112, 0.05), -49px 49px rgba(112, 112, 112, 0.05), -50px 50px rgba(112, 112, 112, 0.05), -51px 51px rgba(112, 112, 112, 0.05), -52px 52px rgba(112, 112, 112, 0.05), -53px 53px rgba(112, 112, 112, 0.05), -54px 54px rgba(112, 112, 112, 0.05), -55px 55px rgba(112, 112, 112, 0.05), -56px 56px rgba(112, 112, 112, 0.05), -57px 57px rgba(112, 112, 112, 0.05), -58px 58px rgba(112, 112, 112, 0.05), -59px 59px rgba(112, 112, 112, 0.05), -60px 60px rgba(112, 112, 112, 0.05), -61px 61px rgba(112, 112, 112, 0.05), -62px 62px rgba(112, 112, 112, 0.05), -63px 63px rgba(112, 112, 112, 0.05), -64px 64px rgba(112, 112, 112, 0.05), -65px 65px rgba(112, 112, 112, 0.05), -66px 66px rgba(112, 112, 112, 0.05), -67px 67px rgba(112, 112, 112, 0.05), -68px 68px rgba(112, 112, 112, 0.05), -69px 69px rgba(112, 112, 112, 0.05), -70px 70px rgba(112, 112, 112, 0.05), -71px 71px rgba(112, 112, 112, 0.05), -72px 72px rgba(112, 112, 112, 0.05), -73px 73px rgba(112, 112, 112, 0.05), -74px 74px rgba(112, 112, 112, 0.05), -75px 75px rgba(112, 112, 112, 0.05), -76px 76px rgba(112, 112, 112, 0.05), -77px 77px rgba(112, 112, 112, 0.05), -78px 78px rgba(112, 112, 112, 0.05), -79px 79px rgba(112, 112, 112, 0.05), -80px 80px rgba(112, 112, 112, 0.05), -81px 81px rgba(112, 112, 112, 0.05), -82px 82px rgba(112, 112, 112, 0.05), -83px 83px rgba(112, 112, 112, 0.05), -84px 84px rgba(112, 112, 112, 0.05), -85px 85px rgba(112, 112, 112, 0.05), -86px 86px rgba(112, 112, 112, 0.05), -87px 87px rgba(112, 112, 112, 0.05), -88px 88px rgba(112, 112, 112, 0.05), -89px 89px rgba(112, 112, 112, 0.05), -90px 90px rgba(112, 112, 112, 0.05), -91px 91px rgba(112, 112, 112, 0.05), -92px 92px rgba(112, 112, 112, 0.05), -93px 93px rgba(112, 112, 112, 0.05), -94px 94px rgba(112, 112, 112, 0.05), -95px 95px rgba(112, 112, 112, 0.05), -96px 96px rgba(112, 112, 112, 0.05), -97px 97px rgba(112, 112, 112, 0.05), -98px 98px rgba(112, 112, 112, 0.05), -99px 99px rgba(112, 112, 112, 0.05), -100px 100px rgba(112, 112, 112, 0.05);
-}/*# sourceMappingURL=app.css.map */
+.leaflet-container {
+  height: 100%;
+}/*# sourceMappingURL=App.css.map */

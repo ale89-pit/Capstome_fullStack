@@ -12,12 +12,14 @@ export const GET_PROFILE = "GET_PROFILE";
 export const RESET_USER = "RESET_USER";
 
 export const handleUser = (paylo) => {
+  console.log(paylo)
   return {
     type: GET_USER,
     payload: paylo,
   };
 };
 export const handlePassword = (paylo) => {
+  
   return {
     type: GET_PASSWORD,
     payload: paylo,
@@ -29,9 +31,11 @@ export const handleProfile = (paylo) => {
     type: GET_PROFILE,
     payload: paylo,
   };
+  
 };
 
 export const resetUser = () => {
+  
   return {
     type: RESET_USER,
   };
@@ -48,13 +52,13 @@ export const myHeadersToken = {
   Authorization: `Bearer ${token}`,
 };
 export const myHeadersTokenPhoto = {
-  
-  
+  // "Content-Type": "multipart/form-data",
   Authorization: `Bearer ${token}`,
 };
 
 export const logInThunk = (userLogin) => {
   return async (dispatch, getState) => {
+    console.log("login")
     try {
       const response = await fetch(API_URL_LOGIN, {
         method: "POST",
@@ -64,11 +68,16 @@ export const logInThunk = (userLogin) => {
       });
       if (response.ok) {
         const authControll = await response.json();
-        
+
         window.localStorage.setItem("token", authControll.accessToken);
         dispatch(handleLogin());
+        return  200;
+
+        
       } else if (response.status === 400 || response.status === 500) {
-        alert("credenziali non valide");
+        console.log(response.status + "sono l'errore");
+        
+        return 400 || 500;
       }
     } catch (error) {
       console.log(error + " sono l'errore");
@@ -78,7 +87,6 @@ export const logInThunk = (userLogin) => {
 
 export const userProfile = (userName) => {
   return async (dispatch, getState) => {
-    
     try {
       const response = await fetch(API_URL_USER + userName, {
         method: "GET",
@@ -87,6 +95,7 @@ export const userProfile = (userName) => {
       });
       if (response.ok) {
         const profile = await response.json();
+    
         dispatch(handleProfile(profile));
       } else if (response.status === 500) {
         alert("errore nella chiamata");
