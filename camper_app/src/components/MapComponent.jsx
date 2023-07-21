@@ -3,18 +3,25 @@ import {
     MapContainer,
     TileLayer,
     useMap,
+
 } from 'react-leaflet'
 import { Marker, Popup } from 'react-leaflet'
+
 import { useEffect, useState } from 'react'
 import "leaflet/dist/leaflet.css"
 import { Icon } from 'leaflet'
+import { useParams } from 'react-router-dom'
 
 const MapComponent = ({ address, nameFacility }) => {
+    const params = useParams();
     const [lat, setLat] = useState();
     const [lon, setLon] = useState();
     const [loadCord, setLoadCord] = useState(false);
     console.log(address)
+    console.log(params.id)
     const API_GEOCODING_ADDRESS = `https://nominatim.openstreetmap.org/search?q=${address.streetNumber + ' ' + address.street + ' ' + address.comune.name + ' ' + address.comune.provincename.name + ''}&format=json&polygon_geojson=1&addressdetails=1`
+
+
 
     const geocodingAddress = async () => {
         try {
@@ -40,19 +47,24 @@ const MapComponent = ({ address, nameFacility }) => {
 
     const customIcon = new Icon({
         iconUrl: "https://img.icons8.com/?size=512&id=13800&format=png",
-        iconSize: [50, 50],
+        iconSize: [30, 30],
     })
 
     useEffect(() => {
+
         geocodingAddress()
+
     }, [])
     useEffect(() => {
         geocodingAddress()
-    }, [address])
+
+    }, [params.id, address])
 
     return (
         <>
-            {loadCord && lat && lon && <MapContainer center={[lat, lon]} zoom={13} scrollWheelZoom={true}>
+            {loadCord && lat && lon && <MapContainer
+                key={[lat, lon]}
+                center={[lat, lon]} zoom={13} scrollWheelZoom={true}>
                 <TileLayer
                     attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                     url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"

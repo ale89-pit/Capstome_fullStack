@@ -217,6 +217,12 @@ function DetailsFacility() {
                 {!isLoading && (
                     <>
                         <Row >
+                            <Col xs={12} className="cardDetailPhoto  mb-4">
+                                <Card.Img variant="top" style={{ maxHeight: "500px" }} src={detailFacility.cover} onError={(event) =>
+                                (event.target.src =
+                                    "https://upload.wikimedia.org/wikipedia/commons/d/d1/Image_not_available.png")
+                                } />
+                            </Col>
                             <Col xs={12} className="d-flex justify-content-between">
                                 <h4 className="fs-1 fw-bolder mb-4">
                                     {detailFacility.name}
@@ -230,14 +236,8 @@ function DetailsFacility() {
                                     {averageRating >= 1 ? <AiFillStar className="text-warning" /> : < AiOutlineStar />}
                                 </div>
                             </Col>
-                            <Col xs={12} sm={6} className="cardDetailPhoto  mb-4">
-                                <Card.Img variant="top" style={{ maxHeight: "500px" }} src={detailFacility.cover} onError={(event) =>
-                                (event.target.src =
-                                    "https://upload.wikimedia.org/wikipedia/commons/d/d1/Image_not_available.png")
-                                } />
-                            </Col>
 
-                            <Col xs={12} sm={5}>
+                            <Col xs={12} sm={4}>
                                 <Card className="mb-2 text-bg-dark" >
                                     <Card.Header>Contatti</Card.Header>
                                     <Card.Body>
@@ -271,18 +271,32 @@ function DetailsFacility() {
                                                 <span className="m-1">
                                                     {detailFacility.address.comune.name}
                                                 </span>
-                                                -
+
                                                 <span className="m-1">
                                                     {detailFacility.address.comune.provincename.sign}
                                                 </span>
-                                                -
+
                                                 <span className="m-1">
                                                     {detailFacility.address.comune.provincename.region}
                                                 </span>
+
+                                            </span>
+
+                                        </Card.Text>
+                                        <Card.Text>
+                                            <span className="m-1">
+
+                                                {detailFacility.address.street + ' ,' + detailFacility.address.streetNumber}
                                             </span>
                                         </Card.Text>
                                     </Card.Body>
                                 </Card>
+                            </Col>
+                            <Col xs={12} sm={8}>
+                                <MapComponent address={detailFacility.address} nameFacility={detailFacility.name} />
+                            </Col>
+                            <Col xs={12} className="p-2">
+                                <Weather city={detailFacility.address.comune.name} />
                             </Col>
                             <Col xs={12} className=" mb-2">
                                 <Card className="mb-2 text-bg-dark">
@@ -379,9 +393,7 @@ function DetailsFacility() {
                                     </Card>
                                 </Col>
                                 <Col>
-                                    <Col>
-                                        <Weather city={detailFacility.address.comune.name} />
-                                    </Col>
+
                                     <Card
                                         className=" mb-2 justify-content-center mx-auto text-bg-dark
                         ">
@@ -461,11 +473,7 @@ function DetailsFacility() {
                             </Col>
 
                         </Row>
-                        <Row>
-                            <Col>
-                                <MapComponent address={detailFacility.address} nameFacility={detailFacility.name} />
-                            </Col>
-                        </Row>
+
                     </>
                 )
                 }

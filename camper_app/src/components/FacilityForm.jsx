@@ -234,8 +234,8 @@ function FacilityForm({ serviceFromModify }) {
 
   return (
     <Container className="w-75 facility_card">
-      <Row className=" mx-auto ">
-        <Col className=" my-3">
+      <Row className=" mx-auto JUstify-content-center align-items-center">
+        <Col xs={12} md={6} className=" my-3">
           {/* <img className="w-100 h-100" variant="top" src={"/RegisterForm.jpg"} /> */}
           <form
             className=" upload_file"
@@ -251,12 +251,13 @@ function FacilityForm({ serviceFromModify }) {
                 className="input-field mx-2"
                 id="formFileLg"
               />
+
               {imgData ? (
                 <img src={urlImg} alt="img" className="w-100 " />
               ) : (
                 <MdCloudUpload color="white" />
               )}
-              <p className="text-white m-0"> Upload Cover</p>
+              <p className="text-white m-0">{location.pathname !== "/add" ? "Aggiorna cover struttura" : "Upload Cover"}</p>
             </span>
           </form>
 
@@ -266,6 +267,11 @@ function FacilityForm({ serviceFromModify }) {
           >
             Invia
           </Button>
+        </Col>
+        <Col xs={12} md={6} className="P-2">
+          {location.pathname !== "/add" && (
+            <img src={formFacility.cover} alt="img" className="w-100 " />
+          )}
         </Col>
       </Row>
       <form className="cardFormFacility">
