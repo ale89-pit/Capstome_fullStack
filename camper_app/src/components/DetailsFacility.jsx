@@ -40,6 +40,8 @@ import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { API_URL_ADD_PHOTO } from "./FacilityForm";
 import moment from "moment";
 import RatingStar from "./RatingStar";
+import Weather from "./Weather";
+import MapComponent from "./MapComponent";
 
 
 
@@ -75,6 +77,10 @@ function DetailsFacility() {
 
         body: "",
     });
+
+
+    window.scrollTo(0, 0)
+
 
     const handleFile = (e) => {
         imgData = e.target.files[0];
@@ -173,6 +179,7 @@ function DetailsFacility() {
             if (response.ok) {
                 const data = await response.json();
                 setComments(data);
+                console.log(data)
                 // getComment()
 
             }
@@ -190,10 +197,11 @@ function DetailsFacility() {
     }, []);
 
     useEffect(() => {
-        dispatch(setSingleFacility());
+        // dispatch(setSingleFacility());
         getComment()
         console.log(comments)
-    }, [id.comments]);
+    }, [id.comments, averageRating]);
+
 
 
 
@@ -201,9 +209,10 @@ function DetailsFacility() {
         <>
             <Container className="w-75">
                 {isLoading && (
-                    <Spinner animation="border" role="status">
-                        <span className="visually-hidden">Loading...</span>
-                    </Spinner>
+                    <>
+                        <p>Loading...</p>
+                        <img src={"../camper2.gif"} />
+                    </>
                 )}
                 {!isLoading && (
                     <>
@@ -370,6 +379,9 @@ function DetailsFacility() {
                                     </Card>
                                 </Col>
                                 <Col>
+                                    <Col>
+                                        <Weather city={detailFacility.address.comune.name} />
+                                    </Col>
                                     <Card
                                         className=" mb-2 justify-content-center mx-auto text-bg-dark
                         ">
@@ -393,6 +405,7 @@ function DetailsFacility() {
                                     </Card>
                                 </Col>
                             </Row>
+
 
                             <Col className="col-12 col-md-8 mb-5 mx-auto">
                                 <h3>Le vostre foto!!</h3>
@@ -445,6 +458,12 @@ function DetailsFacility() {
                                         </div>
                                     );
                                 })}
+                            </Col>
+
+                        </Row>
+                        <Row>
+                            <Col>
+                                <MapComponent address={detailFacility.address} nameFacility={detailFacility.name} />
                             </Col>
                         </Row>
                     </>

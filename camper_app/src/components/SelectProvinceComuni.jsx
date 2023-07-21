@@ -75,37 +75,37 @@ function SelectProvinceComuni() {
     }, [])
     return (
         <div className="d-flex">
-
-            <label>Provincia</label>
-            <select className="mx-2" onClick={getComuni} onChange={handleChangeProvince} aria-label="Default select example">
-                <option>{provinciaDefault}</option>
-
-
-
-                {province !== null ? province.map((p) =>
-                    <option key={p.sign} value={p.sign}>{p.name}</option>)
-
-                    : (<Form.Select aria-label="Default select example">
-                        <option></option>
-                    </Form.Select>)}
-
-            </select>
+            <span className="d-flex flex-column p-1 mx-1 align-items-center justify-content-center">
+                {/* <Form.Label>Provincia</Form.Label> */}
+                <Form.Select className="mx-2" onClick={getComuni} onChange={handleChangeProvince} aria-label="Default select example">
+                    <option>{provinciaDefault}</option>
 
 
-            <label>Comune</label>
-            <Form.Select className="mx-2" onChange={(e) => dispatch(handlerComune(e.target.value))} aria-label="Default select example">
-                <option>{comuneDefault}</option>
+
+                    {province !== null ? province.map((p) =>
+                        <option key={p.sign} value={p.sign}>{p.name}</option>)
+
+                        : (<Form.Select aria-label="Default select example">
+                            <option></option>
+                        </Form.Select>)}
+
+                </Form.Select>
+            </span>
+            <span className="d-flex flex-column p-1 mx-1 align-items-center justify-content-center">
+                {/* <Form.Label>Comune</Form.Label> */}
+                <Form.Select className="mx-2" onChange={(e) => dispatch(handlerComune(e.target.value))} aria-label="Default select example">
+                    <option>{comuneDefault}</option>
 
 
-                {comuni !== null ? comuni.map((c) =>
-                    <option key={c.id} value={c.id}>{c.name}</option>)
+                    {comuni !== null ? comuni.map((c) =>
+                        <option key={c.id} value={c.id}>{c.name}</option>)
 
-                    : (<Form.Select aria-label="Default select example">
-                        <option></option>
-                    </Form.Select>)}
+                        : (<Form.Select aria-label="Default select example">
+                            <option></option>
+                        </Form.Select>)}
 
-            </Form.Select>
-
+                </Form.Select>
+            </span>
         </div>
     )
 }

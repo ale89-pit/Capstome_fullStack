@@ -32,7 +32,7 @@ function LogIn() {
 
     }, [isLogged])
     return (
-        <Container className="my-5">
+        <Container fluid className="my-5 mx-0 bgRoad">
             <Row>
                   <Col className="col-12 col-md-6 col-lg-4 mx-auto my-5">
                         <div className="user_card ">

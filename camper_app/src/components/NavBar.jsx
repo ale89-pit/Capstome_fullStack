@@ -83,7 +83,8 @@ function NavBar() {
                                     className="color-link w-100" >
                                     <TbLogin className="color-link" />LogIn</Nav.Link>)}
                         </Nav>
-                        <img className="imgUser m-2" src={loadProfile ? profile[0].photoProfile : ""}
+                        <img className="imgUser m-2" src={loadProfile && profile[0].photoProfile ? profile[0].photoProfile : "https://www.shutterstock.com/image-vector/flat-user-icon-on-website-600w-1210365988.jpg"}
+
                         // onError={(event) =>
                         // (event.target.src =
                         //     "https://cdn.icon-icons.com/icons2/1189/PNG/512/1490793840-user-interface33_82361.png%22")

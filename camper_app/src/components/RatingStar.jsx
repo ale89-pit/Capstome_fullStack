@@ -3,10 +3,13 @@ import { useEffect, useState } from 'react';
 import { FaStar } from 'react-icons/fa6';
 import { useParams } from 'react-router-dom';
 import { myHeadersToken } from '../redux/actions/userAction';
+import { useDispatch } from 'react-redux';
+import { getSingleFacility } from '../redux/actions/facilityAction';
 
 const RatingStar = () => {
     const [rating, setRating] = useState(null);
     const [hover, setHover] = useState(null);
+    const dispatch = useDispatch();
 
     const params = useParams()
 
@@ -35,6 +38,7 @@ const RatingStar = () => {
 
             sendValutation(rating)
             console.log(rating)
+
         }
     }, [rating])
     return (

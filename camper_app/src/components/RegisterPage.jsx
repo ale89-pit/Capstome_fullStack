@@ -94,72 +94,71 @@ function RegisterPage() {
     }
     const handleSubmit = async (event) => {
         event.preventDefault();
-        if (location.pathname !== "/register") {
-            event.preventDefault();
 
-            try {
-                const response = await fetch(API_URL_MODIFY_USER, {
-                    method: "PUT",
-                    headers: myHeadersToken,
-                    body: JSON.stringify(registerForm)
-                });
+        try {
+            const response = await fetch("http://localhost:8080/api/auth/register", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(registerForm)
+            });
+            console.log("Response status:", response.status);
+            if (response.ok) {
+                console.log("Registrazione avvenuta con successo");
+                alert("Registrazione avviata con successo");
+                navigation("/LogIn");
+                //  dispatch(resetForm());
+            } else {
+                console.log("Errore durante la registrazione " + registerForm);
+                alert("Errore durante la registrazione");
 
-                if (response.ok) {
-                    console.log("User Aggiornato con Successo");
-                    alert("RUser Aggiornato con Successo");
-                    dispatch(userProfile(profile.userName));
-
-
-                } else {
-                    console.log("Errore durante la modifica " + registerForm);
-                    alert("Errore durante la modifica");
-
-                }
-            } catch (error) {
-                console.log("Si è verificato un errore durante la richiesta di registrazione");
-                alert(error);
             }
-        } else {
-            try {
-                const response = await fetch("http://localhost:8080/api/auth/register", {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json"
-                    },
-                    body: JSON.stringify(registerForm)
-                });
-
-                if (response.ok) {
-                    console.log("Registrazione avvenuta con successo");
-                    alert("Registrazione avviata con successo");
-                    dispatch(resetForm());
-                    navigation("/LogIn");
-                } else {
-                    console.log("Errore durante la registrazione " + registerForm);
-                    alert("Errore durante la registrazione");
-
-                }
-            } catch (error) {
-                console.log("Si è verificato un errore durante la richiesta di registrazione");
-                alert(error);
-            }
+        } catch (error) {
+            console.log("Si è verificato un errore durante la richiesta di registrazione");
+            alert(error);
         }
-    };
+    }
 
 
 
+    const modifyUser = async () => {
+        try {
+            const response = await fetch(API_URL_MODIFY_USER, {
+                method: "PUT",
+                headers: myHeadersToken,
+                body: JSON.stringify(registerForm)
+            });
+
+            if (response.ok) {
+                console.log("User Aggiornato con Successo");
+                alert("User Aggiornato con Successo");
+                dispatch(userProfile(profile.userName));
+
+
+            } else {
+                console.log("Errore durante la modifica " + registerForm);
+                alert("Errore durante la modifica");
+
+            }
+        } catch (error) {
+            console.log("Si è verificato un errore durante la richiesta di registrazione");
+            alert(error);
+        }
+    }
 
 
     return (
-        <Container className="mx-auto my-5">
-            <Row>
+        <Container fluid className=" my-5 px-0 bgRoad">
+            < Row >
                 <Col className="col-12 col-md-6 col-lg-3  mx-auto my-5">
 
 
                     <div className="user_card ">
                         <div className="d-flex justify-content-center">
                             <div onClick={handlerShowImage} className={`${photoformVisibility} brand_logo_container`}>
-                                <img src={idProfile !== null ? profile.photoProfile : "./logo.jpg"} className="brand_logo" alt="Logo" />
+                                <img src={profile.photoProfile ? profile.photoProfile : "./AddUser.png"} className="brand_logo" alt="Logo" title="Foto profilo" />
+                                     />
                             </div>
                         </div>
 
@@ -229,7 +228,7 @@ function RegisterPage() {
                                 <div className="d-flex justify-content-center my-3 login_container">
 
                                     <button type="submit" className={`${visibility} btn login_btn my-2`}>Register</button>
-                                    <button type="submit" className={`${location.pathname !== "/profile" ? "d-none" : "d-block"} btn login_btn my-2`}>Modifica</button>
+                                    <button onClick={modifyUser} className={`${location.pathname !== "/profile" ? "d-none" : "d-block"} btn login_btn my-2`}>Modifica</button>
                                     <button type="reset" value="Reset Form" className="m-2 btn btn-warning" onClick={() => resetForm()}>Reset</button>
                                 </div>
                             </form>
@@ -246,7 +245,7 @@ function RegisterPage() {
 
 
 
-            </Row>
+            </Row >
             <Modal show={showModalImage} onHide={handleClose}>
                 <Form className=" mx-auto">
                     <Modal.Header closeButton>
