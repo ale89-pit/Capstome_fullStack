@@ -1,14 +1,15 @@
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { Container, Nav, NavDropdown, Navbar } from "react-bootstrap"
 import { MdOutlineSettings } from "react-icons/md";
 import { PiGlobeStand } from "react-icons/pi"
 import { TbLogout2, TbLogin } from "react-icons/tb"
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
 import { resetUser, userProfile } from "../redux/actions/userAction";
 import { logOut } from "../redux/actions/loginAction";
 import { resetFacility } from "../redux/actions/facilityAction";
 import { resetForm } from "../redux/actions/formFacilityAction";
+import { ScrollLink } from "react-scroll";
 
 
 function NavBar() {
@@ -20,9 +21,31 @@ function NavBar() {
     const username = useSelector((state) => state.user.userName)
     const profile = useSelector((state) => state.login.profile)
     const photoProfile = isLogged ? profile?.photoProfile : null
+    const location = useLocation();
+
+
 
 
     const dispatch = useDispatch()
+
+    const handleClickScroll = () => {
+
+
+        navigate("/")
+        setTimeout(() => {
+            const element = document.getElementById('search');
+            console.log(element);
+            if (element) {
+                element.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'center',
+                    inline: 'center',
+                });
+            }
+        }, 100);
+
+
+    };
 
     const puliziaStato = () => {
 
@@ -40,6 +63,8 @@ function NavBar() {
     }
 
 
+
+
     useEffect(() => {
         if (isLogged) {
 
@@ -49,8 +74,8 @@ function NavBar() {
     }, [!isLogged, photoProfile])
 
     return (
-        <Navbar expand="lg" className=" navbar-light bg-light fixed-top  px-3">
-            <Container fluid className="bg-light mx-auto p-0 ">
+        <Navbar expand="lg" className="  bgNavbarFooter fixed-top  px-3">
+            <Container fluid className="bgNavbarFooter mx-auto p-0 ">
                 <Nav.Link onClick={() => navigate("/")}>      <Navbar.Brand className="m-auto logo" >
                     <img src="./logo.jpg" className="logo" />
                 </Navbar.Brand></Nav.Link>
@@ -59,6 +84,10 @@ function NavBar() {
                     <Nav className="me-auto bg-lg-none align-items-center">
 
                         <Nav.Link onClick={() => navigate("/")} className="color-link">Home</Nav.Link>
+                        <Nav.Link onClick={() => handleClickScroll()}
+                            className="color-link">
+                            Cerca Struttura
+                        </Nav.Link>
                         <Nav.Link onClick={(e) => goToaddFacility(e)} className={`${isLogged ? "d-block" : "d-none"} color-link`}>Aggiungi nuova Struttura</Nav.Link>
                         <Nav.Link onClick={() => navigate("/register")} className={`${visibilityRegister} color-link`}  >Register</Nav.Link>
 

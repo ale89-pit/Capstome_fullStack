@@ -17,20 +17,28 @@ import NotFound from "./components/NotFound";
 import ProfilePage from "./components/ProfilePage";
 import FacilityForm from "./components/FacilityForm";
 import Preferences from "./components/Preferences";
+import Search from "./components/Search"
 
 function App() {
   return (
     <div className="App">
       <BrowserRouter>
-        <Container fluid className=" position-relative">
+        <Container fluid className=" position-relative ">
           <Row className="backGround size ">
             <Col className="">
               <NavBar />
 
               <Routes>
-                <Route path="/" element={<Jumbotron />} />
+                <Route  path="/" element={<Jumbotron />} />
+                
               </Routes>
             </Col>
+            
+          </Row>
+          <Row>
+          <Routes>
+          <Route path="/" element={<Search />} />
+              </Routes>
           </Row>
 
           <Row className="my-5">
@@ -39,8 +47,8 @@ function App() {
                 <Route path="/register" element={<RegisterPage />} />
                 <Route path="/logIn" element={<LogIn />} />
                 <Route path="/profile" element={<ProfilePage />} />
-                <Route path="/" element={<Home />} />
                 <Route path="/preferences" element={<Preferences />} />
+                <Route path="/" element={<Home />} />
                 <Route path="/add" element={<FacilityForm />} />
                 <Route path="/add/:id" element={<ModifyFacility />} />
                 <Route path="/details/:id" element={<DetailsFacility />} />
@@ -49,7 +57,7 @@ function App() {
             </Col>
           </Row>
           <Row>
-            <Col className="w-100 bg-light ">
+            <Col className=" bgNavbarFooter">
               <Footer></Footer>
             </Col>
           </Row>

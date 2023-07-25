@@ -28,7 +28,7 @@ import { GiPoliceOfficerHead } from "react-icons/gi";
 import { BsShop } from "react-icons/bs";
 import { GiFoundryBucket } from "react-icons/gi";
 import { FaTruckDroplet } from "react-icons/fa6";
-import { MdSignalCellularNull } from "react-icons/md";
+import { MdDelete, MdSignalCellularNull } from "react-icons/md";
 import { AiFillHome, AiFillPhone, AiFillStar, AiOutlineStar } from "react-icons/ai";
 import { HiMapPin } from "react-icons/hi2";
 import { ImMail3 } from "react-icons/im";
@@ -79,7 +79,7 @@ function DetailsFacility() {
     });
 
 
-    window.scrollTo(0, 0)
+
 
 
     const handleFile = (e) => {
@@ -458,13 +458,19 @@ function DetailsFacility() {
                                                     src={comment.user.photoProfile}></img>
 
                                             </span>
-                                            <Card className="mb-2 text-bg-dark w-75" key={comment.id}>
+                                            <Card className="mb-2 text-bg-dark w-75 f" key={comment.id}>
                                                 <Card.Header className="d-flex justify-content-between align-items-center">
                                                     <Card.Title>{comment.title}</Card.Title>
-                                                    <p>{moment(comment.date).format('DD-MM-YYYY HH:mm')}</p>
+                                                    <span className="d-flex justify-content-center align-items-center">
+                                                        <p className="p-0 m-0">{moment(comment.date).format('DD-MM-YYYY HH:mm')}</p>
+                                                        {comment.user.id === user_Id ?
+                                                            <button className="btn p-0">
+                                                                <MdDelete className="text-danger" />
+                                                            </button> : null}
+                                                    </span>
                                                 </Card.Header>
 
-                                                <Card.Body>{comment.body}</Card.Body>
+                                                <Card.Body className="font-card-comment">{comment.body}</Card.Body>
                                                 <div className="triangle"></div>
                                             </Card>
                                         </div>

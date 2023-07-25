@@ -56,7 +56,7 @@ function RegisterPage() {
 
                 dispatch(userProfile(profile.userName))
 
-                alert("foto aggiunta" + response.url + fd.get("file").name)
+                alert("foto aggiunta")
             } else if (response.status === 417) {
                 alert("nome file gia esistente")
             } else if (response.status === 500) {
@@ -123,6 +123,7 @@ function RegisterPage() {
 
 
     const modifyUser = async () => {
+        console.log(registerForm);
         try {
             const response = await fetch(API_URL_MODIFY_USER, {
                 method: "PUT",
@@ -142,7 +143,7 @@ function RegisterPage() {
 
             }
         } catch (error) {
-            console.log("Si è verificato un errore durante la richiesta di registrazione");
+            console.log("Si è verificato un errore durante la richiesta di modifica");
             alert(error);
         }
     }
@@ -157,8 +158,9 @@ function RegisterPage() {
                     <div className="user_card ">
                         <div className="d-flex justify-content-center">
                             <div onClick={handlerShowImage} className={`${photoformVisibility} brand_logo_container`}>
-                                <img src={profile.photoProfile ? profile.photoProfile : "./AddUser.png"} className="brand_logo" alt="Logo" title="Foto profilo" />
-                                     />
+                                <img src={location.pathname !== "/register" ?
+                                    (profile.photoProfile ? profile.photoProfile : "./AddUser.png") : "./AddUser.png"} className="brand_logo" alt="Logo" title="Foto profilo" />
+
                             </div>
                         </div>
 
@@ -188,7 +190,7 @@ function RegisterPage() {
                                 </div>
                                 <div className="input-group mb-3">
                                     <div className="input-group-append">
-                                        <span className="input-group-text"><i className="fas fa-user"></i></span>
+                                        <span className="input-group-text"><i className="fas fa-at"></i></span>
                                     </div>
                                     <input type="email" className="form-control input_user"
                                         required plaintext
@@ -228,10 +230,13 @@ function RegisterPage() {
                                 <div className="d-flex justify-content-center my-3 login_container">
 
                                     <button type="submit" className={`${visibility} btn login_btn my-2`}>Register</button>
-                                    <button onClick={modifyUser} className={`${location.pathname !== "/profile" ? "d-none" : "d-block"} btn login_btn my-2`}>Modifica</button>
-                                    <button type="reset" value="Reset Form" className="m-2 btn btn-warning" onClick={() => resetForm()}>Reset</button>
+
                                 </div>
                             </form>
+                            <div className="d-flex justify-content-center login_container mb-3">
+                                <button onClick={modifyUser} className={`${location.pathname !== "/profile" ? "d-none" : "d-block"} btn login_btn my-2`}>Modifica</button>
+                                {/* <button type="reset" value="Reset Form" className="m-2 btn btn-warning" onClick={() => resetForm()}>Reset</button> */}
+                            </div>
                         </div>
 
                         <div className="mt-4">
@@ -249,10 +254,8 @@ function RegisterPage() {
             <Modal show={showModalImage} onHide={handleClose}>
                 <Form className=" mx-auto">
                     <Modal.Header closeButton>
-                        <Modal.Title>Contribuisci anche tu!!</Modal.Title>
+                        <Modal.Title>Aggiungi la tua foto profilo!!!</Modal.Title>
                     </Modal.Header>
-                    {/* <div className={`${photoformVisibility} text-center w-75  `}> */}
-                    <label for="formFileLg " class="form-label">Aggiungi la tua foto profilo</label>
                     <span className="d-flex">
                         <input onChange={handleFile} className="form-control form-control-sm mx-2" id="formFileLg" type="file" name="image">
 
@@ -261,7 +264,7 @@ function RegisterPage() {
                     </span>
 
                     <Modal.Footer>
-                        <Button onClick={(e) => sendPhotoUser(e)}>Invia</Button>
+                        <Button className="btn login_btn w-25" onClick={(e) => sendPhotoUser(e)}>Invia</Button>
                         <Button
                             variant="secondary"
                             className="text-start"

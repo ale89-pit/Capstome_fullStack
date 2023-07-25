@@ -129,8 +129,8 @@ const Weather = (props) => {
                                                     src={`http://openweathermap.org/img/wn/${item.weather[0].icon}@2x.png`}
                                                     alt="Weather Icon"
                                                 />
-                                                <p>Min: {item.main.temp_min}°C</p>
-                                                <p>Max: {item.main.temp_max}°C</p>
+                                                <p>Min: {item.main.temp_min.toFixed(1)}°C</p>
+                                                <p>Max: {item.main.temp_max.toFixed(1)}°C</p>
                                             </span>
                                             {weather.list[index + 1] && (
                                                 <span>
@@ -141,8 +141,8 @@ const Weather = (props) => {
                                                         src={`http://openweathermap.org/img/wn/${weather.list[index + 1].weather[0].icon}@2x.png`}
                                                         alt="Weather Icon"
                                                     />
-                                                    <p>Min: {weather.list[index + 1].main.temp_min}°C</p>
-                                                    <p>Max: {weather.list[index + 1].main.temp_max}°C</p>
+                                                    <p>Min: {weather.list[index + 1].main.temp_min.toFixed(1)}°C</p>
+                                                    <p>Max: {weather.list[index + 1].main.temp_max.toFixed(1)}°C</p>
                                                 </span>
                                             )}
                                             {weather.list[index + 2] && (
@@ -155,8 +155,8 @@ const Weather = (props) => {
                                                         src={`http://openweathermap.org/img/wn/${weather.list[index + 2].weather[0].icon}@2x.png`}
                                                         alt="Weather Icon"
                                                     />
-                                                    <p>Min: {weather.list[index + 2].main.temp_min}°C</p>
-                                                    <p>Max: {weather.list[index + 2].main.temp_max}°C</p>
+                                                    <p>Min: {weather.list[index + 2].main.temp_min.toFixed(1)}°C</p>
+                                                    <p>Max: {weather.list[index + 2].main.temp_max.toFixed(1)}°C</p>
                                                 </span>
                                             )}
                                             {weather.list[index + 3] && (
@@ -169,8 +169,8 @@ const Weather = (props) => {
                                                         alt="Weather Icon"
                                                     />
 
-                                                    <p>Min: {weather.list[index + 3].main.temp_min}°C</p>
-                                                    <p>Max: {weather.list[index + 3].main.temp_max}°C</p>
+                                                    <p>Min: {weather.list[index + 3].main.temp_min.toFixed(1)}°C</p>
+                                                    <p>Max: {weather.list[index + 3].main.temp_max.toFixed(1)}°C</p>
                                                 </span>
                                             )}
                                             {weather.list[index + 4] && (
@@ -184,8 +184,8 @@ const Weather = (props) => {
                                                         alt="Weather Icon"
                                                     />
 
-                                                    <p>Min: {weather.list[index + 4].main.temp_min}°C</p>
-                                                    <p>Max: {weather.list[index + 4].main.temp_max}°C</p>
+                                                    <p>Min: {weather.list[index + 4].main.temp_min.toFixed(1)}°C</p>
+                                                    <p>Max: {weather.list[index + 4].main.temp_max.toFixed(1)}°C</p>
                                                 </span>
                                             )}
                                             {weather.list[index + 5] && (
@@ -198,8 +198,8 @@ const Weather = (props) => {
                                                         src={`http://openweathermap.org/img/wn/${weather.list[index + 5].weather[0].icon}@2x.png`}
                                                         alt="Weather Icon"
                                                     />
-                                                    <p>Min: {weather.list[index + 5].main.temp_min}°C</p>
-                                                    <p>Max: {weather.list[index + 5].main.temp_max}°C</p>
+                                                    <p>Min: {weather.list[index + 5].main.temp_min.toFixed(1)}°C</p>
+                                                    <p>Max: {weather.list[index + 5].main.temp_max.toFixed(1)}°C</p>
                                                 </span>
                                             )}
                                         </div>

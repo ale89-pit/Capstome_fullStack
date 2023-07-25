@@ -19,7 +19,8 @@ const MapComponent = ({ address, nameFacility }) => {
     const [loadCord, setLoadCord] = useState(false);
     console.log(address)
     console.log(params.id)
-    const API_GEOCODING_ADDRESS = `https://nominatim.openstreetmap.org/search?q=${address.streetNumber + ' ' + address.street + ' ' + address.comune.name + ' ' + address.comune.provincename.name + ''}&format=json&polygon_geojson=1&addressdetails=1`
+    const provincia = address.comune.provincename.name === "Verbania" ? "Verbano-Cusio-Ossola" : address.comune.provincename.name
+    const API_GEOCODING_ADDRESS = `https://nominatim.openstreetmap.org/search?q=${address.streetNumber + ' ' + address.street + ' ' + address.comune.name + ' ' + provincia + ''}&format=json&polygon_geojson=1&addressdetails=1`
 
 
 

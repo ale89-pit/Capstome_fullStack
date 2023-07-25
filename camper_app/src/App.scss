@@ -1,5 +1,4 @@
-// @import url('https://fonts.googleapis.com/css2?family=Domine:wght@400;500;600&family=Kaushan+Script&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script&family=Fira+Sans:ital,wght@0,200;0,400;1,300&display=swap');
 
 // @function makelongshadow($color,$opacity) {
 //   $val: 0px 0px rgba($color,$opacity);
@@ -26,13 +25,9 @@
 
 
 body {
-  font-family: 'Domine', serif !important;
+  font-family: 'Fira Sans', sans-serif!important;
   color:#000000!important;
-//   height: 100%;
-//   width: 100%;
-//   box-sizing: border-box;
-//   max-height: 100vh;
-//   // ../public/bg2.jpg
+
 
 
  
@@ -79,6 +74,8 @@ body {
 }
 .form_container {
   margin-top: 100px;
+  display: flex;
+  flex-direction: column;
 }
 .login_btn {
   width: 100%;
@@ -193,30 +190,28 @@ h5,h4,h3{
   text-shadow: -1px 0 #faf9f9, 0 1px  #faf9f9, 1px 0  #faf9f9, 0 -1px  #faf9f9;
 }
 .bgRoad{
+  height: 100vh;
   background-image: url("https://img.freepik.com/free-photo/shot-highway-road-surrounded-by-dried-grass-fields-sky-during-sunset_181624-10934.jpg?w=900&t=st=1689265545~exp=1689266145~hmac=a42df11ac94a3ef4b8e201a23e967ffe781ab2b42007634e235d45739baef844");
   background-repeat: no-repeat;
   background-size:  cover;
   background-attachment:fixed; 
     background-position: center; 
 }
+.bgNavbarFooter{
+  background-color: #767778!important;
+}
+.searchWrapper {
+  background-color: white!important;
+}
+
+.font-card-comment{
+  font-family: 'Dancing Script', cursive;
+  font-size: 1.3em!important;
+  letter-spacing: 0.5px;
+}
 
 
-// body h3{
-//   font-size:5em;
-//   text-align: center;
-//   color: white!important;
-  
-// }
-// p{
-//   font-size: 1em;
-// }
-// .backGround {
-   
-//   height: 100%;
-// }
-// // .size{
-// //   height: 100%;
-// // }
+
 .imgUser {
   width: 40px;
   height: 40px;
@@ -301,19 +296,7 @@ input[type=radio]{
 }
 
 // // @media screen and (min-width: 768px) {
-// //   .imgSingleCard{
-// //     min-width: 150px;
-// //     max-width: 150px;
-// //     max-height: max-content;
-// //     padding: 1em;
-// //     border-radius: 50px;
-// //   }
-// //   .sizeBadge{
-   
-// //     width: max-content;
-// //    } 
- 
-// }
+
 ::-webkit-scrollbar {
   width: .45rem;
   overflow-x: hidden
@@ -341,7 +324,8 @@ input[type=radio]{
  
 }
 .sizeResp  {
- font-size: 1.4em;
+ font-size: 0.6em;
+ 
 }
 .form-label{
   font-size: 1.3em;
@@ -360,96 +344,7 @@ input[type=radio]{
   color: rgb(246, 244, 244)50% !important;
 }
 
-// // .color-link {
-// //   color: rgb(255, 255, 255) !important;
-// // }
 
-// // .color-link:hover {
-// //   background-color: #282c34;
-// // }
-
-// // .custom-dropdown-title {
-// //   color: rgb(218, 217, 217) !important;
-
-// // }
-
-// // .dropdown-toggle::after {
-// //   color: rgb(217, 215, 215) !important;
-
-// // }
-
-// // .dropdown-menu {
-// //   color: rgb(255, 255, 255) !important;
-// //   background-color: transparent !important;
-// // }
-
-// // .dropdown-item {
-// //   padding: 0 !important;
-// //   margin: 0 auto;
-// // }
-
-// // .navBar{
-// //   display: flex;
-// //   align-items: center;
-// //   justify-content: space-between;
-  
-// // }
-// // .navSpace {
-// //   margin-bottom: 1em;
- 
-// // }
-
-
-
-// // .button {
-// //   appearance: none;
-// //   background-color: #000000;
-// //   border: 2px solid #1A1A1A;
-// //   border-radius: 15px;
-// //   box-sizing: border-box;
-// //   color: #FFFFFF;
-// //   cursor: pointer;
-// //   display: inline-block;
-// //   font-family: Roobert, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-// //   font-size: 1em;
-// //   font-weight: 600;
-// //   line-height: normal;
-// //   margin: 0;
-// //   min-height: 60px;
-// //   min-width: 0;
-// //   outline: none;
-// //   padding: 16px 24px;
-// //   text-align: center;
-// //   text-decoration: none;
-// //   transition: all 300ms cubic-bezier(.23, 1, 0.32, 1);
-// //   user-select: none;
-// //   -webkit-user-select: none;
-// //   touch-action: manipulation;
-// //   width: 25%;
-// //   will-change: transform;
-// // }
-
-
-// // @media screen and (max-width : 992px) {
-// //   .button {
-// //     font-size: 0.8em;
-// //     width: 100%;
-// //   }
-// // }
-
-// // .button:disabled {
-// //   pointer-events: none;
-// // }
-
-// // .button:hover {
-// //   box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
-// //   transform: translateY(-2px);
-// // }
-
-// // .button:active {
-// //   box-shadow: none;
-// //   transform: translateY(0);
-// // }
 
 svg {
   margin: 0.2em;
