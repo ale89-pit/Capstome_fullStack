@@ -119,7 +119,7 @@ function FacilityForm({ serviceFromModify }) {
         redirect: "follow",
       });
       if (response.ok) {
-        resetForm();
+        dispatch(resetForm());
         alert("struttura inserita");
       } else {
         alert("errore fetch");
@@ -152,6 +152,7 @@ function FacilityForm({ serviceFromModify }) {
       if (response.ok) {
         //recupero l'indirro della foto appena salvata
         dispatch(handlercover(response.url + "/" + fd.get("file").name));
+        alert("foto aggiornata");
       } else if (response.status === 417) {
         alert("nome file gia esistente");
       } else if (response.status === 500) {
@@ -173,7 +174,7 @@ function FacilityForm({ serviceFromModify }) {
         });
         if (response.ok) {
           alert("struttura modificata");
-          dispatch(resetForm());
+
         }
         const data = await response.json();
       } catch (error) {
@@ -253,7 +254,9 @@ function FacilityForm({ serviceFromModify }) {
               />
 
               {imgData ? (
-                <img src={urlImg} alt="img" className="w-100 " />
+                <div className="w-100">
+                  <img src={urlImg} alt="img" height={200} width={300} />
+                </div>
               ) : (
                 <MdCloudUpload color="white" />
               )}
@@ -352,7 +355,7 @@ function FacilityForm({ serviceFromModify }) {
                   {/* <Form.Label className=" form-label">Via/Piazza</Form.Label> */}
                   <Form.Control
                     type="text"
-                    placeholder="Via/piazza/Stale"
+                    placeholder="Via/piazza/Statale"
                     required
                     plaintext
                     className="border rounded  color-placeholder px-3"
@@ -370,7 +373,7 @@ function FacilityForm({ serviceFromModify }) {
                   {/* <Form.Label className=" form-label">Civico</Form.Label> */}
                   <Form.Control
                     type="text"
-                    placeholder="civico"
+                    placeholder="Civico/Km"
                     plaintext
                     required
                     className="border rounded color-placeholder px-3"
@@ -537,7 +540,7 @@ function FacilityForm({ serviceFromModify }) {
                 <button
                   onClick={sendNewFacility}
                   type="submit"
-                  className={`m-2 btn btn-primary ${location.pathname !== "/add" ? " d-none" : "d-block"
+                  className={`m-2 btn login_btn ${location.pathname !== "/add" ? " d-none" : "d-block"
                     }`}
                 >
                   Invia
@@ -554,7 +557,7 @@ function FacilityForm({ serviceFromModify }) {
                 <button
                   type="submit"
                   onClick={modifyFacility}
-                  className={`m-2 btn btn-primary ${visibility}`}
+                  className={`m-2 btn login_btn ${visibility}`}
                 >
                   Modifica
                 </button>

@@ -1,5 +1,6 @@
+@import url("https://fonts.googleapis.com/css2?family=Dancing+Script&family=Fira+Sans:ital,wght@0,200;0,400;1,300&display=swap");
 body {
-  font-family: "Domine", serif !important;
+  font-family: "Fira Sans", sans-serif !important;
   color: #000000 !important;
   padding: 0;
 }
@@ -42,6 +43,8 @@ body {
 
 .form_container {
   margin-top: 100px;
+  display: flex;
+  flex-direction: column;
 }
 
 .login_btn {
@@ -155,11 +158,26 @@ h5, h4, h3 {
 }
 
 .bgRoad {
+  height: 100vh;
   background-image: url("https://img.freepik.com/free-photo/shot-highway-road-surrounded-by-dried-grass-fields-sky-during-sunset_181624-10934.jpg?w=900&t=st=1689265545~exp=1689266145~hmac=a42df11ac94a3ef4b8e201a23e967ffe781ab2b42007634e235d45739baef844");
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;
   background-position: center;
+}
+
+.bgNavbarFooter {
+  background-color: #767778 !important;
+}
+
+.searchWrapper {
+  background-color: white !important;
+}
+
+.font-card-comment {
+  font-family: "Dancing Script", cursive;
+  font-size: 1.3em !important;
+  letter-spacing: 0.5px;
 }
 
 .imgUser {
@@ -260,7 +278,7 @@ input[type=radio] {
 }
 
 .sizeResp {
-  font-size: 1.4em;
+  font-size: 0.6em;
 }
 
 .form-label {

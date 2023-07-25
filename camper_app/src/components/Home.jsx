@@ -3,7 +3,6 @@ import { getAllFacility } from "../redux/actions/facilityAction";
 import { useDispatch, useSelector } from "react-redux";
 import SingleCardFacility from "./SingleCardFacility";
 import { Card, Col, Container, Row, Spinner } from "react-bootstrap";
-import { Link } from "react-router-dom";
 
 
 function Home() {
@@ -22,6 +21,7 @@ function Home() {
         <>
 
             <Container className="mx-auto ">
+
 
                 <Row>
                     <Col className="mx-auto">

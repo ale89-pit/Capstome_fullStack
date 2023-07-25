@@ -1,19 +1,26 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Button, Col, Row, Form, Card } from "react-bootstrap";
-import { Link } from "react-router-dom";
 import { myHeaders, myHeadersToken } from "../redux/actions/userAction";
-import { BsFillChatSquareTextFill } from "react-icons/bs";
-import { RiRoadMapFill } from "react-icons/ri";
-import { FaUserFriends } from "react-icons/fa";
+
 import { Multiselect } from 'multiselect-react-dropdown';
 import { useDispatch, useSelector } from "react-redux";
 import { getAllFacility, handlerFacility } from "../redux/actions/facilityAction";
-import Checkbox from "./Checkbox";
+
+import { Link, useParams } from "react-router-dom";
+import { BsFillChatSquareTextFill } from "react-icons/bs";
+import { RiRoadMapFill } from "react-icons/ri";
+import { FaUserFriends } from "react-icons/fa";
+import { Animator, Fade, FadeIn, FadeOut, Move, MoveIn, MoveOut, ScrollContainer, ScrollPage, Sticky, StickyIn, ZoomIn, batch } from 'react-scroll-motion';
+
+import { Link as ScrollLink, Element } from "react-scroll";
+import Search from "./Search";
+
 
 
 function Jumbotron() {
     const facility = useSelector((state) => state.facility.facility);
     const dispatch = useDispatch();
+    const searchSectionRef = useRef(null)
     const [selectedItem, setSelectedItem] = useState();
     const [querySearch, setQuerySearch] = useState()
     const [filterType, setFilterType] = useState([]);
@@ -158,136 +165,146 @@ function Jumbotron() {
 
     }, [querySearch, filterType])
 
+    const ZoomInScrollOut = batch(StickyIn(), FadeIn(), ZoomIn());
+    const FadeUp = batch(Fade(), Move(), Sticky());
+    const FadeUp2 = batch(Fade(-100, 100), Move(500, 200, 200, -500), Sticky());
     return (
         <>
+            <ScrollContainer>
+                <Row className="h-100 ">
+                    <Col xs={12} className=" mx-auto mt-5 d-flex justify-content-center align-items-center  bgRoad text-center">
 
-            <Row className="bgRoad">
-                <Col xs={12} className=" mx-auto mt-5  text-center">
+                        <img src={"./logo.jpg"}
+                        />
 
-                    <img src={"./logo.jpg"}
-                    />
+                    </Col>
 
-                </Col>
-                <Col className="align-items-stretch  d-md-flex" >
-                    <span style={{ width: '18rem' }} className="mx-auto my-3">
-                        <h4 className="text-center">Unisciti a noi!!!</h4>
-                        <Card className="card-shadow bg-dark text-white h-md-100">
-                            <Card.Body>
+                </Row>
+                <Row className="m-2 p-2">
+                    <Col xs={12} className="  d-md-flex mb-5" >
+                        <ScrollPage page={0}>
+                            <Animator animation={FadeUp} className="w-100 m-0 bg-light" >
+                                <div className="mx-auto my-3  d-flex" >
 
-                                <Card.Title className="text-center"><BsFillChatSquareTextFill /></Card.Title>
+                                    <img src="https://citynews-today.stgy.ovh/~media/original-hi/37377055997333/road-trip-2.jpg" style={{ width: '50%', borderRadius: '15px' }} />
 
-                                <Card.Text>
-                                    La nostra community è dedicata ai veri avventurieri on the road! Se ami esplorare il mondo con il tuo camper o qualsiasi altro mezzo, sei nel posto giusto.<Link to={"/register"} className="color-link" >Unisciti a noi</Link>
-                                </Card.Text>
-                                <Card.Link to={"/register"}>Register</Card.Link>
-                                <Card.Link to={"/LogIn"}>LogIn </Card.Link>
+                                    <div className="d-flex flex-column justify-content-center align-items-center p-5">
+                                        {/* <BsFillChatSquareTextFill /> */}
+
+
+                                        <h3>
+                                            Benvenuti su "Giramondo"! Il nostro sito è la casa virtuale di una comunità appassionata di viaggiatori on the road, nato per condividere  avventure, ispirarci reciprocamente e scoprire i luoghi più straordinari del mondo.</h3> <Link to={"/register"} className="color-link" >Unisciti a noi</Link>
+
+
+                                        <Link to={"/LogIn"}>LogIn </Link>
+                                    </div>
+                                </div>
+                            </Animator>
+                        </ScrollPage>
+                    </Col>
+                </Row>
+                <Row className="m-2 p-2">
+                    <Col xs={12}>
+                        <ScrollPage page={1}>
+                            <Animator animation={FadeUp} className="w-100 m-0 bg-light">
+                                <div className="mx-auto my-3  d-flex" >
+                                    <div className="d-flex flex-column justify-content-center align-items-center p-5">
+                                        {/* <RiRoadMapFill /> */}
+
+
+                                        <h3>Scopri le meraviglie nascoste di luoghi lontani, condividi le tue esperienze e scambia informazioni con altri viaggiatori appassionati.</h3>
+                                    </div>
+                                    <img src="https://www.idoinitaly.it/wp-content/uploads/2018/03/Places-in-Italy-6-1024x687-1024x675.jpg" style={{ width: '50%', borderRadius: '15px' }} />
+                                </div>
+                            </Animator>
+                        </ScrollPage>
+                    </Col>
+                </Row>
+                <Row className="m-5 p-2">
+                    <Col xs={12}>
+                        <ScrollPage page={2}>
+                            <Animator animation={FadeUp} className="w-100 m-0 bg-light">
+                                <div className="mx-auto my-3  d-flex">
+                                    <img src="https://img.freepik.com/free-photo/friends-warming-up-their-hands-around-camp-fire-after-hiking-mountains-retro-camper-van_482257-31583.jpg?w=996&t=st=1690046726~exp=1690047326~hmac=edd14479e260beaafb90f7950ee0ae65d5529ca18b8cba32198ee2af8e2db09c" style={{ width: '50%', borderRadius: '15px' }} />
+                                    <div className="d-flex flex-column justify-content-center align-items-center p-5">
+                                        {/* <FaUserFriends /> */}
+
+
+                                        <h3> Insieme possiamo creare una rete di conoscenza e supporto. Scopri itinerari unici, consigli preziosi e luoghi straordinari, condividi le tue foto e i tuoi racconti, connettiti con la community!!!</h3>
+
+                                    </div>
+                                </div>
+                            </Animator>
+                        </ScrollPage>
+                    </Col>
+
+                </Row>
+                <Row className="my-4 p-2">
+                    {/* <Search /> */}
+                    {/* <Col className="jumbotron jumbotron-fluid d-flex  mb-0  mt-5 p-0" >
+                        <Card className="mx-auto w-75 bg-dark text-white" >
+                            <Card.Header>
+                                Sai già dove sosterai?
+                            </Card.Header>
+                            <Card.Body className="d-flex w-100">
+                                <div className="d-flex flex-column w-100">
+                                    <p>Cerca il nome della struttura.</p>
+                                    <Form onSubmit={(e) => searchFacilityBySearchBar(e)} className="d-flex w-100 mb-5 justify-content-center align-items-center">
+
+                                        <Form.Control
+                                            className="w-100 mx-2"
+                                            type="text"
+                                            placeholder="Inserisci il nome o la località "
+                                            onChange={(e) => {
+                                                setQuerySearch(e.target.value)
+                                            }}
+                                        /><Button type="submit" className="mx-2">Search</Button>
+                                    </Form>
+                                </div>
+                                <div className="d-flex flex-column ">
+                                    <p>Filtra per Comune</p>
+                                    {comuni && <Multiselect className="text-dark"
+                                        options={comuni} // Options to display in the dropdown
+                                        selectedValues={comuni.name
+                                        }// Preselected value to persist in dropdown
+                                        onSelect={onSelect}// Function will trigger on select event
+                                        onRemove={onRemove}// Function will trigger on remove event
+                                        displayValue="name" // Property name to display in the dropdown options
+                                    />}
+                                </div>
                             </Card.Body>
+                            <Card.Footer className="d-flex justify-content-between">
+                                Filtra per tipo
+                                <Form.Check
+                                    type="switch"
+                                    id="custom-switch"
+                                    label="Camping"
+                                    value={"CAMPING"}
+                                    checked={filterType.includes("CAMPING")} // Imposta il valore "checked" in base allo stato "filteType"
+                                    onChange={() => handleCheckboxChange("CAMPING")}
+                                />
+                                <Form.Check
+                                    type="switch"
+                                    id="custom-switch"
+                                    label="Parking Area"
+                                    value={"PARKING_AREA"}
+                                    checked={filterType.includes("PARKING_AREA")} // Imposta il valore "checked" in base allo stato "filteType"
+                                    onChange={() => handleCheckboxChange("PARKING_AREA")}
+                                />
+                                <Form.Check // prettier-ignore
+                                    type="switch"
+                                    id="custom-switch"
+                                    label="Free Parking Area"
+                                    value={"FREE_PARKING_AREA"}
+                                    checked={filterType.includes("FREE_PARKING_AREA")} // Imposta il valore "checked" in base allo stato "filteType"
+                                    onChange={() => handleCheckboxChange("FREE_PARKING_AREA")}
+                                />
+                            </Card.Footer>
                         </Card>
-                    </span>
-                    <span style={{ width: '18rem' }} className="mx-auto my-3">
-                        <h4 className="text-center">Cerca le strutture per il tuo itinerario!!!</h4>
-                        <Card className="card-shadow bg-dark text-white h-md-100">
-                            <Card.Body>
-                                <Card.Title className="text-center "><RiRoadMapFill /></Card.Title>
 
-                                <Card.Text>
-                                    Scopri le meraviglie nascoste di luoghi lontani, condividi le tue esperienze e scambia informazioni con altri viaggiatori appassionati
-                                </Card.Text>
-                            </Card.Body>
-                        </Card>
-                    </span>
-                    <span style={{ width: '18rem' }} className="mx-auto my-3">
-                        <h4 className="text-center">Conosci dei luighi interressanti e vuoi condividerli con noi?</h4>
-                        <Card className="card-shadow bg-dark text-white h-md-100">
-                            <Card.Body>
-                                <Card.Title className="text-center"><FaUserFriends /></Card.Title>
-
-                                <Card.Text>
-                                    Insieme, possiamo creare una rete di conoscenza e supporto, Scopri itinerari unici, consigli preziosi e luoghi straordinari, condividi le tue foto e racconti, connettiti con la comunity
-                                </Card.Text>
-                            </Card.Body>
-                        </Card>
-                    </span>
-                </Col>
-
-
-            </Row>
-            <Row>
-
-                <Col className="jumbotron jumbotron-fluid d-flex  mb-2  mt-5 p-0">
-
-                    <Card className="mx-auto w-75">
-                        <Card.Header>
-                            Conosci gia dove sosterai?
-                        </Card.Header>
-                        <Card.Body>
-                            <p >Cerca il nome della struttura.</p>
-                            <Form onSubmit={(e) => searchFacilityBySearchBar(e)} className="d-flex w-75 mb-5 justify-content-center align-items-center">
-
-                                <Form.Control
-                                    type="text"
-                                    placeholder="Inserisci il nome o la località "
-                                    onChange={(e) => {
-                                        setQuerySearch(e.target.value)
-                                    }}
-                                /><Button type="submit">Search</Button>
-                            </Form>
-                            <div>
-                                <p>Filtra per Comune</p>
-                                {comuni && <Multiselect
-                                    options={comuni} // Options to display in the dropdown
-                                    selectedValues={comuni.name
-                                    }// Preselected value to persist in dropdown
-                                    onSelect={onSelect}// Function will trigger on select event
-                                    onRemove={onRemove}// Function will trigger on remove event
-                                    displayValue="name" // Property name to display in the dropdown options
-                                />}
-                            </div>
-                        </Card.Body>
-                        <Card.Footer className="d-flex justify-content-between">
-                            Filtra per tipo
-                            <Form.Check // prettier-ignore
-                                type="switch"
-                                id="custom-switch"
-                                label="Camping"
-                                value={"CAMPING"}
-                                checked={filterType.includes("CAMPING")} // Imposta il valore "checked" in base allo stato "filteType"
-                                onChange={() => handleCheckboxChange("CAMPING")}
-                            />
-                            <Form.Check // prettier-ignore
-                                type="switch"
-                                id="custom-switch"
-                                label="Parking Area"
-                                value={"PARKING_AREA"}
-                                checked={filterType.includes("PARKING_AREA")} // Imposta il valore "checked" in base allo stato "filteType"
-                                onChange={() => handleCheckboxChange("PARKING_AREA")}
-                            />
-                            <Form.Check // prettier-ignore
-                                type="switch"
-                                id="custom-switch"
-                                label="Free Parkin Area"
-                                value={"FREE_PARKING_AREA"}
-                                checked={filterType.includes("FREE_PARKING_AREA")} // Imposta il valore "checked" in base allo stato "filteType"
-                                onChange={() => handleCheckboxChange("FREE_PARKING_AREA")}
-                            />
-                        </Card.Footer>
-                    </Card>
-                </Col>
-            </Row >
-            {/* <Row>
-
-                <Col className="d-flex">
-
-                    <Card className="mx-auto w-75">
-                        <Card.Header>
-                            Ricerca rapida per Regione
-                        </Card.Header>
-                        <Card.Body>
-                            <p>regione</p>
-                        </Card.Body>
-                    </Card>
-                </Col>
-            </Row> */}
+                    </Col> */}
+                </Row >
+            </ScrollContainer>
         </>
     )
 }
