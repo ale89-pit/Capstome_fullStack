@@ -17,4 +17,4 @@ git clone https://github.com/ale89-pit/Capstone_fullStack.git
 
 `npm install`
 
-Una volta installato eseguire il comando `npm start``
+Una volta installato eseguire il comando `npm start`
