@@ -165,6 +165,26 @@ function DetailsFacility() {
             console.log("error", error);
         }
     };
+    const deleteComment = async (id) => {
+        try {
+            let response = await fetch(API_URL_SEND_COMMENT + "/" + id, {
+                method: "DELETE",
+                headers: myHeadersToken,
+
+                redirect: "follow",
+            });
+            if (response.ok) {
+
+                getComment()
+                alert("commento cancellato");
+
+            } else {
+                alert("fetch fallita");
+            }
+        } catch (error) {
+            console.log("error", error);
+        }
+    };
 
     const getComment = async () => {
         try {
@@ -464,7 +484,7 @@ function DetailsFacility() {
                                                     <span className="d-flex justify-content-center align-items-center">
                                                         <p className="p-0 m-0">{moment(comment.date).format('DD-MM-YYYY HH:mm')}</p>
                                                         {comment.user.id === user_Id ?
-                                                            <button className="btn p-0">
+                                                            <button onClick={() => deleteComment(comment.id)} className="btn p-0">
                                                                 <MdDelete className="text-danger" />
                                                             </button> : null}
                                                     </span>
